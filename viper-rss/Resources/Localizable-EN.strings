@@ -1,0 +1,21 @@
+/* 
+  Localizable-EN.strings
+  viper-rss
+
+  Created by user on 25.03.2020.
+  Copyright © 2020 smirnov. All rights reserved.
+*/
+/// MainModuleLocalizedKeys
+"feed" = "feed";
+"settings" = "settings";
+/// SettingsModuleLocalizedKeys
+"timer" = "timer";
+"category" = "category";
+"settingsNavBarTitle" = "Settings";
+///FeedModuleLocalizedKeys
+"feedNavBarTitle" = "Feed";
+"simpleMode" = "Simple";
+"fullMode" = "Full";
+/// AlertServiceKeys
+"yes" = "Yes";
+"no" = "No";
