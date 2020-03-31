@@ -10,7 +10,7 @@
 "settings" = "settings";
 /// SettingsModuleLocalizedKeys
 "timer" = "timer";
-"category" = "category";
+"source" = "source";
 "settingsNavBarTitle" = "Settings";
 ///FeedModuleLocalizedKeys
 "feedNavBarTitle" = "Feed";
@@ -19,3 +19,5 @@
 /// AlertServiceKeys
 "yes" = "Yes";
 "no" = "No";
+"done" = "Done";
+"cancel" = "Cancel";

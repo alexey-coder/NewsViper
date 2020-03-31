@@ -14,4 +14,6 @@ struct ColorHelper {
     static let newsDescriptionColor: UIColor = .lightGray
     static let settingsLabelColor: UIColor = .black
     static let controllersTitleColor: UIColor = .lightGray
+    static let tintColor: UIColor = .gray
+    static let secondaryTextColor: UIColor = .lightGray
 }

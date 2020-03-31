@@ -13,13 +13,16 @@ protocol FeedPresenterProtocol: class {
     var interactor: FeedInteractorProtocol? { get set }
     var view: FeedViewProtocol? { get set }
     
+    func viewDidLoad()
     func viewDidAppear()
     func getHeightFor(row: Int) -> CGFloat
     func getNumberOfRows() -> Int
     func getViewModel(by indexPath: IndexPath) -> FeedViewModelProtocol?
-    func didRowSelected(_ row: Int)
+    func didRowSelected(row: Int)
     func getModes() -> [String]
     func didChangeMode(by value: Int)
-    var isFullMode: Bool { get set }
+    func getCurrentMode() -> Bool
     func switchMode()
+    func showAlert(message: String)
+    func prepareViewModel(for entity: RSSEntity, and source: String)
 }

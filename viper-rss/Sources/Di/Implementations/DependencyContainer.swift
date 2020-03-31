@@ -15,13 +15,25 @@ class ModuleDependencyContainer {
 }
 
 extension ModuleDependencyContainer: ModuleFactoryProtocol {
+    func assemblyDetailModule(with url: String) -> DetailsViewProtocol {
+        let view = DetailsViewImpl(alertService: alertService)
+        let interactor = DetailsInteractorImpl()
+        let presenter = DetailsPresenterImpl(url: url)
+        let router = DetailsRouterImpl()
+        view.presenter = presenter
+        presenter.interactor = interactor
+        presenter.view = view
+        presenter.router = router
+        interactor.presenter = presenter
+        router.presenter = presenter
+        router.viewController = view
+        return view
+    }
+    
     func assemblyFeedModule() -> FeedViewProtocol {
-        let view = FeedViewImpl()
-        let interactor = FeedInteractorImpl()
-        let presenter = FeedPresenterImpl(
-            rssParser: rssParser,
-            alertService: alertService,
-            feedCellLayoutCalculator: feedCellLayoutCalculator)
+        let view = FeedViewImpl(alertService: alertService)
+        let interactor = FeedInteractorImpl(rssParser: rssParser)
+        let presenter = FeedPresenterImpl(feedCellLayoutCalculator: feedCellLayoutCalculator)
         let router = FeedRouterImpl()
         view.presenter = presenter
         presenter.interactor = interactor
@@ -34,7 +46,7 @@ extension ModuleDependencyContainer: ModuleFactoryProtocol {
     }
     
     func assemblySettingsModule() -> SettingsViewProtocol {
-        let view = SettingsViewImpl()
+        let view = SettingsViewImpl(alertService: alertService)
         let interactor = SettingsInteractorImpl()
         let presenter = SettingsPresenterImpl()
         let router = SettingsRouterImpl()

@@ -86,7 +86,7 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
     func configure(with viewModel: FeedViewModelProtocol) {
         self.viewModel = viewModel
         newsTitle.text = viewModel.newsTitleText
-        newsImage.image = viewModel.image
+//        newsImage.image = viewModel.image
         newsDescription.text = viewModel.newsShortDescription
         sourceLabel.text = viewModel.source
         dateLabel.text = viewModel.date

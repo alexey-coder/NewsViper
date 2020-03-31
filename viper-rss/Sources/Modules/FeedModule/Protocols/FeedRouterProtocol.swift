@@ -10,6 +10,5 @@ import Foundation
 
 protocol FeedRouterProtocol {
     var presenter: FeedPresenterProtocol? { get set }
-    
-    func showDetails()
+    func presentDetails(with url: String)
 }

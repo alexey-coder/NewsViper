@@ -10,14 +10,15 @@ import UIKit
 
 private struct Metrics {
     struct Colors {
-        static let backgroundColor = ColorHelper.baseBackgroundColor
+        static let backgroundColor = Constants.Colors.backgroundColor
+        static let segmentControlTintColor = Constants.Colors.tintColor
     }
 }
 
 class FeedUI: UIView {
     
     let segmentControl = UISegmentedControl().then {
-        $0.tintColor = .black
+        $0.tintColor = Metrics.Colors.segmentControlTintColor
     }
     
     let tableView = UITableView().then {

@@ -11,4 +11,6 @@ import Foundation
 enum AlertServiceKeys: String, LocalizableProtocol {
     case yes
     case no
+    case done
+    case cancel
 }

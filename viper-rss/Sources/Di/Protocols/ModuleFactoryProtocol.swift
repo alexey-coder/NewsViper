@@ -9,6 +9,7 @@
 import Foundation
 
 protocol ModuleFactoryProtocol {
+    func assemblyDetailModule(with url: String) -> DetailsViewProtocol
     func assemblyFeedModule() -> FeedViewProtocol
     func assemblySettingsModule() -> SettingsViewProtocol
     func assemblyMainModule() -> MainViewProtocol

@@ -13,18 +13,13 @@ class SettingsPresenterImpl {
     var interactor: SettingsInteractorProtocol?
     weak var view: SettingsViewProtocol?
     
-    lazy var timerTapped: (() -> Void) = {
-        print("bla")
-    }
-    
-    lazy var categoryTapped: (() -> Void) = {
-        print("lalal")
-    }
-    
     var heightForRow: CGFloat = 48
 }
 
 extension SettingsPresenterImpl: SettingsPresenterProtocol {
+    func setNewTimer(interval: Date) {
+        print("\(interval)")
+    }
     
     func getNumberOfRows() -> Int {
         return SettingsHelper.getNumRows()
@@ -36,9 +31,9 @@ extension SettingsPresenterImpl: SettingsPresenterProtocol {
         }
         switch row {
         case .timer:
-            return SettingsViewModelImpl(labelText: row.getTitle())
+            return SettingsViewModelImpl(labelText: row.getTitle(), currentValue: "blaBla")
         case .category:
-            return SettingsViewModelImpl(labelText: row.getTitle())
+            return SettingsViewModelImpl(labelText: row.getTitle(), currentValue: "lala")
         }
     }
     
@@ -48,9 +43,9 @@ extension SettingsPresenterImpl: SettingsPresenterProtocol {
         }
         switch row {
         case .timer:
-            timerTapped()
+            view?.showTimerPicker()
         case .category:
-            categoryTapped()
+            return
         }
     }
 }

@@ -10,11 +10,25 @@ import UIKit
 
 class SettingsViewImpl: BaseController<SettingsUI> {
     var presenter: SettingsPresenterProtocol?
+    let alertService: AlertServiceProtocol
+    
+    init(alertService: AlertServiceProtocol) {
+        self.alertService = alertService
+        super.init()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ui.tableView.dataSource = self
         ui.tableView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.navigationBar.prefersLargeTitles = true
         setupNavBar(LocalizedImpl<SettingsModuleLocalizedKeys>(.settingsNavBarTitle).text)
     }
@@ -26,7 +40,11 @@ class SettingsViewImpl: BaseController<SettingsUI> {
 }
 
 extension SettingsViewImpl: SettingsViewProtocol {
-    
+    func showTimerPicker() {
+        alertService.showTimerPicker(vc: self) { [weak self] interval in
+            self?.presenter?.setNewTimer(interval: interval)
+        }
+    }
 }
 
 extension SettingsViewImpl: UITableViewDataSource {

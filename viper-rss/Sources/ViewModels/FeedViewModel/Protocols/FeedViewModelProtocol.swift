@@ -16,7 +16,6 @@ protocol FeedViewModelProtocol {
     var source: String { get set }
     var newsTitleText: String { get set }
     var newsShortDescription: String { get set }
-    var image: UIImage? { get set }
     var date: String { get set }
     var isFullMode: Bool { get set }
 }

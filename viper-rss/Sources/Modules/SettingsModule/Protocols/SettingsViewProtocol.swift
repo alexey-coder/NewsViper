@@ -10,4 +10,5 @@ import UIKit
 
 protocol SettingsViewProtocol: UIViewController {
     var presenter: SettingsPresenterProtocol? { get set }
+    func showTimerPicker()
 }

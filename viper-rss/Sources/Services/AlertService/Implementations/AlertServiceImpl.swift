@@ -30,6 +30,25 @@ class AlertServiceImpl: AlertServiceProtocol {
         vc.present(alertVC, animated: true, completion: nil)
     }
     
+    func showTimerPicker(vc: UIViewController, acceptAction: @escaping ((Date) -> Void)) {
+        let myDatePicker: UIDatePicker = UIDatePicker()
+        myDatePicker.datePickerMode = .countDownTimer
+        myDatePicker.frame = CGRect(x: 0, y: 15, width: 270, height: 200)
+        let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
+        alertController.view.addSubview(myDatePicker)
+        let selectAction = UIAlertAction(title: LocalizedImpl<AlertServiceKeys>(.done).text, style: .default, handler: { _ in
+            acceptAction(myDatePicker.date)
+        })
+        let cancelAction = UIAlertAction(title: LocalizedImpl<AlertServiceKeys>(.cancel).text, style: .cancel, handler: nil)
+        alertController.addAction(selectAction)
+        alertController.addAction(cancelAction)
+        vc.present(alertController, animated: true)
+    }
+    
+    func showSourcePicker(vc: UIViewController) {
+        
+    }
+    
     init() {
         
     }

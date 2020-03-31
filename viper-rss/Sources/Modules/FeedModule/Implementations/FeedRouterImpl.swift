@@ -14,7 +14,8 @@ class FeedRouterImpl {
 }
 
 extension FeedRouterImpl: FeedRouterProtocol {
-    func showDetails() {
-        
+    func presentDetails(with url: String) {
+        let detailsController = ModuleDependencyContainer().assemblyDetailModule(with: url)
+        viewController?.navigationController?.pushViewController(detailsController, animated: true)
     }
 }

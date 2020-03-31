@@ -21,7 +21,7 @@ enum SettingsHelper: Int, CaseIterable {
         case .timer:
             return LocalizedImpl<SettingsModuleLocalizedKeys>(.timer).text
         case .category:
-            return LocalizedImpl<SettingsModuleLocalizedKeys>(.category).text
+            return LocalizedImpl<SettingsModuleLocalizedKeys>(.source).text
         }
     }
 }

@@ -25,10 +25,12 @@ struct Constants {
     }
     
     struct Colors {
+        static let tintColor = ColorHelper.tintColor
         static let newsTitleColor = ColorHelper.newsBaseTextColor
         static let newsDescriptionColor = ColorHelper.newsDescriptionColor
         static let backgroundColor = ColorHelper.baseBackgroundColor
         static let dateColor = ColorHelper.newsBaseTextColor
         static let sourceColor = ColorHelper.newsBaseTextColor
+        static let settingsSecondaryColor = ColorHelper.secondaryTextColor
     }
 }

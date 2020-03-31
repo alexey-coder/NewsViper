@@ -17,4 +17,5 @@ protocol SettingsPresenterProtocol: class {
     func getNumberOfRows() -> Int
     func getViewModel(by indexPath: IndexPath) -> SettingsTimerViewModelProtocol?
     func didRowSelected(_ row: Int)
+    func setNewTimer(interval: Date)
 }

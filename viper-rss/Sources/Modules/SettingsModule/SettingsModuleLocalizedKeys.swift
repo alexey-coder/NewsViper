@@ -10,6 +10,6 @@ import Foundation
 
 enum SettingsModuleLocalizedKeys: String, LocalizableProtocol {
     case timer
-    case category
+    case source
     case settingsNavBarTitle
 }

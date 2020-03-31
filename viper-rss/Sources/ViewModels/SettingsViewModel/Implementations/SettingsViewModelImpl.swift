@@ -9,9 +9,11 @@
 import Foundation
 
 class SettingsViewModelImpl: SettingsTimerViewModelProtocol {
+    var currentValue: String
     var labelText: String
 
-    init(labelText: String) {
+    init(labelText: String, currentValue: String) {
         self.labelText = labelText
+        self.currentValue = currentValue
     }
 }

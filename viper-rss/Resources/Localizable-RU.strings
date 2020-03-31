@@ -10,7 +10,7 @@
 "settings" = "настройки";
 /// SettingsModuleLocalizedKeys
 "timer" = "таймер";
-"category" = "категория";
+"source" = "источник";
 "settingsNavBarTitle" = "Настройки";
 ///FeedModuleLocalizedKeys
 "feedNavBarTitle" = "Лента";
@@ -19,3 +19,5 @@
 /// AlertServiceKeys
 "yes" = "Да";
 "no" = "Нет";
+"done" = "Готово";
+"cancel" = "Отмена";

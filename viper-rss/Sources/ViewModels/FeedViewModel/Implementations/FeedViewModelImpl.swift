@@ -12,7 +12,6 @@ class FeedViewModelImpl: FeedViewModelProtocol {
 
     var newsTitleText: String
     var newsShortDescription: String
-    var image: UIImage?
     var date: String
     var isFullMode: Bool
     var cellHeightFullMode: CGFloat
@@ -20,22 +19,22 @@ class FeedViewModelImpl: FeedViewModelProtocol {
     var titleHeight: CGFloat
     var descriptionHeight: CGFloat
     var source: String
+    var link: String
     
     init(
         newsTitleText: String,
         newsShortDescription: String,
-        image: UIImage?,
         date: String,
         isFullMode: Bool,
         cellHeightFullMode: CGFloat,
         cellHeightSimpleMode: CGFloat,
         titleHeight: CGFloat,
         descriptionHeight: CGFloat,
-        source: String) {
+        source: String,
+        link: String) {
         
         self.newsTitleText = newsTitleText
         self.newsShortDescription = newsShortDescription
-        self.image = image
         self.date = date
         self.isFullMode = isFullMode
         self.cellHeightFullMode = cellHeightFullMode
@@ -43,6 +42,6 @@ class FeedViewModelImpl: FeedViewModelProtocol {
         self.titleHeight = titleHeight
         self.descriptionHeight = descriptionHeight
         self.source = source
+        self.link = link
     }
-    
 }

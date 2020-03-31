@@ -10,4 +10,5 @@ import Foundation
 
 protocol SettingsTimerViewModelProtocol {
     var labelText: String { get set }
+    var currentValue: String { get set }
 }

@@ -52,12 +52,6 @@ class RSSParserServiceImpl: NSObject, RSSParserServiceProtocol {
         }
     }
     
-    private var currentCategory: String = "" {
-        didSet {
-            currentCategory = currentCategory.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        }
-    }
-    
     func parseFeed(
         url: String,
         successCompletion: @escaping ((RSSEntity) -> Void),
@@ -101,7 +95,6 @@ extension RSSParserServiceImpl: XMLParserDelegate {
             currentImgLink = ""
             currentPostId = ""
             currentDescription = ""
-            currentCategory = ""
         }
         if currentElement == "enclosure" {
             attributeDict["url"].flatMap {
@@ -122,8 +115,6 @@ extension RSSParserServiceImpl: XMLParserDelegate {
             currentDescription += string
         case "guid":
             currentPostId += string
-        case "category":
-            currentCategory += string
         default:
             break
         }
@@ -141,8 +132,7 @@ extension RSSParserServiceImpl: XMLParserDelegate {
                 pubdate: pubDate,
                 link: currentLink,
                 imgUrl: currentImgLink,
-                postId: currentPostId,
-                category: currentCategory)
+                postId: currentPostId)
             rssItems += [rssItem]
             onSuccess?(rssItem)
         }

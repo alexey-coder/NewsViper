@@ -10,4 +10,5 @@ import Foundation
 
 protocol FeedInteractorProtocol {
     var presenter: FeedPresenterProtocol? { get set }
+    func requestEntities(from sourses: [Sources])
 }
