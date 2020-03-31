@@ -27,6 +27,7 @@ class FeedViewImpl: BaseController<FeedUI> {
         ui.tableView.delegate = self
         ui.tableView.dataSource = self
         setupSegmentControl()
+        presenter?.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +63,47 @@ class FeedViewImpl: BaseController<FeedUI> {
 }
 
 extension FeedViewImpl: FeedViewProtocol {
+    func displayStartEventUpdates() {
+        ui.tableView.beginUpdates()
+    }
+    
+    func displayStopEventUpdates() {
+        ui.tableView.endUpdates()
+    }
+    
+    func displayInsertedSection(section: IndexSet) {
+        ui.tableView.insertSections(section, with: .fade)
+    }
+    
+    func displayDeletedSection(section: IndexSet) {
+        ui.tableView.deleteSections(section, with: .fade)
+    }
+    
+    func displayUpdatedSection(section: IndexSet) {
+        
+    }
+    
+    func displayMovedSection(from: IndexSet, to: IndexSet) {
+        
+    }
+    
+    func displayInsertedRowAt(row: IndexPath) {
+        ui.tableView.insertRows(at: [row], with: .fade)
+    }
+    
+    func displayDeletedRowAt(row: IndexPath) {
+        ui.tableView.deleteRows(at: [row], with: .fade)
+    }
+    
+    func displayUpdatedRowAt(row: IndexPath, withDisplayedEvent displayedEvent: RSSEntity) {
+        
+    }
+    
+    func displayMovedRow(from: IndexPath, to: IndexPath, withDisplayedEvent displayedEvent: RSSEntity) {
+        
+    }
+    
+    
     func showAlert(with message: String) {
         alertService.showAlert(vc: self, title: "Error", message: message)
     }

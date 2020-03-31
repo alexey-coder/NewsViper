@@ -12,6 +12,7 @@ class ModuleDependencyContainer {
     private lazy var alertService = AlertServiceImpl()
     private lazy var rssParser = RSSParserServiceImpl()
     private lazy var feedCellLayoutCalculator = FeedCellLayoutCalculatorImpl()
+    private lazy var storageService = StorageServiceImpl.shared
 }
 
 extension ModuleDependencyContainer: ModuleFactoryProtocol {
@@ -32,7 +33,8 @@ extension ModuleDependencyContainer: ModuleFactoryProtocol {
     
     func assemblyFeedModule() -> FeedViewProtocol {
         let view = FeedViewImpl(alertService: alertService)
-        let interactor = FeedInteractorImpl(rssParser: rssParser)
+        let interactor = FeedInteractorImpl(
+            rssParser: rssParser, storageService: storageService)
         let presenter = FeedPresenterImpl(feedCellLayoutCalculator: feedCellLayoutCalculator)
         let router = FeedRouterImpl()
         view.presenter = presenter

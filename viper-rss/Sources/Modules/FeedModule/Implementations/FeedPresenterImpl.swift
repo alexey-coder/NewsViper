@@ -66,22 +66,66 @@ class FeedPresenterImpl {
 }
 
 extension FeedPresenterImpl: FeedPresenterProtocol {
-    func prepareViewModel(for entity: RSSEntity, and source: String) {
-        let sizes = self.feedCellLayoutCalculator.mesureCellHeight(
-            title: entity.title, description: entity.description, date: entity.pubdate)
-        
-        let viewModel = FeedViewModelImpl(
-            newsTitleText: entity.title,
-            newsShortDescription: entity.description,
-            date: entity.pubdate,
-            isFullMode: self.isFullMode,
-            cellHeightFullMode: sizes.cellHeightFullMode,
-            cellHeightSimpleMode: sizes.cellHeightSimpleMode,
-            titleHeight: sizes.titleHeight,
-            descriptionHeight: sizes.descriptionHeight,
-            source: source,
-            link: entity.link)
+    func presentInsertedSection(section: IndexSet) {
+        view?.displayInsertedSection(section: section)
     }
+    
+    func presentDeletedSection(section: IndexSet) {
+        view?.displayDeletedSection(section: section)
+    }
+    
+    func presentUpdatedSection(section: IndexSet) {
+        view?.displayUpdatedSection(section: section)
+    }
+    
+    func presentMovedSection(from: IndexSet, to: IndexSet) {
+        view?.displayMovedSection(from: from, to: to)
+    }
+    
+    func presentInsertedRowAt(row: IndexPath) {
+        view?.displayInsertedRowAt(row: row)
+    }
+    
+    func presentDeletedRowAt(row: IndexPath) {
+        view?.displayDeletedRowAt(row: row)
+    }
+    
+    func presentUpdatedRowAt(row: IndexPath, withEvent event: RSSEntity) {
+        view?.displayUpdatedRowAt(row: row, withDisplayedEvent: event)
+    }
+    
+    func presentMovedRow(from: IndexPath, to: IndexPath, withEvent event: RSSEntity) {
+        view?.displayMovedRow(from: from, to: to, withDisplayedEvent: event)
+    }
+    
+    func startEventUpdates() {
+        view?.displayStartEventUpdates()
+    }
+    
+    func stopEventUpdates() {
+        view?.displayStopEventUpdates()
+    }
+    
+    func store(entity: RSSEntity, from source: String) {
+        interactor?.saveInStorage(entity: entity)
+    }
+    
+//    func prepareViewModel(for entity: RSSEntity, and source: String) {
+//        let sizes = self.feedCellLayoutCalculator.mesureCellHeight(
+//            title: entity.title, description: entity.description, date: entity.pubdate)
+//
+//        let viewModel = FeedViewModelImpl(
+//            newsTitleText: entity.title,
+//            newsShortDescription: entity.description,
+//            date: entity.pubdate,
+//            isFullMode: self.isFullMode,
+//            cellHeightFullMode: sizes.cellHeightFullMode,
+//            cellHeightSimpleMode: sizes.cellHeightSimpleMode,
+//            titleHeight: sizes.titleHeight,
+//            descriptionHeight: sizes.descriptionHeight,
+//            source: source,
+//            link: entity.link)
+//    }
     
     func showAlert(message: String) {
         DispatchQueue.main.async {
@@ -90,6 +134,7 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     }
     
     func viewDidLoad() {
+        interactor?.subscribeForUpdates()
         prepareViewmodels()
     }
     

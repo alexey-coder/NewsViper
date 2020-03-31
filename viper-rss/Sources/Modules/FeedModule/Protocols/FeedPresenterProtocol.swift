@@ -24,5 +24,22 @@ protocol FeedPresenterProtocol: class {
     func getCurrentMode() -> Bool
     func switchMode()
     func showAlert(message: String)
-    func prepareViewModel(for entity: RSSEntity, and source: String)
+//    func prepareViewModel(for entity: RSSEntity, and source: String)
+    func store(entity: RSSEntity, from source: String)
+    
+    
+    
+    // MARK: Event update lifecycle
+    func startEventUpdates()
+    func stopEventUpdates()
+    // MARK: Event section updates
+    func presentInsertedSection(section: IndexSet)
+    func presentDeletedSection(section: IndexSet)
+    func presentUpdatedSection(section: IndexSet)
+    func presentMovedSection(from: IndexSet, to: IndexSet)
+    // MARK: Event row updates
+    func presentInsertedRowAt(row: IndexPath)
+    func presentDeletedRowAt(row: IndexPath)
+    func presentUpdatedRowAt(row: IndexPath, withEvent event: RSSEntity)
+    func presentMovedRow(from: IndexPath, to: IndexPath, withEvent event: RSSEntity)
 }

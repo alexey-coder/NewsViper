@@ -10,8 +10,11 @@ import Foundation
 import CoreData
 
 final class StorageServiceImpl: NSObject, StorageServiceProtocol {
+   
     var delegates = [EventStorageServiceDelegate]()
+    
     static let shared = StorageServiceImpl()
+    
     private override init() {}
     
     lazy var persistentContainer = NSPersistentContainer(name: "viper_rss").then {
@@ -32,14 +35,16 @@ final class StorageServiceImpl: NSObject, StorageServiceProtocol {
         if _fetchedResultsController != nil {
             return _fetchedResultsController!
         }
-        
         let fetchRequest: NSFetchRequest<XMLEntity> = XMLEntity.fetchRequest()
         fetchRequest.fetchBatchSize = 20
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        _fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: "XMLEntity")
+        _fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: managedObjectContext,
+            sectionNameKeyPath: nil,
+            cacheName: "XMLEntity")
         _fetchedResultsController!.delegate = self
-        
         do {
             try _fetchedResultsController!.performFetch()
         } catch {
@@ -47,6 +52,23 @@ final class StorageServiceImpl: NSObject, StorageServiceProtocol {
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
         return _fetchedResultsController!
+    }
+    
+    func save(entity: RSSEntity) {
+        if let newEntity = NSEntityDescription.entity(forEntityName: "XMLEntity", in: managedObjectContext) {
+            let xmlEntity = XMLEntity(entity: newEntity, insertInto: managedObjectContext)
+            xmlEntity.id = entity.postId
+            xmlEntity.title = entity.title
+            xmlEntity.text = entity.description
+            xmlEntity.link = entity.link
+            xmlEntity.imgUrl = entity.imgUrl
+            xmlEntity.date = entity.pubdate
+            do {
+                try managedObjectContext.save()
+            } catch {
+                print("\(error)")
+            }
+        }
     }
 }
 
@@ -61,11 +83,11 @@ extension StorageServiceImpl: NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             delegates.forEach {
-                $0.eventStorageService?(storageService: self, shouldInsertSection: IndexSet(integer: sectionIndex))
+                $0.eventStorageService(storageService: self, shouldInsertSection: IndexSet(integer: sectionIndex))
             }
         case .delete:
             delegates.forEach {
-                $0.eventStorageService?(storageService: self, shouldDeleteSection: IndexSet(integer: sectionIndex))
+                $0.eventStorageService(storageService: self, shouldDeleteSection: IndexSet(integer: sectionIndex))
             }
         default:
             return
@@ -76,27 +98,28 @@ extension StorageServiceImpl: NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             delegates.forEach {
-                $0.eventStorageService?(storageService: self, shouldInsertRowAt: newIndexPath!)
+                $0.eventStorageService(storageService: self, shouldInsertRowAt: newIndexPath!)
             }
         case .delete:
             delegates.forEach {
-                $0.eventStorageService?(storageService: self, shouldDeleteRowAt: indexPath!)
+                $0.eventStorageService(storageService: self, shouldDeleteRowAt: indexPath!)
             }
         case .update:
-            let event = anObject as! Event
+            let event = anObject as! RSSEntity
             delegates.forEach {
-                $0.eventStorageService?(storageService: self, shouldUpdateRowAt: indexPath!, withEvent: event)
-                
+                $0.eventStorageService(storageService: self, shouldUpdateRowAt: indexPath!, withEvent: event)
             }
         case .move:
-            let event = anObject as! Event
+            let event = anObject as! RSSEntity
             delegates.forEach {
-                $0.eventStorageService?(storageService: self, shouldMoveRowFrom: indexPath!, to: newIndexPath!, withEvent: event)
+                $0.eventStorageService(storageService: self, shouldMoveRowFrom: indexPath!, to: newIndexPath!, withEvent: event)
             }
         }
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        delegates.forEach { $0.eventStorageServiceDidUpdate(storageService: self) }
+        delegates.forEach {
+            $0.eventStorageServiceDidUpdate(storageService: self)
+        }
     }
 }

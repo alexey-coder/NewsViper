@@ -9,7 +9,7 @@
 import Foundation
 
 protocol StorageServiceProtocol: class {
-    
+    func save(entity: RSSEntity)
 }
 
 protocol EventStorageServiceDelegate {
@@ -26,6 +26,6 @@ protocol EventStorageServiceDelegate {
     // MARK: Event row updates
     func eventStorageService(storageService: StorageServiceProtocol, shouldInsertRowAt row: IndexPath)
     func eventStorageService(storageService: StorageServiceProtocol, shouldDeleteRowAt row: IndexPath)
-    func eventStorageService(storageService: StorageServiceProtocol, shouldUpdateRowAt row: IndexPath, withEvent event: Event)
-    func eventStorageService(storageService: StorageServiceProtocol, shouldMoveRowFrom from: IndexPath, to: IndexPath, withEvent event: Event)
+    func eventStorageService(storageService: StorageServiceProtocol, shouldUpdateRowAt row: IndexPath, withEvent event: RSSEntity)
+    func eventStorageService(storageService: StorageServiceProtocol, shouldMoveRowFrom from: IndexPath, to: IndexPath, withEvent event: RSSEntity)
 }
