@@ -18,4 +18,6 @@ protocol FeedViewModelProtocol {
     var newsShortDescription: String { get set }
     var date: String { get set }
     var isFullMode: Bool { get set }
+    var link: String { get set }
+    var imgLink: String { get set }
 }

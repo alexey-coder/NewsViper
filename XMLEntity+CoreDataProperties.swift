@@ -18,10 +18,11 @@ extension XMLEntity {
     }
 
     @NSManaged public var date: String?
-    @NSManaged public var id: Int16
+    @NSManaged public var id: String?
     @NSManaged public var imgUrl: String?
     @NSManaged public var link: String?
     @NSManaged public var text: String?
     @NSManaged public var title: String?
+    @NSManaged public var source: String?
 
 }

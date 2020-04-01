@@ -15,4 +15,5 @@ struct RSSEntity {
     var link: String
     var imgUrl: String
     var postId: String
+    var source: String = ""
 }

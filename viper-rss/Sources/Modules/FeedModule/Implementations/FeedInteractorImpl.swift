@@ -6,7 +6,7 @@
 //  Copyright © 2020 smirnov. All rights reserved.
 //
 
-import UIKit //remove this
+import Foundation //remove this
 
 class FeedInteractorImpl {
     weak var presenter: FeedPresenterProtocol?
@@ -14,26 +14,27 @@ class FeedInteractorImpl {
     private let rssParser: RSSParserServiceProtocol
     private let storageService: StorageServiceProtocol
     
-    init(rssParser: RSSParserServiceProtocol,
-         storageService: StorageServiceProtocol) {
+    init(
+        rssParser: RSSParserServiceProtocol,
+        storageService: StorageServiceProtocol) {
         self.rssParser = rssParser
         self.storageService = storageService
     }
 }
 
 extension FeedInteractorImpl: FeedInteractorProtocol {
-    func subscribeForUpdates() {
-        if let store = storageService as? StorageServiceImpl {
-            store.delegates.append(self)
-        }
+    func getAllModelsFromStore() {
+        let entities = self.storageService.listFromStorage()
+        self.presenter?.present(entities: entities)
     }
     
-    func unsubscribeFromUpdates() {
-        //        if let store = storageService as? StorageServiceImpl {
-        //            if let index = store.delegates.first(where: { $0 === self }) {
-        //                store.delegates.remove(at: index)
-        //            }
-        //        }
+    func subscribeForUpdates() {
+        storageService.subscribe { [weak self] entity in
+            guard let self = self else {
+                return
+            }
+            self.presenter?.present(entities: [entity])
+        }
     }
     
     func saveInStorage(entity: RSSEntity) {
@@ -46,58 +47,12 @@ extension FeedInteractorImpl: FeedInteractorProtocol {
             parser.parseFeed(
                 url: source.getLink(),
                 successCompletion: { [weak self] entity in
-                    self?.presenter?.store(entity: entity, from: source.description)
+                    var updatedEntity = entity
+                    updatedEntity.source = source.description
+                    self?.presenter?.store(entity: updatedEntity)
                 }, errorCompletion: { error in
                     self.presenter?.showAlert(message: error.localizedDescription)
             })
         }
-    }
-}
-
-extension FeedInteractorImpl: EventStorageServiceDelegate {
-    func eventStorageServiceWillUpdate(storageService: StorageServiceProtocol) {
-        presenter?.startEventUpdates()
-    }
-    
-    func eventStorageServiceDidUpdate(storageService: StorageServiceProtocol) {
-        presenter?.stopEventUpdates()
-    }
-    
-    func eventStorageService(storageService: StorageServiceProtocol, shouldInsertSection section: IndexSet) {
-        presenter?.presentInsertedSection(section: section)
-        
-    }
-    
-    func eventStorageService(storageService: StorageServiceProtocol, shouldDeleteSection section: IndexSet) {
-        presenter?.presentDeletedSection(section: section)
-        
-    }
-    
-    func eventStorageService(storageService: StorageServiceProtocol, shouldUpdateSection section: IndexSet) {
-        presenter?.presentUpdatedSection(section: section)
-        
-    }
-    
-    func eventStorageService(storageService: StorageServiceProtocol, shouldMoveSectionFrom from: IndexSet, to: IndexSet) {
-        presenter?.presentMovedSection(from: from, to: to)
-        
-    }
-    
-    func eventStorageService(storageService: StorageServiceProtocol, shouldInsertRowAt row: IndexPath) {
-        presenter?.presentInsertedRowAt(row: row)
-    }
-    
-    func eventStorageService(storageService: StorageServiceProtocol, shouldDeleteRowAt row: IndexPath) {
-        presenter?.presentDeletedRowAt(row: row)
-        
-    }
-    
-    func eventStorageService(storageService: StorageServiceProtocol, shouldUpdateRowAt row: IndexPath, withEvent event: RSSEntity) {
-        presenter?.presentUpdatedRowAt(row: row, withEvent: event)
-        
-    }
-    
-    func eventStorageService(storageService: StorageServiceProtocol, shouldMoveRowFrom from: IndexPath, to: IndexPath, withEvent event: RSSEntity) {
-        presenter?.presentMovedRow(from: from, to: to, withEvent: event)
     }
 }

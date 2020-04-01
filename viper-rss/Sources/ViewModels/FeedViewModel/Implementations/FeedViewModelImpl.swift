@@ -20,6 +20,7 @@ class FeedViewModelImpl: FeedViewModelProtocol {
     var descriptionHeight: CGFloat
     var source: String
     var link: String
+    var imgLink: String
     
     init(
         newsTitleText: String,
@@ -31,7 +32,8 @@ class FeedViewModelImpl: FeedViewModelProtocol {
         titleHeight: CGFloat,
         descriptionHeight: CGFloat,
         source: String,
-        link: String) {
+        link: String,
+        imgLink: String) {
         
         self.newsTitleText = newsTitleText
         self.newsShortDescription = newsShortDescription
@@ -43,5 +45,6 @@ class FeedViewModelImpl: FeedViewModelProtocol {
         self.descriptionHeight = descriptionHeight
         self.source = source
         self.link = link
+        self.imgLink = imgLink
     }
 }

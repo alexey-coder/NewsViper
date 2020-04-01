@@ -33,12 +33,18 @@ class FeedViewImpl: BaseController<FeedUI> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavBar()
+        presenter?.viewWillAppear()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         navigationItem.titleView = ui.segmentControl
         ui.tableView.frame = view.frame
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter?.viewWillDissaper()
     }
     
     @objc private func segmentControleToggled(_ segmentedControl: UISegmentedControl) {
@@ -63,46 +69,6 @@ class FeedViewImpl: BaseController<FeedUI> {
 }
 
 extension FeedViewImpl: FeedViewProtocol {
-    func displayStartEventUpdates() {
-        ui.tableView.beginUpdates()
-    }
-    
-    func displayStopEventUpdates() {
-        ui.tableView.endUpdates()
-    }
-    
-    func displayInsertedSection(section: IndexSet) {
-        ui.tableView.insertSections(section, with: .fade)
-    }
-    
-    func displayDeletedSection(section: IndexSet) {
-        ui.tableView.deleteSections(section, with: .fade)
-    }
-    
-    func displayUpdatedSection(section: IndexSet) {
-        
-    }
-    
-    func displayMovedSection(from: IndexSet, to: IndexSet) {
-        
-    }
-    
-    func displayInsertedRowAt(row: IndexPath) {
-        ui.tableView.insertRows(at: [row], with: .fade)
-    }
-    
-    func displayDeletedRowAt(row: IndexPath) {
-        ui.tableView.deleteRows(at: [row], with: .fade)
-    }
-    
-    func displayUpdatedRowAt(row: IndexPath, withDisplayedEvent displayedEvent: RSSEntity) {
-        
-    }
-    
-    func displayMovedRow(from: IndexPath, to: IndexPath, withDisplayedEvent displayedEvent: RSSEntity) {
-        
-    }
-    
     
     func showAlert(with message: String) {
         alertService.showAlert(vc: self, title: "Error", message: message)

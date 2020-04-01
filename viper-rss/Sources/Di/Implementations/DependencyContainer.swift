@@ -13,6 +13,7 @@ class ModuleDependencyContainer {
     private lazy var rssParser = RSSParserServiceImpl()
     private lazy var feedCellLayoutCalculator = FeedCellLayoutCalculatorImpl()
     private lazy var storageService = StorageServiceImpl.shared
+    private lazy var userDefaultsStorage = UserDefaultsStorageImpl()
 }
 
 extension ModuleDependencyContainer: ModuleFactoryProtocol {
@@ -35,7 +36,8 @@ extension ModuleDependencyContainer: ModuleFactoryProtocol {
         let view = FeedViewImpl(alertService: alertService)
         let interactor = FeedInteractorImpl(
             rssParser: rssParser, storageService: storageService)
-        let presenter = FeedPresenterImpl(feedCellLayoutCalculator: feedCellLayoutCalculator)
+        let presenter = FeedPresenterImpl(
+            feedCellLayoutCalculator: feedCellLayoutCalculator, userDefaultsStorage: userDefaultsStorage)
         let router = FeedRouterImpl()
         view.presenter = presenter
         presenter.interactor = interactor
@@ -50,7 +52,7 @@ extension ModuleDependencyContainer: ModuleFactoryProtocol {
     func assemblySettingsModule() -> SettingsViewProtocol {
         let view = SettingsViewImpl(alertService: alertService)
         let interactor = SettingsInteractorImpl()
-        let presenter = SettingsPresenterImpl()
+        let presenter = SettingsPresenterImpl(userDefaultsStorage: userDefaultsStorage)
         let router = SettingsRouterImpl()
         view.presenter = presenter
         presenter.interactor = interactor

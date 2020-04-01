@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE5082122433A518002F29D4 /* XMLEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082102433A518002F29D4 /* XMLEntity+CoreDataClass.swift */; };
+		CE5082132433A518002F29D4 /* XMLEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082112433A518002F29D4 /* XMLEntity+CoreDataProperties.swift */; };
+		CE5082152433DFFD002F29D4 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082142433DFFD002F29D4 /* CustomImageView.swift */; };
+		CE50821A2434B808002F29D4 /* UserDefaultsStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082192434B808002F29D4 /* UserDefaultsStorageProtocol.swift */; };
+		CE50821C2434B812002F29D4 /* UserDefaultsStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50821B2434B812002F29D4 /* UserDefaultsStorageImpl.swift */; };
 		CE743675242B682E003FB468 /* FeedPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743674242B682E003FB468 /* FeedPresenterProtocol.swift */; };
 		CE743677242B683A003FB468 /* FeedRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743676242B683A003FB468 /* FeedRouterProtocol.swift */; };
 		CE743679242B6857003FB468 /* FeedViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743678242B6857003FB468 /* FeedViewProtocol.swift */; };
@@ -111,6 +116,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE5082102433A518002F29D4 /* XMLEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMLEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		CE5082112433A518002F29D4 /* XMLEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMLEntity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		CE5082142433DFFD002F29D4 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		CE5082192434B808002F29D4 /* UserDefaultsStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageProtocol.swift; sourceTree = "<group>"; };
+		CE50821B2434B812002F29D4 /* UserDefaultsStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageImpl.swift; sourceTree = "<group>"; };
 		CE743674242B682E003FB468 /* FeedPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenterProtocol.swift; sourceTree = "<group>"; };
 		CE743676242B683A003FB468 /* FeedRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRouterProtocol.swift; sourceTree = "<group>"; };
 		CE743678242B6857003FB468 /* FeedViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewProtocol.swift; sourceTree = "<group>"; };
@@ -228,6 +238,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE5082162434B7E5002F29D4 /* UserDefaultsStorage */ = {
+			isa = PBXGroup;
+			children = (
+				CE5082182434B7F7002F29D4 /* Implementations */,
+				CE5082172434B7F1002F29D4 /* Protocols */,
+			);
+			path = UserDefaultsStorage;
+			sourceTree = "<group>";
+		};
+		CE5082172434B7F1002F29D4 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE5082192434B808002F29D4 /* UserDefaultsStorageProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CE5082182434B7F7002F29D4 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				CE50821B2434B812002F29D4 /* UserDefaultsStorageImpl.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
 		CE743669242B6595003FB468 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +307,7 @@
 		CE74366C242B65D1003FB468 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CE5082162434B7E5002F29D4 /* UserDefaultsStorage */,
 				CE7437552430D958003FB468 /* LayoutCalculator */,
 				CE74373D242E6CAC003FB468 /* AlertService */,
 				CE7436CF242B9682003FB468 /* LanguageService */,
@@ -552,6 +588,7 @@
 				CE743730242E2E44003FB468 /* UIViewControllerExtension.swift */,
 				CE743746242F866E003FB468 /* UILabelExtension.swift */,
 				CE7437482430A454003FB468 /* StringExtension.swift */,
+				CE5082142433DFFD002F29D4 /* CustomImageView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -688,6 +725,8 @@
 		CE743738242E420A003FB468 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				CE5082102433A518002F29D4 /* XMLEntity+CoreDataClass.swift */,
+				CE5082112433A518002F29D4 /* XMLEntity+CoreDataProperties.swift */,
 				CE743739242E4217003FB468 /* RSSEntity.swift */,
 			);
 			path = Entities;
@@ -891,6 +930,7 @@
 				CE74376524311286003FB468 /* DetailsPresenterImpl.swift in Sources */,
 				CE74373A242E4217003FB468 /* RSSEntity.swift in Sources */,
 				CE7436EA242BABFB003FB468 /* SettingsCellProtocol.swift in Sources */,
+				CE5082122433A518002F29D4 /* XMLEntity+CoreDataClass.swift in Sources */,
 				CE74370D242E1D2B003FB468 /* FeedViewModelProtocol.swift in Sources */,
 				CE74376F24324ACD003FB468 /* StorageServiceImpl.swift in Sources */,
 				CE7437522430B774003FB468 /* ModuleFactoryProtocol.swift in Sources */,
@@ -910,6 +950,7 @@
 				CE7436E2242BA7C9003FB468 /* SettingsUI.swift in Sources */,
 				CE7436F8242BB0A8003FB468 /* SettingsViewModelImpl.swift in Sources */,
 				CE74367B242B6863003FB468 /* FeedInteractorProtocol.swift in Sources */,
+				CE50821A2434B808002F29D4 /* UserDefaultsStorageProtocol.swift in Sources */,
 				CE74375D2431124E003FB468 /* DetailsPresenterProtocol.swift in Sources */,
 				CE7437492430A454003FB468 /* StringExtension.swift in Sources */,
 				CE7436CE242B9454003FB468 /* AssetsHelper.swift in Sources */,
@@ -930,6 +971,7 @@
 				CE74376D24324AC2003FB468 /* StorageServiceProtocol.swift in Sources */,
 				CE743709242E1CE5003FB468 /* FeedCellImpl.swift in Sources */,
 				CE7437502430B763003FB468 /* DependencyContainer.swift in Sources */,
+				CE5082132433A518002F29D4 /* XMLEntity+CoreDataProperties.swift in Sources */,
 				CE743681242B6940003FB468 /* FeedRouterImpl.swift in Sources */,
 				CE7436B9242B7F7F003FB468 /* StartPresenterProtocol.swift in Sources */,
 				CE74376724311292003FB468 /* DetailsInteractorImpl.swift in Sources */,
@@ -950,6 +992,8 @@
 				CE743675242B682E003FB468 /* FeedPresenterProtocol.swift in Sources */,
 				CE743745242E78E7003FB468 /* AlertServiceKeys.swift in Sources */,
 				CEC97169242A9ACF0055AA80 /* viper_rss.xcdatamodeld in Sources */,
+				CE5082152433DFFD002F29D4 /* CustomImageView.swift in Sources */,
+				CE50821C2434B812002F29D4 /* UserDefaultsStorageImpl.swift in Sources */,
 				CE743683242B6951003FB468 /* FeedInteractorImpl.swift in Sources */,
 				CE7436A4242B7A21003FB468 /* MainPresenterProtocol.swift in Sources */,
 				CE7436FC242BD813003FB468 /* SettingsModuleLocalizedKeys.swift in Sources */,

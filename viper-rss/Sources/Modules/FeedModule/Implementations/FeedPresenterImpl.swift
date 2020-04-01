@@ -11,7 +11,7 @@ import UIKit
 enum Modes: CaseIterable, CustomStringConvertible {
     case simple
     case full
-
+    
     var description: String {
         switch self {
         case .simple:
@@ -51,81 +51,88 @@ class FeedPresenterImpl {
     weak var view: FeedViewProtocol?
     
     private let feedCellLayoutCalculator: LayoutCalculatorProtocol
+    private let userDefaultsStorage: UserDefaultsStorageProtocol
     private var isFullMode: Bool = false
     private var viewModels: [FeedViewModelImpl]?
-        
-    init(feedCellLayoutCalculator: LayoutCalculatorProtocol) {
+    private var timer: Timer?
+    private var seconds: Int?
+    private let defaultSeconds = 3
+    
+    init(
+        feedCellLayoutCalculator: LayoutCalculatorProtocol,
+        userDefaultsStorage: UserDefaultsStorageProtocol) {
         self.feedCellLayoutCalculator = feedCellLayoutCalculator
+        self.userDefaultsStorage = userDefaultsStorage
     }
     
-    private func prepareViewmodels() {
+    private func retrieveNetworkData() {
         DispatchQueue.global().async {
             self.interactor?.requestEntities(from: [.gazeta, .lenta])
         }
     }
+    
+    private func startTimer() {
+        let secondsFromSettings = userDefaultsStorage.savedTimerValue()
+        seconds = secondsFromSettings == nil ? defaultSeconds : secondsFromSettings
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
+            self?.update()
+        })
+    }
+    
+    private func update() {
+        guard var seconds = self.seconds else {
+            return
+        }
+        seconds -= 1
+        self.seconds = seconds
+        print("timer = \(seconds)")
+        if seconds <= 0 {
+            stopTimer()
+            startTimer()
+            retrieveNetworkData()
+        }
+    }
+    
+    private func stopTimer() {
+        timer?.invalidate()
+    }
 }
 
 extension FeedPresenterImpl: FeedPresenterProtocol {
-    func presentInsertedSection(section: IndexSet) {
-        view?.displayInsertedSection(section: section)
+    
+    func present(entities: [RSSEntity]) {
+        entities.forEach {
+            prepareViewModel(for: $0)
+        }
     }
     
-    func presentDeletedSection(section: IndexSet) {
-        view?.displayDeletedSection(section: section)
-    }
-    
-    func presentUpdatedSection(section: IndexSet) {
-        view?.displayUpdatedSection(section: section)
-    }
-    
-    func presentMovedSection(from: IndexSet, to: IndexSet) {
-        view?.displayMovedSection(from: from, to: to)
-    }
-    
-    func presentInsertedRowAt(row: IndexPath) {
-        view?.displayInsertedRowAt(row: row)
-    }
-    
-    func presentDeletedRowAt(row: IndexPath) {
-        view?.displayDeletedRowAt(row: row)
-    }
-    
-    func presentUpdatedRowAt(row: IndexPath, withEvent event: RSSEntity) {
-        view?.displayUpdatedRowAt(row: row, withDisplayedEvent: event)
-    }
-    
-    func presentMovedRow(from: IndexPath, to: IndexPath, withEvent event: RSSEntity) {
-        view?.displayMovedRow(from: from, to: to, withDisplayedEvent: event)
-    }
-    
-    func startEventUpdates() {
-        view?.displayStartEventUpdates()
-    }
-    
-    func stopEventUpdates() {
-        view?.displayStopEventUpdates()
-    }
-    
-    func store(entity: RSSEntity, from source: String) {
+    func store(entity: RSSEntity) {
         interactor?.saveInStorage(entity: entity)
     }
     
-//    func prepareViewModel(for entity: RSSEntity, and source: String) {
-//        let sizes = self.feedCellLayoutCalculator.mesureCellHeight(
-//            title: entity.title, description: entity.description, date: entity.pubdate)
-//
-//        let viewModel = FeedViewModelImpl(
-//            newsTitleText: entity.title,
-//            newsShortDescription: entity.description,
-//            date: entity.pubdate,
-//            isFullMode: self.isFullMode,
-//            cellHeightFullMode: sizes.cellHeightFullMode,
-//            cellHeightSimpleMode: sizes.cellHeightSimpleMode,
-//            titleHeight: sizes.titleHeight,
-//            descriptionHeight: sizes.descriptionHeight,
-//            source: source,
-//            link: entity.link)
-//    }
+    private func prepareViewModel(for entity: RSSEntity) {
+        let sizes = self.feedCellLayoutCalculator.mesureCellHeight(
+            title: entity.title, description: entity.description, date: entity.pubdate)
+        
+        let viewModel = FeedViewModelImpl(
+            newsTitleText: entity.title,
+            newsShortDescription: entity.description,
+            date: entity.pubdate,
+            isFullMode: self.isFullMode,
+            cellHeightFullMode: sizes.cellHeightFullMode,
+            cellHeightSimpleMode: sizes.cellHeightSimpleMode,
+            titleHeight: sizes.titleHeight,
+            descriptionHeight: sizes.descriptionHeight,
+            source: entity.source,
+            link: entity.link,
+            imgLink: entity.imgUrl)
+        if viewModels == nil {
+            viewModels = [viewModel]
+        } else {
+            viewModels?.append(viewModel)
+        }
+        view?.reloadData()
+    }
     
     func showAlert(message: String) {
         DispatchQueue.main.async {
@@ -135,7 +142,16 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     
     func viewDidLoad() {
         interactor?.subscribeForUpdates()
-        prepareViewmodels()
+        interactor?.getAllModelsFromStore()
+        retrieveNetworkData()
+    }
+    
+    func viewWillAppear() {
+        startTimer()
+    }
+    
+    func viewWillDissaper() {
+        stopTimer()
     }
     
     func getModes() -> [String] {
@@ -152,14 +168,15 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     
     func switchMode() {
         isFullMode.toggle()
-        viewModels?.forEach { $0.isFullMode.toggle() }
+        viewModels?.forEach {
+            $0.isFullMode.toggle()
+        }
         view?.reloadData()
     }
     
     func didChangeMode(by value: Int) {
         self.isFullMode = value == 1 ? false : true
     }
-    
     
     func getHeightFor(row: Int) -> CGFloat {
         guard let viewModels = self.viewModels else {
@@ -185,9 +202,5 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
             return
         }
         router?.presentDetails(with: link)
-    }
-    
-    func viewDidAppear() {
-        
     }
 }

@@ -37,7 +37,7 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
     
     private var viewModel: FeedViewModelProtocol?
 
-    let newsTitle = UILabel().then {
+    private let newsTitle = UILabel().then {
         $0.font = Metrics.Fonts.newTitleFont
         $0.textColor = Metrics.Colors.newsTitleColor
         $0.numberOfLines = 0
@@ -45,7 +45,7 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
         $0.sizeToFit()
     }
     
-    let newsDescription = UILabel().then {
+    private let newsDescription = UILabel().then {
         $0.font = Metrics.Fonts.newDescriptionFont
         $0.textColor = Metrics.Colors.newsDescriptionColor
         $0.numberOfLines = 0
@@ -53,17 +53,17 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
         $0.sizeToFit()
     }
     
-    let newsImage = UIImageView().then {
+    private let newsImage = CustomImageView().then {
         $0.contentMode = .scaleAspectFill
     }
     
-    let sourceLabel = UILabel().then {
+    private let sourceLabel = UILabel().then {
         $0.numberOfLines = 1
         $0.font = Metrics.Fonts.sourceFont
         $0.textColor = Metrics.Colors.sourceColor
     }
     
-    let dateLabel = UILabel().then {
+    private let dateLabel = UILabel().then {
         $0.numberOfLines = 1
         $0.font = Metrics.Fonts.dateFont
         $0.textColor = Metrics.Colors.dateColor
@@ -83,10 +83,16 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        newsImage.image = nil
+    }
+    
     func configure(with viewModel: FeedViewModelProtocol) {
         self.viewModel = viewModel
         newsTitle.text = viewModel.newsTitleText
-//        newsImage.image = viewModel.image
+        newsImage.downloadImageFrom(urlString: viewModel.imgLink, imageMode: .scaleAspectFill)
         newsDescription.text = viewModel.newsShortDescription
         sourceLabel.text = viewModel.source
         dateLabel.text = viewModel.date

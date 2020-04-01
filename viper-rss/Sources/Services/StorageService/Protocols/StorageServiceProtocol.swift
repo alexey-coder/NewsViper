@@ -10,22 +10,6 @@ import Foundation
 
 protocol StorageServiceProtocol: class {
     func save(entity: RSSEntity)
-}
-
-protocol EventStorageServiceDelegate {
-    // MARK: Event update lifecycle
-    func eventStorageServiceWillUpdate(storageService: StorageServiceProtocol)
-    func eventStorageServiceDidUpdate(storageService: StorageServiceProtocol)
-    
-    // MARK: Event section updates
-    func eventStorageService(storageService: StorageServiceProtocol, shouldInsertSection section: IndexSet)
-    func eventStorageService(storageService: StorageServiceProtocol, shouldDeleteSection section: IndexSet)
-    func eventStorageService(storageService: StorageServiceProtocol, shouldUpdateSection section: IndexSet)
-    func eventStorageService(storageService: StorageServiceProtocol, shouldMoveSectionFrom from: IndexSet, to: IndexSet)
-    
-    // MARK: Event row updates
-    func eventStorageService(storageService: StorageServiceProtocol, shouldInsertRowAt row: IndexPath)
-    func eventStorageService(storageService: StorageServiceProtocol, shouldDeleteRowAt row: IndexPath)
-    func eventStorageService(storageService: StorageServiceProtocol, shouldUpdateRowAt row: IndexPath, withEvent event: RSSEntity)
-    func eventStorageService(storageService: StorageServiceProtocol, shouldMoveRowFrom from: IndexPath, to: IndexPath, withEvent event: RSSEntity)
+    func subscribe(onUpdate: @escaping ((RSSEntity) -> Void))
+    func listFromStorage() -> [RSSEntity]
 }

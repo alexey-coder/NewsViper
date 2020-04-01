@@ -12,7 +12,6 @@ protocol FeedInteractorProtocol {
     var presenter: FeedPresenterProtocol? { get set }
     func requestEntities(from sourses: [Sources])
     func saveInStorage(entity: RSSEntity)
-    
+    func getAllModelsFromStore()
     func subscribeForUpdates()
-    func unsubscribeFromUpdates()
 }

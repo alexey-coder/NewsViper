@@ -137,8 +137,4 @@ extension RSSParserServiceImpl: XMLParserDelegate {
             onSuccess?(rssItem)
         }
     }
-    
-    func parser(_ parser: XMLParser, parseErrorOccurred parseError: Error) {
-        onError?(.parseError)
-    }
 }

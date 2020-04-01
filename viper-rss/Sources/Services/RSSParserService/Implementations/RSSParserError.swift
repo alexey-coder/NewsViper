@@ -13,16 +13,3 @@ public enum RSSParserError: Error {
     case parseError
     case sourseError
 }
-//💩
-//extension RSSParserError: LocalizedError {
-//    public var errorDescription: String? {
-//        switch self {
-//        case .invalidUrl:
-//            return NSLocalizedString("A user-friendly description of the error.", comment: "My error")
-//        case .parseError:
-//            return NSLocalizedString("A user-friendly description of the error.", comment: "My error")
-//        case .sourseError:
-//            return NSLocalizedString("A user-friendly description of the error.", comment: "My error")
-//        }
-//    }
-//}

@@ -14,11 +14,17 @@ class SettingsPresenterImpl {
     weak var view: SettingsViewProtocol?
     
     var heightForRow: CGFloat = 48
+    private let userDefaultsStorage: UserDefaultsStorageProtocol
+    
+    init(userDefaultsStorage: UserDefaultsStorageProtocol) {
+        self.userDefaultsStorage = userDefaultsStorage
+    }
 }
 
 extension SettingsPresenterImpl: SettingsPresenterProtocol {
     func setNewTimer(interval: Date) {
         print("\(interval)")
+//        userDefaultsStorage.saveTimerValue(with: interval)
     }
     
     func getNumberOfRows() -> Int {
