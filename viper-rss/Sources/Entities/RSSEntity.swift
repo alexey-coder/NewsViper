@@ -16,4 +16,5 @@ struct RSSEntity {
     var imgUrl: String
     var postId: String
     var source: String = ""
+    var isReaded: Bool = false
 }

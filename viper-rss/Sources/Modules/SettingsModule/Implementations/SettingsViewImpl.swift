@@ -40,11 +40,27 @@ class SettingsViewImpl: BaseController<SettingsUI> {
 }
 
 extension SettingsViewImpl: SettingsViewProtocol {
-    func showTimerPicker() {
-        alertService.showTimerPicker(vc: self) { [weak self] interval in
-            self?.presenter?.setNewTimer(interval: interval)
+    func reloadData() {
+        ui.tableView.reloadData()
+    }
+    
+    func showTimerPicker<T>(with values: [T], cellType: SettingsHelper) {
+        alertService.showTimerPicker(vc: self, values: values) { [weak self] selected in
+            switch cellType {
+            case .timer:
+                self?.presenter?.setNewTimer(interval: selected as! Int)
+            case .category:
+                self?.presenter?.setNewCategory(filter: selected as! String)
+            }
         }
     }
+    
+//    func showTimerPicker(with values: [T]) {
+//        alertService.showTimerPicker(vc: self, values: values) { [weak self] interval in
+//            print("\(interval)")
+////            self?.presenter?.setNewTimer(interval: interval)
+//        }
+//    }
 }
 
 extension SettingsViewImpl: UITableViewDataSource {

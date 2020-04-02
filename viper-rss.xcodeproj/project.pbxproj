@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE5082122433A518002F29D4 /* XMLEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082102433A518002F29D4 /* XMLEntity+CoreDataClass.swift */; };
-		CE5082132433A518002F29D4 /* XMLEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082112433A518002F29D4 /* XMLEntity+CoreDataProperties.swift */; };
 		CE5082152433DFFD002F29D4 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082142433DFFD002F29D4 /* CustomImageView.swift */; };
 		CE50821A2434B808002F29D4 /* UserDefaultsStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082192434B808002F29D4 /* UserDefaultsStorageProtocol.swift */; };
 		CE50821C2434B812002F29D4 /* UserDefaultsStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50821B2434B812002F29D4 /* UserDefaultsStorageImpl.swift */; };
+		CE50821F2434EE7A002F29D4 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50821E2434EE7A002F29D4 /* CustomPickerView.swift */; };
+		CE5082222435F8F0002F29D4 /* XMLEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082202435F8F0002F29D4 /* XMLEntity+CoreDataClass.swift */; };
+		CE5082232435F8F0002F29D4 /* XMLEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082212435F8F0002F29D4 /* XMLEntity+CoreDataProperties.swift */; };
 		CE743675242B682E003FB468 /* FeedPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743674242B682E003FB468 /* FeedPresenterProtocol.swift */; };
 		CE743677242B683A003FB468 /* FeedRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743676242B683A003FB468 /* FeedRouterProtocol.swift */; };
 		CE743679242B6857003FB468 /* FeedViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743678242B6857003FB468 /* FeedViewProtocol.swift */; };
@@ -116,11 +117,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE5082102433A518002F29D4 /* XMLEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMLEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		CE5082112433A518002F29D4 /* XMLEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMLEntity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		CE5082142433DFFD002F29D4 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		CE5082192434B808002F29D4 /* UserDefaultsStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageProtocol.swift; sourceTree = "<group>"; };
 		CE50821B2434B812002F29D4 /* UserDefaultsStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageImpl.swift; sourceTree = "<group>"; };
+		CE50821E2434EE7A002F29D4 /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
+		CE5082202435F8F0002F29D4 /* XMLEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMLEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		CE5082212435F8F0002F29D4 /* XMLEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMLEntity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		CE743674242B682E003FB468 /* FeedPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenterProtocol.swift; sourceTree = "<group>"; };
 		CE743676242B683A003FB468 /* FeedRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRouterProtocol.swift; sourceTree = "<group>"; };
 		CE743678242B6857003FB468 /* FeedViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewProtocol.swift; sourceTree = "<group>"; };
@@ -261,6 +263,14 @@
 				CE50821B2434B812002F29D4 /* UserDefaultsStorageImpl.swift */,
 			);
 			path = Implementations;
+			sourceTree = "<group>";
+		};
+		CE50821D2434EE5D002F29D4 /* CustomPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				CE50821E2434EE7A002F29D4 /* CustomPickerView.swift */,
+			);
+			path = CustomPickerView;
 			sourceTree = "<group>";
 		};
 		CE743669242B6595003FB468 /* Sources */ = {
@@ -571,6 +581,7 @@
 		CE7436E0242BA580003FB468 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE50821D2434EE5D002F29D4 /* CustomPickerView */,
 				CE743703242E1CA9003FB468 /* FeedCell */,
 				CE7436E6242BABCF003FB468 /* SettingsCell */,
 				CE7437532430C176003FB468 /* Constants.swift */,
@@ -725,8 +736,8 @@
 		CE743738242E420A003FB468 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				CE5082102433A518002F29D4 /* XMLEntity+CoreDataClass.swift */,
-				CE5082112433A518002F29D4 /* XMLEntity+CoreDataProperties.swift */,
+				CE5082202435F8F0002F29D4 /* XMLEntity+CoreDataClass.swift */,
+				CE5082212435F8F0002F29D4 /* XMLEntity+CoreDataProperties.swift */,
 				CE743739242E4217003FB468 /* RSSEntity.swift */,
 			);
 			path = Entities;
@@ -926,11 +937,11 @@
 				CE743690242B7267003FB468 /* SettingsRouterProtocol.swift in Sources */,
 				CE7436F6242BB08E003FB468 /* SettingsTimerViewModelProtocol.swift in Sources */,
 				CE7436E5242BA852003FB468 /* Then.swift in Sources */,
+				CE5082232435F8F0002F29D4 /* XMLEntity+CoreDataProperties.swift in Sources */,
 				CE743698242B72C2003FB468 /* SettingsInteractorImpl.swift in Sources */,
 				CE74376524311286003FB468 /* DetailsPresenterImpl.swift in Sources */,
 				CE74373A242E4217003FB468 /* RSSEntity.swift in Sources */,
 				CE7436EA242BABFB003FB468 /* SettingsCellProtocol.swift in Sources */,
-				CE5082122433A518002F29D4 /* XMLEntity+CoreDataClass.swift in Sources */,
 				CE74370D242E1D2B003FB468 /* FeedViewModelProtocol.swift in Sources */,
 				CE74376F24324ACD003FB468 /* StorageServiceImpl.swift in Sources */,
 				CE7437522430B774003FB468 /* ModuleFactoryProtocol.swift in Sources */,
@@ -939,6 +950,7 @@
 				CE743696242B72B7003FB468 /* SettingsViewImpl.swift in Sources */,
 				CE7436BD242B7F9C003FB468 /* StartViewImpl.swift in Sources */,
 				CE74367F242B6934003FB468 /* FeedViewImpl.swift in Sources */,
+				CE5082222435F8F0002F29D4 /* XMLEntity+CoreDataClass.swift in Sources */,
 				CE743731242E2E44003FB468 /* UIViewControllerExtension.swift in Sources */,
 				CE743679242B6857003FB468 /* FeedViewProtocol.swift in Sources */,
 				CE743694242B72A1003FB468 /* SettingsPresenterProtocol.swift in Sources */,
@@ -961,6 +973,7 @@
 				CE743743242E76FF003FB468 /* AlertServiceProtocol.swift in Sources */,
 				CE743715242E2454003FB468 /* FontHelper.swift in Sources */,
 				CE743700242E03C1003FB468 /* BaseController.swift in Sources */,
+				CE50821F2434EE7A002F29D4 /* CustomPickerView.swift in Sources */,
 				CE74369A242B72D1003FB468 /* SettingsPresenterImpl.swift in Sources */,
 				CE7436D7242B977F003FB468 /* LanguageTableImpl.swift in Sources */,
 				CE7436FA242BB2D1003FB468 /* SettingsHelper.swift in Sources */,
@@ -971,7 +984,6 @@
 				CE74376D24324AC2003FB468 /* StorageServiceProtocol.swift in Sources */,
 				CE743709242E1CE5003FB468 /* FeedCellImpl.swift in Sources */,
 				CE7437502430B763003FB468 /* DependencyContainer.swift in Sources */,
-				CE5082132433A518002F29D4 /* XMLEntity+CoreDataProperties.swift in Sources */,
 				CE743681242B6940003FB468 /* FeedRouterImpl.swift in Sources */,
 				CE7436B9242B7F7F003FB468 /* StartPresenterProtocol.swift in Sources */,
 				CE74376724311292003FB468 /* DetailsInteractorImpl.swift in Sources */,

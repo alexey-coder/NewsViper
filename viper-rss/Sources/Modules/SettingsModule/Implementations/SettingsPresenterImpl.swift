@@ -15,6 +15,8 @@ class SettingsPresenterImpl {
     
     var heightForRow: CGFloat = 48
     private let userDefaultsStorage: UserDefaultsStorageProtocol
+    private let timers = [15, 30, 60]
+    private let categories = ["val1", "val2"]
     
     init(userDefaultsStorage: UserDefaultsStorageProtocol) {
         self.userDefaultsStorage = userDefaultsStorage
@@ -22,9 +24,14 @@ class SettingsPresenterImpl {
 }
 
 extension SettingsPresenterImpl: SettingsPresenterProtocol {
-    func setNewTimer(interval: Date) {
-        print("\(interval)")
-//        userDefaultsStorage.saveTimerValue(with: interval)
+    func setNewTimer(interval: Int) {
+        userDefaultsStorage.saveTimerValue(with: interval)
+        view?.reloadData()
+    }
+    
+    func setNewCategory(filter: String) {
+        userDefaultsStorage.saveSourceValue(with: filter)
+        view?.reloadData()
     }
     
     func getNumberOfRows() -> Int {
@@ -35,11 +42,22 @@ extension SettingsPresenterImpl: SettingsPresenterProtocol {
         guard let row = SettingsHelper(rawValue: indexPath.row) else {
             return nil
         }
+        let currentValue: String
         switch row {
         case .timer:
-            return SettingsViewModelImpl(labelText: row.getTitle(), currentValue: "blaBla")
+            if let currentTimerValue = userDefaultsStorage.savedTimerValue() {
+                currentValue = String(describing: currentTimerValue)
+            } else {
+                currentValue = "5"
+            }
+            return SettingsViewModelImpl(labelText: row.getTitle(), currentValue: currentValue)
         case .category:
-            return SettingsViewModelImpl(labelText: row.getTitle(), currentValue: "lala")
+            if let currentCategory = userDefaultsStorage.savedSourceValue() {
+                currentValue = currentCategory
+            } else {
+                currentValue = "val1"
+            }
+            return SettingsViewModelImpl(labelText: row.getTitle(), currentValue: currentValue)
         }
     }
     
@@ -49,9 +67,9 @@ extension SettingsPresenterImpl: SettingsPresenterProtocol {
         }
         switch row {
         case .timer:
-            view?.showTimerPicker()
+            view?.showTimerPicker(with: timers, cellType: row)
         case .category:
-            return
+            view?.showTimerPicker(with: categories, cellType: row)
         }
     }
 }

@@ -2,7 +2,7 @@
 //  XMLEntity+CoreDataClass.swift
 //  viper-rss
 //
-//  Created by user on 31.03.2020.
+//  Created by user on 02.04.2020.
 //  Copyright © 2020 smirnov. All rights reserved.
 //
 //
@@ -12,7 +12,6 @@ import CoreData
 
 @objc(XMLEntity)
 public class XMLEntity: NSManagedObject {
-
     func toSwiftModel() -> RSSEntity {
         return RSSEntity(
             title: self.title ?? "",
@@ -21,6 +20,7 @@ public class XMLEntity: NSManagedObject {
             link: self.link ?? "",
             imgUrl: self.imgUrl ?? "",
             postId: self.id ?? "",
-            source: self.source ?? "")
+            source: self.source ?? "",
+            isReaded: self.isReaded)
     }
 }

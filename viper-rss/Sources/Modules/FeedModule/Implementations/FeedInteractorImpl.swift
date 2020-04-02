@@ -23,16 +23,17 @@ class FeedInteractorImpl {
 }
 
 extension FeedInteractorImpl: FeedInteractorProtocol {
+    func update(entity: RSSEntity) {
+        storageService.update(entity: entity)
+    }
+    
     func getAllModelsFromStore() {
         let entities = self.storageService.listFromStorage()
         self.presenter?.present(entities: entities)
     }
     
     func subscribeForUpdates() {
-        storageService.subscribe { [weak self] entity in
-            guard let self = self else {
-                return
-            }
+        storageService.subscribe { entity in
             self.presenter?.present(entities: [entity])
         }
     }

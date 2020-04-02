@@ -10,6 +10,7 @@ import Foundation
 
 protocol StorageServiceProtocol: class {
     func save(entity: RSSEntity)
-    func subscribe(onUpdate: @escaping ((RSSEntity) -> Void))
+    func update(entity: RSSEntity)
+    func subscribe(onInsert: @escaping ((RSSEntity) -> Void))
     func listFromStorage() -> [RSSEntity]
 }

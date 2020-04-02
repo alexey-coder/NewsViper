@@ -10,9 +10,9 @@ import Foundation
 import CoreData
 
 final class StorageServiceImpl: NSObject, StorageServiceProtocol {
-    
+
     static let shared = StorageServiceImpl()
-    private var onDidUpdate: ((RSSEntity) -> Void)?
+    private var onDidInsert: ((RSSEntity) -> Void)?
     
     private override init() {}
     private let moduleName = "viper_rss"
@@ -40,32 +40,46 @@ final class StorageServiceImpl: NSObject, StorageServiceProtocol {
     }
     
     func save(entity: RSSEntity) {
-        if isExist(id: entity.postId) {
-            return
-        }
-        
-        if let newEntity = NSEntityDescription.entity(forEntityName: "XMLEntity", in: managedObjectContext) {
-            let xmlEntity = XMLEntity(entity: newEntity, insertInto: managedObjectContext)
-            xmlEntity.id = entity.postId
-            xmlEntity.title = entity.title
-            xmlEntity.text = entity.description
-            xmlEntity.link = entity.link
-            xmlEntity.imgUrl = entity.imgUrl
-            xmlEntity.date = entity.pubdate
-            xmlEntity.source = entity.source
-            do {
-                try managedObjectContext.save()
-            } catch {
-                print("\(error)")
+        persistentContainer.performBackgroundTask { context in
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "XMLEntity")
+            fetchRequest.predicate = NSPredicate(format: "id == %@", entity.postId)
+            let res = try! context.fetch(fetchRequest)
+            if !res.isEmpty {
+                return
+            }
+            if let newEntity = NSEntityDescription.entity(forEntityName: "XMLEntity", in: context) {
+                let xmlEntity = XMLEntity(entity: newEntity, insertInto: context)
+                xmlEntity.id = entity.postId
+                xmlEntity.title = entity.title
+                xmlEntity.text = entity.description
+                xmlEntity.link = entity.link
+                xmlEntity.imgUrl = entity.imgUrl
+                xmlEntity.date = entity.pubdate
+                xmlEntity.source = entity.source
+                do {
+                    try context.save()
+                } catch {
+                    print("\(error)")
+                }
             }
         }
     }
     
-    private func isExist(id: String) -> Bool {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "XMLEntity")
-        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
-        let res = try! managedObjectContext.fetch(fetchRequest)
-        return res.count > 0 ? true : false
+    func update(entity: RSSEntity) {
+        persistentContainer.performBackgroundTask { context in
+            let fetchRequest = NSFetchRequest<XMLEntity>(entityName: "XMLEntity")
+            fetchRequest.predicate = NSPredicate(format: "id == %@", entity.postId)
+            do {
+                let res = try context.fetch(fetchRequest)
+                if res.isEmpty {
+                    return
+                }
+                res.first?.setValue(true, forKey: "isReaded")
+                try context.save()
+            } catch {
+                print("\(error)")
+            }
+        }
     }
     
     private lazy var fetchedResultsController: NSFetchedResultsController<XMLEntity> = {
@@ -82,8 +96,8 @@ final class StorageServiceImpl: NSObject, StorageServiceProtocol {
         return fetchedResultsController
     }()
     
-    func subscribe(onUpdate: @escaping ((RSSEntity) -> Void)) {
-        self.onDidUpdate = onUpdate
+    func subscribe(onInsert: @escaping ((RSSEntity) -> Void)) {
+        self.onDidInsert = onInsert
         do {
             try fetchedResultsController.performFetch()
         } catch {
@@ -111,7 +125,7 @@ extension StorageServiceImpl: NSFetchedResultsControllerDelegate {
             guard let xmlEntity = anObject as? XMLEntity else {
                 return
             }
-            onDidUpdate?(xmlEntity.toSwiftModel())
+            onDidInsert?(xmlEntity.toSwiftModel())
         }
     }
 }

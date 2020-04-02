@@ -10,5 +10,6 @@ import UIKit
 
 protocol SettingsViewProtocol: UIViewController {
     var presenter: SettingsPresenterProtocol? { get set }
-    func showTimerPicker()
+    func showTimerPicker<T>(with values: [T], cellType: SettingsHelper)
+    func reloadData()
 }

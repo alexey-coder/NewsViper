@@ -20,4 +20,5 @@ protocol FeedViewModelProtocol {
     var isFullMode: Bool { get set }
     var link: String { get set }
     var imgLink: String { get set }
+    var isReaded: Bool { get set }
 }

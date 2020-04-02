@@ -9,7 +9,6 @@
 import UIKit
 
 class FeedViewModelImpl: FeedViewModelProtocol {
-
     var newsTitleText: String
     var newsShortDescription: String
     var date: String
@@ -21,6 +20,7 @@ class FeedViewModelImpl: FeedViewModelProtocol {
     var source: String
     var link: String
     var imgLink: String
+    var isReaded: Bool
     
     init(
         newsTitleText: String,
@@ -33,7 +33,8 @@ class FeedViewModelImpl: FeedViewModelProtocol {
         descriptionHeight: CGFloat,
         source: String,
         link: String,
-        imgLink: String) {
+        imgLink: String,
+        isReaded: Bool) {
         
         self.newsTitleText = newsTitleText
         self.newsShortDescription = newsShortDescription
@@ -46,5 +47,6 @@ class FeedViewModelImpl: FeedViewModelProtocol {
         self.source = source
         self.link = link
         self.imgLink = imgLink
+        self.isReaded = isReaded
     }
 }

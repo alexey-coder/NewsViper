@@ -97,6 +97,7 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
         sourceLabel.text = viewModel.source
         dateLabel.text = viewModel.date
         newsDescription.isHidden = viewModel.isFullMode ? false : true
+        accessoryType = viewModel.isReaded ? .checkmark : .none
     }
     
     override func layoutSubviews() {

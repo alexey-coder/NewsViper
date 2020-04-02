@@ -54,6 +54,7 @@ class FeedPresenterImpl {
     private let userDefaultsStorage: UserDefaultsStorageProtocol
     private var isFullMode: Bool = false
     private var viewModels: [FeedViewModelImpl]?
+    private var models: [RSSEntity]?
     private var timer: Timer?
     private var seconds: Int?
     private let defaultSeconds = 3
@@ -125,13 +126,27 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
             descriptionHeight: sizes.descriptionHeight,
             source: entity.source,
             link: entity.link,
-            imgLink: entity.imgUrl)
+            imgLink: entity.imgUrl,
+            isReaded: entity.isReaded)
+        save(model: entity)
+        save(viewModel: viewModel)
+        view?.reloadData()
+    }
+    
+    private func save(model: RSSEntity) {
+        if models == nil {
+            models = [model]
+        } else {
+            models?.append(model)
+        }
+    }
+    
+    private func save(viewModel: FeedViewModelImpl) {
         if viewModels == nil {
             viewModels = [viewModel]
         } else {
             viewModels?.append(viewModel)
         }
-        view?.reloadData()
     }
     
     func showAlert(message: String) {
@@ -148,6 +163,7 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     
     func viewWillAppear() {
         startTimer()
+        view?.reloadData()
     }
     
     func viewWillDissaper() {
@@ -198,9 +214,11 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     }
     
     func didRowSelected(row: Int) {
-        guard let link = viewModels?[row].link else {
+        guard let model = models?[row] else {
             return
         }
-        router?.presentDetails(with: link)
+        interactor?.update(entity: model)
+        viewModels?[row].isReaded = true
+        router?.presentDetails(with: model.link)
     }
 }

@@ -38,6 +38,7 @@ class SettingsCategoryCellImpl: UITableViewCell, SettingsCellProtocol {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = Metrics.Colors.backgroundColor
+        selectionStyle = .none
         [currentValueLabel, settingCellLabel].forEach { addSubview($0) }
     }
     

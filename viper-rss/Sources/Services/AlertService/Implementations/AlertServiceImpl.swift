@@ -6,7 +6,6 @@
 //  Copyright © 2020 smirnov. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class AlertServiceImpl: AlertServiceProtocol {
@@ -30,23 +29,47 @@ class AlertServiceImpl: AlertServiceProtocol {
         vc.present(alertVC, animated: true, completion: nil)
     }
     
-    func showTimerPicker(vc: UIViewController, acceptAction: @escaping ((Date) -> Void)) {
-        let myDatePicker: UIDatePicker = UIDatePicker()
-        myDatePicker.datePickerMode = .countDownTimer
-        myDatePicker.frame = CGRect(x: 0, y: 15, width: 270, height: 200)
+//    func showTimerPicker(vc: UIViewController, acceptAction: @escaping ((Date) -> Void), delegate: UIPickerViewDelegate, dataSource: UIPickerViewDataSource) {
+//        let picker: UIPickerView = UIPickerView()
+//        picker.delegate = delegate
+//        picker.dataSource = dataSource
+//        picker.frame = CGRect(x: 0, y: 15, width: 270, height: 200)
+//        let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
+//        alertController.view.addSubview(picker)
+//        let selectAction = UIAlertAction(title: LocalizedImpl<AlertServiceKeys>(.done).text, style: .default, handler: { _ in
+////            acceptAction(myDatePicker.date)
+//        })
+//        let cancelAction = UIAlertAction(title: LocalizedImpl<AlertServiceKeys>(.cancel).text, style: .cancel, handler: nil)
+//        alertController.addAction(selectAction)
+//        alertController.addAction(cancelAction)
+//        vc.present(alertController, animated: true)
+//    }
+    
+    func showSourcePicker(vc: UIViewController) {
+        
+    }
+        
+    func showTimerPicker<T>(
+        vc: UIViewController,
+        values: [T],
+        acceptAction: @escaping ((T) -> Void)) {
+        var selected: T? = nil
+        let picker = CustomPickerView(values: values) { val in
+            selected = val
+        }
+        picker.frame = CGRect(x: 0, y: 15, width: 270, height: 200)
         let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
-        alertController.view.addSubview(myDatePicker)
+        alertController.view.addSubview(picker)
         let selectAction = UIAlertAction(title: LocalizedImpl<AlertServiceKeys>(.done).text, style: .default, handler: { _ in
-            acceptAction(myDatePicker.date)
+            guard let selected = selected else {
+                return
+            }
+            acceptAction(selected)
         })
         let cancelAction = UIAlertAction(title: LocalizedImpl<AlertServiceKeys>(.cancel).text, style: .cancel, handler: nil)
         alertController.addAction(selectAction)
         alertController.addAction(cancelAction)
         vc.present(alertController, animated: true)
-    }
-    
-    func showSourcePicker(vc: UIViewController) {
-        
     }
     
     init() {
