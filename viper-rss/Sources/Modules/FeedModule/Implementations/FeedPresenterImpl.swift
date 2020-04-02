@@ -8,6 +8,12 @@
 
 import UIKit
 
+private struct Metrics {
+    struct Values {
+        static let defaultSeconds = Constants.DefaultValues.timerDefault
+    }
+}
+
 enum Modes: CaseIterable, CustomStringConvertible {
     case simple
     case full
@@ -22,9 +28,11 @@ enum Modes: CaseIterable, CustomStringConvertible {
     }
 }
 
-enum Sources: CaseIterable, CustomStringConvertible {
+enum Sources: String, CaseIterable, CustomStringConvertible {
     case lenta
     case gazeta
+    
+    static let allValues: [String] = [lenta.description, gazeta.description]
     
     var description: String {
         switch self {
@@ -57,7 +65,14 @@ class FeedPresenterImpl {
     private var models: [RSSEntity]?
     private var timer: Timer?
     private var seconds: Int?
-    private let defaultSeconds = 3
+    private let defaultSeconds = Metrics.Values.defaultSeconds
+    
+    private var filter: Sources? {
+        guard let value = userDefaultsStorage.savedSourceValue() else {
+            return nil
+        }
+        return Sources(rawValue: value)
+    }
     
     init(
         feedCellLayoutCalculator: LayoutCalculatorProtocol,
@@ -67,9 +82,13 @@ class FeedPresenterImpl {
     }
     
     private func retrieveNetworkData() {
-        DispatchQueue.global().async {
-            self.interactor?.requestEntities(from: [.gazeta, .lenta])
+        let source: [Sources]
+        if let filter = filter {
+            source = [filter]
+        } else {
+            source = [.gazeta, .lenta]
         }
+        self.interactor?.requestEntities(from: source)
     }
     
     private func startTimer() {
@@ -86,7 +105,6 @@ class FeedPresenterImpl {
         }
         seconds -= 1
         self.seconds = seconds
-        print("timer = \(seconds)")
         if seconds <= 0 {
             stopTimer()
             startTimer()
@@ -100,11 +118,25 @@ class FeedPresenterImpl {
 }
 
 extension FeedPresenterImpl: FeedPresenterProtocol {
-    
-    func present(entities: [RSSEntity]) {
-        entities.forEach {
+    func createViewModelsFromScratch(with entities: [RSSEntity]) {
+        models?.removeAll()
+        viewModels?.removeAll()
+        guard let filter = filter else {
+            entities.forEach {
+                prepareViewModel(for: $0)
+            }
+            view?.reloadData()
+            return
+        }
+        entities.filter { $0.source == filter.description }.forEach {
             prepareViewModel(for: $0)
         }
+        view?.reloadData()
+    }
+    
+    func createNewViewModel(with entity: RSSEntity) {
+        prepareViewModel(for: entity)
+        view?.reloadData()
     }
     
     func store(entity: RSSEntity) {
@@ -114,7 +146,6 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     private func prepareViewModel(for entity: RSSEntity) {
         let sizes = self.feedCellLayoutCalculator.mesureCellHeight(
             title: entity.title, description: entity.description, date: entity.pubdate)
-        
         let viewModel = FeedViewModelImpl(
             newsTitleText: entity.title,
             newsShortDescription: entity.description,
@@ -130,7 +161,6 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
             isReaded: entity.isReaded)
         save(model: entity)
         save(viewModel: viewModel)
-        view?.reloadData()
     }
     
     private func save(model: RSSEntity) {
@@ -157,12 +187,12 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     
     func viewDidLoad() {
         interactor?.subscribeForUpdates()
-        interactor?.getAllModelsFromStore()
-        retrieveNetworkData()
     }
     
     func viewWillAppear() {
         startTimer()
+        retrieveNetworkData()
+        interactor?.getAllModelsFromStore(with: filter)
         view?.reloadData()
     }
     
@@ -218,7 +248,6 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
             return
         }
         interactor?.update(entity: model)
-        viewModels?[row].isReaded = true
         router?.presentDetails(with: model.link)
     }
 }

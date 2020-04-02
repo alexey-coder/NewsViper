@@ -49,18 +49,11 @@ extension SettingsViewImpl: SettingsViewProtocol {
             switch cellType {
             case .timer:
                 self?.presenter?.setNewTimer(interval: selected as! Int)
-            case .category:
+            case .source:
                 self?.presenter?.setNewCategory(filter: selected as! String)
             }
         }
     }
-    
-//    func showTimerPicker(with values: [T]) {
-//        alertService.showTimerPicker(vc: self, values: values) { [weak self] interval in
-//            print("\(interval)")
-////            self?.presenter?.setNewTimer(interval: interval)
-//        }
-//    }
 }
 
 extension SettingsViewImpl: UITableViewDataSource {
@@ -81,7 +74,7 @@ extension SettingsViewImpl: UITableViewDataSource {
         switch row {
         case .timer:
             cell = tableView.dequeueReusableCell(withIdentifier: SettingsTimerCellImpl.reuseIdentifier, for: indexPath) as! SettingsTimerCellImpl
-        case .category:
+        case .source:
             cell = tableView.dequeueReusableCell(withIdentifier: SettingsCategoryCellImpl.reuseIdentifier, for: indexPath) as! SettingsCategoryCellImpl
         }
         cell.configure(with: viewModel)

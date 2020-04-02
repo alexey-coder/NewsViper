@@ -12,5 +12,5 @@ protocol StorageServiceProtocol: class {
     func save(entity: RSSEntity)
     func update(entity: RSSEntity)
     func subscribe(onInsert: @escaping ((RSSEntity) -> Void))
-    func listFromStorage() -> [RSSEntity]
+    func listFromStorage(with filter: Sources?, completion: @escaping (Result<[RSSEntity], StorageServiceError>) -> Void)
 }

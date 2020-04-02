@@ -17,6 +17,6 @@ extension StartRouterImpl: StartRouterProtocol {
     func showMain() {
         let mainViewController = ModuleDependencyContainer().assemblyMainModule()
         mainViewController.modalPresentationStyle = .overFullScreen
-        self.viewController?.present(mainViewController, animated: true, completion: nil)
+        self.viewController?.present(mainViewController, animated: false, completion: nil)
     }
 }

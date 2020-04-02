@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 final class StorageServiceImpl: NSObject, StorageServiceProtocol {
-
+    
     static let shared = StorageServiceImpl()
     private var onDidInsert: ((RSSEntity) -> Void)?
     
@@ -40,45 +40,38 @@ final class StorageServiceImpl: NSObject, StorageServiceProtocol {
     }
     
     func save(entity: RSSEntity) {
-        persistentContainer.performBackgroundTask { context in
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "XMLEntity")
-            fetchRequest.predicate = NSPredicate(format: "id == %@", entity.postId)
-            let res = try! context.fetch(fetchRequest)
-            if !res.isEmpty {
-                return
-            }
-            if let newEntity = NSEntityDescription.entity(forEntityName: "XMLEntity", in: context) {
-                let xmlEntity = XMLEntity(entity: newEntity, insertInto: context)
-                xmlEntity.id = entity.postId
-                xmlEntity.title = entity.title
-                xmlEntity.text = entity.description
-                xmlEntity.link = entity.link
-                xmlEntity.imgUrl = entity.imgUrl
-                xmlEntity.date = entity.pubdate
-                xmlEntity.source = entity.source
-                do {
-                    try context.save()
-                } catch {
-                    print("\(error)")
-                }
-            }
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "XMLEntity")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", entity.postId)
+        let res = try! managedObjectContext.fetch(fetchRequest)
+        if !res.isEmpty {
+            return
+        }
+        if let newEntity = NSEntityDescription.entity(forEntityName: "XMLEntity", in: managedObjectContext) {
+            let xmlEntity = XMLEntity(entity: newEntity, insertInto: managedObjectContext)
+            xmlEntity.id = entity.postId
+            xmlEntity.title = entity.title
+            xmlEntity.text = entity.description
+            xmlEntity.link = entity.link
+            xmlEntity.imgUrl = entity.imgUrl
+            xmlEntity.date = entity.pubdate
+            xmlEntity.source = entity.source
+            xmlEntity.isReaded = entity.isReaded
+            saveContext()
         }
     }
     
     func update(entity: RSSEntity) {
-        persistentContainer.performBackgroundTask { context in
-            let fetchRequest = NSFetchRequest<XMLEntity>(entityName: "XMLEntity")
-            fetchRequest.predicate = NSPredicate(format: "id == %@", entity.postId)
-            do {
-                let res = try context.fetch(fetchRequest)
-                if res.isEmpty {
-                    return
-                }
-                res.first?.setValue(true, forKey: "isReaded")
-                try context.save()
-            } catch {
-                print("\(error)")
+        let fetchRequest = NSFetchRequest<XMLEntity>(entityName: "XMLEntity")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", entity.postId)
+        do {
+            let res = try managedObjectContext.fetch(fetchRequest)
+            if res.isEmpty {
+                return
             }
+            res.first?.setValue(true, forKey: "isReaded")
+            saveContext()
+        } catch {
+            print("\(error)")
         }
     }
     
@@ -105,16 +98,22 @@ final class StorageServiceImpl: NSObject, StorageServiceProtocol {
         }
     }
     
-    func listFromStorage() -> [RSSEntity] {
-      do {
-        try fetchedResultsController.performFetch()
-        return fetchedResultsController.fetchedObjects!.map {
-            $0.toSwiftModel()
+    func listFromStorage(with filter: Sources?, completion: @escaping (Result<[RSSEntity], StorageServiceError>) -> Void) {
+        do {
+            try fetchedResultsController.performFetch()
+            guard let obj = fetchedResultsController.fetchedObjects else {
+                return completion(.failure(.listEntitiesError))
+            }
+            let entities = obj.map { $0.toSwiftModel() }
+            guard let filter = filter else {
+                completion(.success(entities))
+                return
+            }
+            completion(.success(entities.filter { $0.source == filter.description }))
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
-      } catch {
-        let nserror = error as NSError
-        fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-      }
     }
 }
 
@@ -127,5 +126,9 @@ extension StorageServiceImpl: NSFetchedResultsControllerDelegate {
             }
             onDidInsert?(xmlEntity.toSwiftModel())
         }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        print("")
     }
 }

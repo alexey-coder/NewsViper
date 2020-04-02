@@ -23,18 +23,25 @@ class FeedInteractorImpl {
 }
 
 extension FeedInteractorImpl: FeedInteractorProtocol {
+    
     func update(entity: RSSEntity) {
         storageService.update(entity: entity)
     }
     
-    func getAllModelsFromStore() {
-        let entities = self.storageService.listFromStorage()
-        self.presenter?.present(entities: entities)
+    func getAllModelsFromStore(with filter: Sources?) {
+        storageService.listFromStorage(with: filter) { result in
+            switch result {
+            case .success(let entities):
+                self.presenter?.createViewModelsFromScratch(with: entities)
+            case .failure(let error):
+                print("\(error)")
+            }
+        }
     }
     
     func subscribeForUpdates() {
-        storageService.subscribe { entity in
-            self.presenter?.present(entities: [entity])
+        storageService.subscribe { [weak self] entity in
+            self?.presenter?.createNewViewModel(with: entity)
         }
     }
     

@@ -8,6 +8,15 @@
 
 import UIKit
 
+private struct Metrics {
+    struct Values {
+        static let timerDefaultValue = Constants.DefaultValues.timerDefault
+        static let sourceDefaultValue = Constants.DefaultValues.sourceDefault
+        static let sources = Constants.DefaultValues.sources
+        static let timers = Constants.DefaultValues.timers
+    }
+}
+
 class SettingsPresenterImpl {
     var router: SettingsRouterProtocol?
     var interactor: SettingsInteractorProtocol?
@@ -15,8 +24,6 @@ class SettingsPresenterImpl {
     
     var heightForRow: CGFloat = 48
     private let userDefaultsStorage: UserDefaultsStorageProtocol
-    private let timers = [15, 30, 60]
-    private let categories = ["val1", "val2"]
     
     init(userDefaultsStorage: UserDefaultsStorageProtocol) {
         self.userDefaultsStorage = userDefaultsStorage
@@ -48,14 +55,14 @@ extension SettingsPresenterImpl: SettingsPresenterProtocol {
             if let currentTimerValue = userDefaultsStorage.savedTimerValue() {
                 currentValue = String(describing: currentTimerValue)
             } else {
-                currentValue = "5"
+                currentValue = String(describing: Metrics.Values.timerDefaultValue)
             }
             return SettingsViewModelImpl(labelText: row.getTitle(), currentValue: currentValue)
-        case .category:
-            if let currentCategory = userDefaultsStorage.savedSourceValue() {
-                currentValue = currentCategory
+        case .source:
+            if let currentSource = userDefaultsStorage.savedSourceValue() {
+                currentValue = currentSource
             } else {
-                currentValue = "val1"
+                currentValue = Metrics.Values.sourceDefaultValue
             }
             return SettingsViewModelImpl(labelText: row.getTitle(), currentValue: currentValue)
         }
@@ -67,9 +74,9 @@ extension SettingsPresenterImpl: SettingsPresenterProtocol {
         }
         switch row {
         case .timer:
-            view?.showTimerPicker(with: timers, cellType: row)
-        case .category:
-            view?.showTimerPicker(with: categories, cellType: row)
+            view?.showTimerPicker(with: Metrics.Values.timers, cellType: row)
+        case .source:
+            view?.showTimerPicker(with: Metrics.Values.sources, cellType: row)
         }
     }
 }

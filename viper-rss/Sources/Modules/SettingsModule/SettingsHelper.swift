@@ -10,7 +10,7 @@ import Foundation
 
 enum SettingsHelper: Int, CaseIterable {
     case timer
-    case category
+    case source
     
     static func getNumRows() -> Int {
         return self.allCases.count
@@ -20,7 +20,7 @@ enum SettingsHelper: Int, CaseIterable {
         switch self {
         case .timer:
             return LocalizedImpl<SettingsModuleLocalizedKeys>(.timer).text
-        case .category:
+        case .source:
             return LocalizedImpl<SettingsModuleLocalizedKeys>(.source).text
         }
     }
