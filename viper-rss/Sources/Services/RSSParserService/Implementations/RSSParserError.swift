@@ -11,5 +11,5 @@ import Foundation
 public enum RSSParserError: Error {
     case invalidUrl
     case parseError
-    case sourseError
+    case dateRequestError
 }

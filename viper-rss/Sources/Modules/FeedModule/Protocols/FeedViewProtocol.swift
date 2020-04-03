@@ -12,4 +12,6 @@ protocol FeedViewProtocol: UIViewController {
     var presenter: FeedPresenterProtocol? { get set }
     func reloadData()
     func showAlert(with message: String)
+    func showIndicator()
+    func hideIndicator()
 }

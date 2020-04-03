@@ -39,7 +39,7 @@ class FeedViewImpl: BaseController<FeedUI> {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         navigationItem.titleView = ui.segmentControl
-        ui.tableView.frame = view.frame
+        ui.tableView.frame = view.bounds
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -51,6 +51,10 @@ class FeedViewImpl: BaseController<FeedUI> {
         presenter?.switchMode()
     }
     
+    @objc private func refreshData(_ sender: Any) {
+        presenter?.retrieveNetworkData()
+    }
+
     private func setupSegmentControl() {
         guard let presenter = presenter else {
             return
@@ -69,9 +73,15 @@ class FeedViewImpl: BaseController<FeedUI> {
 }
 
 extension FeedViewImpl: FeedViewProtocol {
+    func showIndicator() {
+
+    }
+    
+    func hideIndicator() {
+    }
     
     func showAlert(with message: String) {
-        alertService.showAlert(vc: self, title: "Error", message: message)
+        alertService.showAlert(vc: self, message: message)
     }
     
     func reloadData() {
@@ -87,7 +97,15 @@ extension FeedViewImpl: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.getNumberOfRows() ?? 0
+        guard let rows = presenter?.getNumberOfRows() else {
+            return 0
+        }
+        if rows == 0 {
+            ui.tableView.setEmptyMessage(LocalizedImpl<FeedModuleLocalizedKeys>(.emptyTableMessage).text)
+            return rows
+        } else {
+            return rows
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

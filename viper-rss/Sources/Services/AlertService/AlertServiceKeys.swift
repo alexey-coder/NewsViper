@@ -13,4 +13,5 @@ enum AlertServiceKeys: String, LocalizableProtocol {
     case no
     case done
     case cancel
+    case ok
 }

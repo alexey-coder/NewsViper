@@ -16,8 +16,10 @@
 "feedNavBarTitle" = "Лента";
 "simpleMode" = "Простой";
 "fullMode" = "Расширенный";
+"emptyTableMessage" = "Нет данных";
 /// AlertServiceKeys
 "yes" = "Да";
 "no" = "Нет";
 "done" = "Готово";
 "cancel" = "Отмена";
+"ok" = "Ок";

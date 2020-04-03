@@ -6,7 +6,7 @@
 //  Copyright © 2020 smirnov. All rights reserved.
 //
 
-import Foundation //remove this
+import Foundation
 
 class FeedInteractorImpl {
     weak var presenter: FeedPresenterProtocol?

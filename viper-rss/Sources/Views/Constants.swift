@@ -40,4 +40,9 @@ struct Constants {
         static let timers: [Int] = [15, 30, 60]
         static let sources: [String] = Sources.allValues
     }
+    
+    struct Patterns {
+        static let sourceDatePattern = "E, d MMM yyyy HH:mm:ss Z"
+        static let customPattern = "dd.MM.yy"
+    }
 }

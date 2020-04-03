@@ -68,7 +68,7 @@ class RSSParserServiceImpl: NSObject, RSSParserServiceProtocol {
         let task = urlSession.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 if error != nil {
-                    errorCompletion(.sourseError)
+                    errorCompletion(.dateRequestError)
                 }
                 return
             }

@@ -10,6 +10,6 @@ import UIKit
 
 protocol AlertServiceProtocol {
     func showDialogAlert(vc: UIViewController, title: String, message: String?, acceptAction: @escaping (() -> Void))
-    func showAlert(vc: UIViewController, title: String, message: String?)
+    func showAlert(vc: UIViewController, message: String?)
     func showTimerPicker<T>(vc: UIViewController, values: [T], acceptAction: @escaping ((T) -> Void))
 }

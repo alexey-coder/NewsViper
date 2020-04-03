@@ -16,8 +16,10 @@
 "feedNavBarTitle" = "Feed";
 "simpleMode" = "Simple";
 "fullMode" = "Full";
+"emptyTableMessage" = "No data";
 /// AlertServiceKeys
 "yes" = "Yes";
 "no" = "No";
 "done" = "Done";
 "cancel" = "Cancel";
+"ok" = "Ok";

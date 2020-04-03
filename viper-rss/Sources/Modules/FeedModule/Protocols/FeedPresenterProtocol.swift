@@ -25,8 +25,8 @@ protocol FeedPresenterProtocol: class {
     func getCurrentMode() -> Bool
     func switchMode()
     func showAlert(message: String)
-    func store(entity: RSSEntity)    
-    
+    func store(entity: RSSEntity)
+    func retrieveNetworkData()
     
     func createViewModelsFromScratch(with entities: [RSSEntity])
     func createNewViewModel(with entity: RSSEntity)

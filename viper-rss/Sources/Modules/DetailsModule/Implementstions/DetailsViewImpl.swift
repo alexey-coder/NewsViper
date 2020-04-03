@@ -73,7 +73,7 @@ class DetailsViewImpl: BaseController<DetailsUI> {
 
 extension DetailsViewImpl: DetailsViewProtocol {
     func showAlert(with message: String) {
-        alertService.showAlert(vc: self, title: "Error", message: message) //TODO
+        alertService.showAlert(vc: self, message: message)
     }
     
     func load(url: URL) {

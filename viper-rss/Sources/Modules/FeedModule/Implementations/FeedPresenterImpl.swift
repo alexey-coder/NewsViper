@@ -12,6 +12,11 @@ private struct Metrics {
     struct Values {
         static let defaultSeconds = Constants.DefaultValues.timerDefault
     }
+    
+    struct Patterns {
+        static let sourceDatePattern = Constants.Patterns.sourceDatePattern
+        static let customPattern = Constants.Patterns.customPattern
+    }
 }
 
 enum Modes: CaseIterable, CustomStringConvertible {
@@ -81,14 +86,15 @@ class FeedPresenterImpl {
         self.userDefaultsStorage = userDefaultsStorage
     }
     
-    private func retrieveNetworkData() {
+    func retrieveNetworkData() {
         let source: [Sources]
         if let filter = filter {
             source = [filter]
         } else {
             source = [.gazeta, .lenta]
         }
-        self.interactor?.requestEntities(from: source)
+        view?.showIndicator()
+        interactor?.requestEntities(from: source)
     }
     
     private func startTimer() {
@@ -115,6 +121,21 @@ class FeedPresenterImpl {
     private func stopTimer() {
         timer?.invalidate()
     }
+    
+    private func foratDate(dateToConvert: String) -> String {
+        let fromFormatter = DateFormatter()
+        fromFormatter.dateFormat = Metrics.Patterns.sourceDatePattern
+        
+        let toFormetter = DateFormatter()
+        toFormetter.dateFormat = Metrics.Patterns.customPattern
+        
+        if let date = fromFormatter.date(from: dateToConvert) {
+            return toFormetter.string(from: date)
+        } else {
+            print("There was an error decoding the string")
+            return dateToConvert
+        }
+    }
 }
 
 extension FeedPresenterImpl: FeedPresenterProtocol {
@@ -131,11 +152,15 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
         entities.filter { $0.source == filter.description }.forEach {
             prepareViewModel(for: $0)
         }
+        self.view?.hideIndicator()
+        
         view?.reloadData()
     }
     
     func createNewViewModel(with entity: RSSEntity) {
         prepareViewModel(for: entity)
+        self.view?.hideIndicator()
+        
         view?.reloadData()
     }
     
@@ -146,10 +171,11 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     private func prepareViewModel(for entity: RSSEntity) {
         let sizes = self.feedCellLayoutCalculator.mesureCellHeight(
             title: entity.title, description: entity.description, date: entity.pubdate)
+        
         let viewModel = FeedViewModelImpl(
             newsTitleText: entity.title,
             newsShortDescription: entity.description,
-            date: entity.pubdate,
+            date: foratDate(dateToConvert: entity.pubdate),
             isFullMode: self.isFullMode,
             cellHeightFullMode: sizes.cellHeightFullMode,
             cellHeightSimpleMode: sizes.cellHeightSimpleMode,

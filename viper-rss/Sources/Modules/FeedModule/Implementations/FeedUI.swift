@@ -21,10 +21,10 @@ class FeedUI: UIView {
         $0.tintColor = Metrics.Colors.segmentControlTintColor
     }
     
-    let tableView = UITableView().then {
+    lazy var tableView = UITableView().then {
         $0.register(FeedCellImpl.self, forCellReuseIdentifier: FeedCellImpl.reuseIdentifier)
     }
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = Metrics.Colors.backgroundColor

@@ -12,4 +12,5 @@ enum FeedModuleLocalizedKeys: String, LocalizableProtocol {
     case feedNavBarTitle
     case simpleMode
     case fullMode
+    case emptyTableMessage
 }
