@@ -15,6 +15,7 @@ struct Constants {
         static let fromImageToText: CGFloat = 36
         static let imageSize: CGFloat = 56
         static let spaceBetweenText: CGFloat = 16
+        static let spaceForCheckIndicator: CGFloat = 50
     }
     
     struct Fonts {

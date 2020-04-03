@@ -13,6 +13,6 @@ protocol FeedInteractorProtocol {
     func requestEntities(from sourses: [Sources])
     func saveInStorage(entity: RSSEntity)
     func update(entity: RSSEntity)
-    func getAllModelsFromStore(with filter: Sources?)
+    func getAllModelsFromStore(with filter: Sources)
     func subscribeForUpdates()
 }

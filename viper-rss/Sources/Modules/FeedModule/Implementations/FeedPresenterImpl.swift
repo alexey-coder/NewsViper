@@ -34,10 +34,11 @@ enum Modes: CaseIterable, CustomStringConvertible {
 }
 
 enum Sources: String, CaseIterable, CustomStringConvertible {
+    case all
     case lenta
     case gazeta
     
-    static let allValues: [String] = [lenta.description, gazeta.description]
+    static let allValues: [String] = [all.description, lenta.description, gazeta.description]
     
     var description: String {
         switch self {
@@ -45,6 +46,8 @@ enum Sources: String, CaseIterable, CustomStringConvertible {
             return "lenta"
         case .gazeta:
             return "gazeta"
+        case .all:
+            return "all"
         }
     }
     
@@ -54,6 +57,8 @@ enum Sources: String, CaseIterable, CustomStringConvertible {
             return "https://lenta.ru/rss/"
         case .gazeta:
             return "https://www.gazeta.ru/export/rss/lenta.xml"
+        case .all:
+            return ""
         }
     }
 }
@@ -74,7 +79,7 @@ class FeedPresenterImpl {
     
     private var filter: Sources? {
         guard let value = userDefaultsStorage.savedSourceValue() else {
-            return nil
+            return .all
         }
         return Sources(rawValue: value)
     }
@@ -88,9 +93,15 @@ class FeedPresenterImpl {
     
     func retrieveNetworkData() {
         let source: [Sources]
-        if let filter = filter {
-            source = [filter]
-        } else {
+        guard let filter = filter else {
+            return
+        }
+        switch filter {
+        case .gazeta:
+            source = [.gazeta]
+        case .lenta:
+            source = [.lenta]
+        default:
             source = [.gazeta, .lenta]
         }
         view?.showIndicator()
@@ -143,17 +154,19 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
         models?.removeAll()
         viewModels?.removeAll()
         guard let filter = filter else {
+            return
+        }
+        switch filter {
+        case .all:
             entities.forEach {
                 prepareViewModel(for: $0)
             }
-            view?.reloadData()
-            return
-        }
-        entities.filter { $0.source == filter.description }.forEach {
-            prepareViewModel(for: $0)
+        case .gazeta, .lenta:
+            entities.filter { $0.source == filter.description }.forEach {
+                prepareViewModel(for: $0)
+            }
         }
         self.view?.hideIndicator()
-        
         view?.reloadData()
     }
     
@@ -165,6 +178,9 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     }
     
     func store(entity: RSSEntity) {
+        DispatchQueue.main.async {
+            self.view?.hideIndicator()
+        }
         interactor?.saveInStorage(entity: entity)
     }
     
@@ -218,7 +234,9 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     func viewWillAppear() {
         startTimer()
         retrieveNetworkData()
-        interactor?.getAllModelsFromStore(with: filter)
+        filter.flatMap {
+            interactor?.getAllModelsFromStore(with: $0)
+        }
         view?.reloadData()
     }
     

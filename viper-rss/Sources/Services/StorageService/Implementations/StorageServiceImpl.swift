@@ -77,7 +77,7 @@ final class StorageServiceImpl: NSObject, StorageServiceProtocol {
     
     private lazy var fetchedResultsController: NSFetchedResultsController<XMLEntity> = {
         let fetchRequest = NSFetchRequest<XMLEntity>(entityName: "XMLEntity")
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
         fetchRequest.returnsObjectsAsFaults = false
         fetchRequest.sortDescriptors = [sortDescriptor]
         let fetchedResultsController = NSFetchedResultsController<XMLEntity>(
@@ -98,18 +98,21 @@ final class StorageServiceImpl: NSObject, StorageServiceProtocol {
         }
     }
     
-    func listFromStorage(with filter: Sources?, completion: @escaping (Result<[RSSEntity], StorageServiceError>) -> Void) {
+    func listFromStorage(
+        with filter: Sources,
+        completion: @escaping (Result<[RSSEntity], StorageServiceError>) -> Void) {
         do {
             try fetchedResultsController.performFetch()
             guard let obj = fetchedResultsController.fetchedObjects else {
                 return completion(.failure(.listEntitiesError))
             }
             let entities = obj.map { $0.toSwiftModel() }
-            guard let filter = filter else {
+            switch filter {
+            case .all:
                 completion(.success(entities))
-                return
+            default:
+                completion(.success(entities.filter { $0.source == filter.description }))
             }
-            completion(.success(entities.filter { $0.source == filter.description }))
         } catch {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -126,9 +129,5 @@ extension StorageServiceImpl: NSFetchedResultsControllerDelegate {
             }
             onDidInsert?(xmlEntity.toSwiftModel())
         }
-    }
-    
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        print("")
     }
 }

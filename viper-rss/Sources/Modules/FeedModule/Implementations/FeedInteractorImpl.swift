@@ -28,7 +28,7 @@ extension FeedInteractorImpl: FeedInteractorProtocol {
         storageService.update(entity: entity)
     }
     
-    func getAllModelsFromStore(with filter: Sources?) {
+    func getAllModelsFromStore(with filter: Sources) {
         storageService.listFromStorage(with: filter) { result in
             switch result {
             case .success(let entities):

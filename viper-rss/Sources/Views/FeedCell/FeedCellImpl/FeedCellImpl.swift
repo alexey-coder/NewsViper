@@ -27,6 +27,7 @@ private struct Metrics {
     struct Sizes {
         static let topAndBottomMargin = Constants.Sizes.topAndBottomMargin
         static let leadingToImage = Constants.Sizes.leadingToImage
+        static let spaceForCheckIndicator = Constants.Sizes.spaceForCheckIndicator
         static let fromImageToText = Constants.Sizes.fromImageToText
         static let imageSize = Constants.Sizes.imageSize
         static let spaceBetweenText = Constants.Sizes.spaceBetweenText
@@ -83,7 +84,6 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         newsImage.image = nil
@@ -115,7 +115,7 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
         newsTitle.frame = CGRect(
             x: newsImage.frame.maxX + Metrics.Sizes.fromImageToText,
             y: newsImage.frame.minY,
-            width: self.frame.width - (Metrics.Sizes.leadingToImage * 2)  - Metrics.Sizes.imageSize - Metrics.Sizes.fromImageToText,
+            width: self.frame.width - Metrics.Sizes.leadingToImage - Metrics.Sizes.imageSize - Metrics.Sizes.fromImageToText - Metrics.Sizes.spaceForCheckIndicator,
             height: viewModel?.titleHeight ?? 0)
         
         newsDescription.frame = CGRect(
@@ -131,7 +131,7 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
             height: sourceLabel.intrinsicContentSize.height)
         
         dateLabel.frame = CGRect(
-            x: frame.width - Metrics.Sizes.leadingToImage - dateLabel.frame.width,
+            x: frame.width - Metrics.Sizes.leadingToImage - dateLabel.intrinsicContentSize.width,
             y: frame.height - Metrics.Sizes.topAndBottomMargin,
             width: dateLabel.intrinsicContentSize.width,
             height: dateLabel.intrinsicContentSize.height)

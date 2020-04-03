@@ -74,7 +74,7 @@ class FeedViewImpl: BaseController<FeedUI> {
 
 extension FeedViewImpl: FeedViewProtocol {
     func showIndicator() {
-
+        ui.tableView.showIndicator()
     }
     
     func hideIndicator() {

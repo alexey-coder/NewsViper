@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		CE0FF9DB2436879000072C2A /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0FF9DA2436879000072C2A /* TableViewExtension.swift */; };
+		CE4BDDA3243713ED00FDB6E7 /* XMLEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA1243713ED00FDB6E7 /* XMLEntity+CoreDataClass.swift */; };
+		CE4BDDA4243713ED00FDB6E7 /* XMLEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA2243713ED00FDB6E7 /* XMLEntity+CoreDataProperties.swift */; };
 		CE5082152433DFFD002F29D4 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082142433DFFD002F29D4 /* CustomImageView.swift */; };
 		CE50821A2434B808002F29D4 /* UserDefaultsStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082192434B808002F29D4 /* UserDefaultsStorageProtocol.swift */; };
 		CE50821C2434B812002F29D4 /* UserDefaultsStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50821B2434B812002F29D4 /* UserDefaultsStorageImpl.swift */; };
 		CE50821F2434EE7A002F29D4 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50821E2434EE7A002F29D4 /* CustomPickerView.swift */; };
-		CE5082222435F8F0002F29D4 /* XMLEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082202435F8F0002F29D4 /* XMLEntity+CoreDataClass.swift */; };
-		CE5082232435F8F0002F29D4 /* XMLEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082212435F8F0002F29D4 /* XMLEntity+CoreDataProperties.swift */; };
 		CE50822524363A33002F29D4 /* StorageServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50822424363A33002F29D4 /* StorageServiceError.swift */; };
 		CE743675242B682E003FB468 /* FeedPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743674242B682E003FB468 /* FeedPresenterProtocol.swift */; };
 		CE743677242B683A003FB468 /* FeedRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743676242B683A003FB468 /* FeedRouterProtocol.swift */; };
@@ -120,12 +120,12 @@
 
 /* Begin PBXFileReference section */
 		CE0FF9DA2436879000072C2A /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
+		CE4BDDA1243713ED00FDB6E7 /* XMLEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XMLEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CE4BDDA2243713ED00FDB6E7 /* XMLEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XMLEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CE5082142433DFFD002F29D4 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		CE5082192434B808002F29D4 /* UserDefaultsStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageProtocol.swift; sourceTree = "<group>"; };
 		CE50821B2434B812002F29D4 /* UserDefaultsStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageImpl.swift; sourceTree = "<group>"; };
 		CE50821E2434EE7A002F29D4 /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
-		CE5082202435F8F0002F29D4 /* XMLEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMLEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		CE5082212435F8F0002F29D4 /* XMLEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMLEntity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		CE50822424363A33002F29D4 /* StorageServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceError.swift; sourceTree = "<group>"; };
 		CE743674242B682E003FB468 /* FeedPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenterProtocol.swift; sourceTree = "<group>"; };
 		CE743676242B683A003FB468 /* FeedRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRouterProtocol.swift; sourceTree = "<group>"; };
@@ -742,8 +742,8 @@
 		CE743738242E420A003FB468 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				CE5082202435F8F0002F29D4 /* XMLEntity+CoreDataClass.swift */,
-				CE5082212435F8F0002F29D4 /* XMLEntity+CoreDataProperties.swift */,
+				CE4BDDA1243713ED00FDB6E7 /* XMLEntity+CoreDataClass.swift */,
+				CE4BDDA2243713ED00FDB6E7 /* XMLEntity+CoreDataProperties.swift */,
 				CE743739242E4217003FB468 /* RSSEntity.swift */,
 			);
 			path = Entities;
@@ -943,7 +943,6 @@
 				CE743690242B7267003FB468 /* SettingsRouterProtocol.swift in Sources */,
 				CE7436F6242BB08E003FB468 /* SettingsTimerViewModelProtocol.swift in Sources */,
 				CE7436E5242BA852003FB468 /* Then.swift in Sources */,
-				CE5082232435F8F0002F29D4 /* XMLEntity+CoreDataProperties.swift in Sources */,
 				CE743698242B72C2003FB468 /* SettingsInteractorImpl.swift in Sources */,
 				CE74376524311286003FB468 /* DetailsPresenterImpl.swift in Sources */,
 				CE74373A242E4217003FB468 /* RSSEntity.swift in Sources */,
@@ -956,8 +955,8 @@
 				CE743696242B72B7003FB468 /* SettingsViewImpl.swift in Sources */,
 				CE7436BD242B7F9C003FB468 /* StartViewImpl.swift in Sources */,
 				CE74367F242B6934003FB468 /* FeedViewImpl.swift in Sources */,
-				CE5082222435F8F0002F29D4 /* XMLEntity+CoreDataClass.swift in Sources */,
 				CE743731242E2E44003FB468 /* UIViewControllerExtension.swift in Sources */,
+				CE4BDDA3243713ED00FDB6E7 /* XMLEntity+CoreDataClass.swift in Sources */,
 				CE743679242B6857003FB468 /* FeedViewProtocol.swift in Sources */,
 				CE743694242B72A1003FB468 /* SettingsPresenterProtocol.swift in Sources */,
 				CE7436A6242B7A36003FB468 /* MainViewProtocol.swift in Sources */,
@@ -984,6 +983,7 @@
 				CE50821F2434EE7A002F29D4 /* CustomPickerView.swift in Sources */,
 				CE74369A242B72D1003FB468 /* SettingsPresenterImpl.swift in Sources */,
 				CE7436D7242B977F003FB468 /* LanguageTableImpl.swift in Sources */,
+				CE4BDDA4243713ED00FDB6E7 /* XMLEntity+CoreDataProperties.swift in Sources */,
 				CE7436FA242BB2D1003FB468 /* SettingsHelper.swift in Sources */,
 				CE74374B2430AD75003FB468 /* FeedCellLayoutCalculator.swift in Sources */,
 				CE7436D5242B971D003FB468 /* LocalizableProtocol.swift in Sources */,
@@ -1162,7 +1162,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "viper-rss/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1170,6 +1172,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "smirnov.viper-rss";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1179,7 +1182,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "viper-rss/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1187,6 +1192,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "smirnov.viper-rss";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

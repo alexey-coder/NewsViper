@@ -21,6 +21,7 @@ private struct Metrics {
         static let fromImageToText = Constants.Sizes.fromImageToText
         static let imageSize = Constants.Sizes.imageSize
         static let spaceBetweenText = Constants.Sizes.spaceBetweenText
+        static let spaceForCheckIndicator = Constants.Sizes.spaceForCheckIndicator
     }
 }
 
@@ -49,12 +50,12 @@ final class FeedCellLayoutCalculatorImpl: LayoutCalculatorProtocol {
     }
     
     private func mesureTitleTextHeight(text: String) -> CGFloat {
-        let width = screenWidth - (Metrics.Sizes.leadingToImage * 2) - Metrics.Sizes.imageSize - Metrics.Sizes.fromImageToText
+        let width = screenWidth - Metrics.Sizes.leadingToImage - Metrics.Sizes.imageSize - Metrics.Sizes.fromImageToText - Metrics.Sizes.spaceForCheckIndicator
         return text.height(width: width, font: Metrics.Fonts.newTitleFont!)
     }
 
     private func mesureDescriptionTextHeight(text: String) -> CGFloat {
-        let width = screenWidth - (Metrics.Sizes.leadingToImage * 2) - Metrics.Sizes.imageSize - Metrics.Sizes.fromImageToText
+        let width = screenWidth - Metrics.Sizes.leadingToImage - Metrics.Sizes.imageSize - Metrics.Sizes.fromImageToText - Metrics.Sizes.spaceForCheckIndicator
         return text.height(width: width, font: Metrics.Fonts.newDescriptionFont!)
     }
     
