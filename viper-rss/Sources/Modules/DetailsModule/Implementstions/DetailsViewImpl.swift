@@ -50,7 +50,7 @@ class DetailsViewImpl: BaseController<DetailsUI> {
         ui.progressView.frame = CGRect(
             x: .zero,
             y: view.layoutMargins.top,
-            width: view.frame.width,
+            width: view.bounds.width,
             height: Metrics.Sizes.progressHeight)
         
         ui.webView.frame = CGRect(
@@ -102,6 +102,7 @@ extension DetailsViewImpl: WKNavigationDelegate {
             options: [.transitionCrossDissolve],
             animations: {
                 self.ui.progressView.isHidden = true
+                self.ui.webView.frame.origin.y = -Metrics.Sizes.progressHeight
         }, completion: nil)
     }
 }

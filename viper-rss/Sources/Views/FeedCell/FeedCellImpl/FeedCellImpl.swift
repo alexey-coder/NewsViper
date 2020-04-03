@@ -56,6 +56,7 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
     
     private let newsImage = CustomImageView().then {
         $0.contentMode = .scaleAspectFill
+        $0.image = AssetsHelper.placeholders.placeholder.image
     }
     
     private let sourceLabel = UILabel().then {
@@ -86,7 +87,8 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        newsImage.image = nil
+        viewModel = nil
+        newsImage.image = AssetsHelper.placeholders.placeholder.image
     }
     
     func configure(with viewModel: FeedViewModelProtocol) {

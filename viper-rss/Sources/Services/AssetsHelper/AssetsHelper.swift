@@ -33,4 +33,8 @@ public enum AssetsHelper {
         case catalogTabbar   = "catalogTabbar"
         case menuTabbar      = "menuTabbar"
     }
+    
+    public enum placeholders: String, AssetsConvertible {
+        case placeholder     = "imagePlaceholder"
+    }
 }

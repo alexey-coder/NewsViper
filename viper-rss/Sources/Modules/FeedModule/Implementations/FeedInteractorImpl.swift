@@ -51,7 +51,7 @@ extension FeedInteractorImpl: FeedInteractorProtocol {
     
     func requestEntities(from sourses: [Sources]) {
         sourses.forEach { source in
-            let parser = RSSParserServiceImpl() // TODO!
+            let parser = RSSParserServiceImpl()
             parser.parseFeed(
                 url: source.getLink(),
                 successCompletion: { [weak self] entity in

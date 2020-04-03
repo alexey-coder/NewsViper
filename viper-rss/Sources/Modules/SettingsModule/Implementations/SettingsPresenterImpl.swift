@@ -10,8 +10,6 @@ import UIKit
 
 private struct Metrics {
     struct Values {
-        static let timerDefaultValue = Constants.DefaultValues.timerDefault
-        static let sourceDefaultValue = Constants.DefaultValues.sourceDefault
         static let sources = Constants.DefaultValues.sources
         static let timers = Constants.DefaultValues.timers
     }
@@ -24,9 +22,11 @@ class SettingsPresenterImpl {
     
     var heightForRow: CGFloat = 48
     private let userDefaultsStorage: UserDefaultsStorageProtocol
+    private let viewModelFactory: SettingsViewModelFactoryProtocol
     
     init(userDefaultsStorage: UserDefaultsStorageProtocol) {
         self.userDefaultsStorage = userDefaultsStorage
+        self.viewModelFactory = SettingsViewModelFactory(userDefaultsStorage: userDefaultsStorage)
     }
 }
 
@@ -46,26 +46,7 @@ extension SettingsPresenterImpl: SettingsPresenterProtocol {
     }
     
     func getViewModel(by indexPath: IndexPath) -> SettingsTimerViewModelProtocol? {
-        guard let row = SettingsHelper(rawValue: indexPath.row) else {
-            return nil
-        }
-        let currentValue: String
-        switch row {
-        case .timer:
-            if let currentTimerValue = userDefaultsStorage.savedTimerValue() {
-                currentValue = String(describing: currentTimerValue)
-            } else {
-                currentValue = String(describing: Metrics.Values.timerDefaultValue)
-            }
-            return SettingsViewModelImpl(labelText: row.getTitle(), currentValue: currentValue)
-        case .source:
-            if let currentSource = userDefaultsStorage.savedSourceValue() {
-                currentValue = currentSource
-            } else {
-                currentValue = Metrics.Values.sourceDefaultValue
-            }
-            return SettingsViewModelImpl(labelText: row.getTitle(), currentValue: currentValue)
-        }
+        return viewModelFactory.produceViewModel(by: indexPath)
     }
     
     func didRowSelected(_ row: Int) {

@@ -14,6 +14,8 @@ class ModuleDependencyContainer {
     private lazy var feedCellLayoutCalculator = FeedCellLayoutCalculatorImpl()
     private lazy var storageService = StorageServiceImpl.shared
     private lazy var userDefaultsStorage = UserDefaultsStorageImpl()
+    private lazy var timerWorker = TimerWorkerImpl(userDefaultsStorage: userDefaultsStorage)
+    private lazy var feedViewModelFactory = FeedViewModelFactoryImpl(feedCellLayoutCalculator: feedCellLayoutCalculator)
 }
 
 extension ModuleDependencyContainer: ModuleFactoryProtocol {
@@ -37,7 +39,9 @@ extension ModuleDependencyContainer: ModuleFactoryProtocol {
         let interactor = FeedInteractorImpl(
             rssParser: rssParser, storageService: storageService)
         let presenter = FeedPresenterImpl(
-            feedCellLayoutCalculator: feedCellLayoutCalculator, userDefaultsStorage: userDefaultsStorage)
+            viewModelFactory: feedViewModelFactory,
+            userDefaultsStorage: userDefaultsStorage,
+            timerWorker: timerWorker)
         let router = FeedRouterImpl()
         view.presenter = presenter
         presenter.interactor = interactor

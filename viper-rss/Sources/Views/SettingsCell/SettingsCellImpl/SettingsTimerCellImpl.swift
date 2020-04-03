@@ -19,6 +19,10 @@ private struct Metrics {
         static let backgroundColor = ColorHelper.baseBackgroundColor
         static let currentValueColor = Constants.Colors.settingsSecondaryColor
     }
+    
+    struct Sizes {
+        static let leadingToLabel: CGFloat = 24
+    }
 }
 
 class SettingsTimerCellImpl: UITableViewCell, SettingsCellProtocol {
@@ -54,13 +58,13 @@ class SettingsTimerCellImpl: UITableViewCell, SettingsCellProtocol {
     override func layoutSubviews() {
         super.layoutSubviews()
         settingCellLabel.frame = CGRect(
-            x: 24,
+            x: Metrics.Sizes.leadingToLabel,
             y: (self.frame.height / 2) - (settingCellLabel.intrinsicContentSize.height / 2),
             width: settingCellLabel.intrinsicContentSize.width,
             height: settingCellLabel.intrinsicContentSize.height)
         
         currentValueLabel.frame = CGRect(
-              x: frame.width - 24 - currentValueLabel.intrinsicContentSize.width,
+              x: frame.width - Metrics.Sizes.leadingToLabel - currentValueLabel.intrinsicContentSize.width,
               y: (self.frame.height / 2) - (currentValueLabel.intrinsicContentSize.height / 2),
               width: currentValueLabel.intrinsicContentSize.width,
               height: currentValueLabel.intrinsicContentSize.height)

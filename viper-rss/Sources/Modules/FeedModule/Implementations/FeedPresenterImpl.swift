@@ -8,20 +8,11 @@
 
 import UIKit
 
-private struct Metrics {
-    struct Values {
-        static let defaultSeconds = Constants.DefaultValues.timerDefault
-    }
-    
-    struct Patterns {
-        static let sourceDatePattern = Constants.Patterns.sourceDatePattern
-        static let customPattern = Constants.Patterns.customPattern
-    }
-}
-
-enum Modes: CaseIterable, CustomStringConvertible {
+private enum Modes: CaseIterable, CustomStringConvertible {
     case simple
     case full
+    
+    static let allValues: [String] = [simple.description, full.description]
     
     var description: String {
         switch self {
@@ -68,14 +59,12 @@ class FeedPresenterImpl {
     var interactor: FeedInteractorProtocol?
     weak var view: FeedViewProtocol?
     
-    private let feedCellLayoutCalculator: LayoutCalculatorProtocol
     private let userDefaultsStorage: UserDefaultsStorageProtocol
+    private var timerWorker: TimerWorkerProtocol
     private var isFullMode: Bool = false
-    private var viewModels: [FeedViewModelImpl]?
+    private var viewModels: [FeedViewModelProtocol]?
     private var models: [RSSEntity]?
-    private var timer: Timer?
-    private var seconds: Int?
-    private let defaultSeconds = Metrics.Values.defaultSeconds
+    private let viewModelFactory: FeedViewModelFactoryProtocol
     
     private var filter: Sources? {
         guard let value = userDefaultsStorage.savedSourceValue() else {
@@ -85,10 +74,15 @@ class FeedPresenterImpl {
     }
     
     init(
-        feedCellLayoutCalculator: LayoutCalculatorProtocol,
-        userDefaultsStorage: UserDefaultsStorageProtocol) {
-        self.feedCellLayoutCalculator = feedCellLayoutCalculator
+        viewModelFactory: FeedViewModelFactoryProtocol,
+        userDefaultsStorage: UserDefaultsStorageProtocol,
+        timerWorker: TimerWorkerProtocol) {
+        self.viewModelFactory = viewModelFactory
         self.userDefaultsStorage = userDefaultsStorage
+        self.timerWorker = timerWorker
+        self.timerWorker.onOverTimer = { [weak self] in
+            self?.retrieveNetworkData()
+        }
     }
     
     func retrieveNetworkData() {
@@ -104,48 +98,7 @@ class FeedPresenterImpl {
         default:
             source = [.gazeta, .lenta]
         }
-        view?.showIndicator()
         interactor?.requestEntities(from: source)
-    }
-    
-    private func startTimer() {
-        let secondsFromSettings = userDefaultsStorage.savedTimerValue()
-        seconds = secondsFromSettings == nil ? defaultSeconds : secondsFromSettings
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
-            self?.update()
-        })
-    }
-    
-    private func update() {
-        guard var seconds = self.seconds else {
-            return
-        }
-        seconds -= 1
-        self.seconds = seconds
-        if seconds <= 0 {
-            stopTimer()
-            startTimer()
-            retrieveNetworkData()
-        }
-    }
-    
-    private func stopTimer() {
-        timer?.invalidate()
-    }
-    
-    private func foratDate(dateToConvert: String) -> String {
-        let fromFormatter = DateFormatter()
-        fromFormatter.dateFormat = Metrics.Patterns.sourceDatePattern
-        
-        let toFormetter = DateFormatter()
-        toFormetter.dateFormat = Metrics.Patterns.customPattern
-        
-        if let date = fromFormatter.date(from: dateToConvert) {
-            return toFormetter.string(from: date)
-        } else {
-            print("There was an error decoding the string")
-            return dateToConvert
-        }
     }
 }
 
@@ -166,41 +119,20 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
                 prepareViewModel(for: $0)
             }
         }
-        self.view?.hideIndicator()
         view?.reloadData()
     }
     
     func createNewViewModel(with entity: RSSEntity) {
         prepareViewModel(for: entity)
-        self.view?.hideIndicator()
-        
         view?.reloadData()
     }
     
     func store(entity: RSSEntity) {
-        DispatchQueue.main.async {
-            self.view?.hideIndicator()
-        }
         interactor?.saveInStorage(entity: entity)
     }
     
     private func prepareViewModel(for entity: RSSEntity) {
-        let sizes = self.feedCellLayoutCalculator.mesureCellHeight(
-            title: entity.title, description: entity.description, date: entity.pubdate)
-        
-        let viewModel = FeedViewModelImpl(
-            newsTitleText: entity.title,
-            newsShortDescription: entity.description,
-            date: foratDate(dateToConvert: entity.pubdate),
-            isFullMode: self.isFullMode,
-            cellHeightFullMode: sizes.cellHeightFullMode,
-            cellHeightSimpleMode: sizes.cellHeightSimpleMode,
-            titleHeight: sizes.titleHeight,
-            descriptionHeight: sizes.descriptionHeight,
-            source: entity.source,
-            link: entity.link,
-            imgLink: entity.imgUrl,
-            isReaded: entity.isReaded)
+        let viewModel = viewModelFactory.produceViewModel(with: entity, fullMode: isFullMode)
         save(model: entity)
         save(viewModel: viewModel)
     }
@@ -213,7 +145,7 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
         }
     }
     
-    private func save(viewModel: FeedViewModelImpl) {
+    private func save(viewModel: FeedViewModelProtocol) {
         if viewModels == nil {
             viewModels = [viewModel]
         } else {
@@ -232,7 +164,7 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     }
     
     func viewWillAppear() {
-        startTimer()
+        timerWorker.startTimer()
         retrieveNetworkData()
         filter.flatMap {
             interactor?.getAllModelsFromStore(with: $0)
@@ -241,15 +173,11 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     }
     
     func viewWillDissaper() {
-        stopTimer()
+        timerWorker.stopTimer()
     }
     
     func getModes() -> [String] {
-        var modes = [String]()
-        Modes.allCases.forEach {
-            modes.append($0.description)
-        }
-        return modes
+        return Modes.allValues
     }
     
     func getCurrentMode() -> Bool {
@@ -258,8 +186,10 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     
     func switchMode() {
         isFullMode.toggle()
-        viewModels?.forEach {
-            $0.isFullMode.toggle()
+        viewModels.flatMap {
+            for var vm in $0 {
+                vm.isFullMode.toggle()
+            }
         }
         view?.reloadData()
     }
@@ -274,9 +204,8 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
         }
         if isFullMode {
             return viewModels[row].cellHeightFullMode
-        } else {
-            return viewModels[row].cellHeightSimpleMode
         }
+        return viewModels[row].cellHeightSimpleMode
     }
     
     func getNumberOfRows() -> Int {

@@ -10,6 +10,11 @@
 		CE0FF9DB2436879000072C2A /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0FF9DA2436879000072C2A /* TableViewExtension.swift */; };
 		CE4BDDA3243713ED00FDB6E7 /* XMLEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA1243713ED00FDB6E7 /* XMLEntity+CoreDataClass.swift */; };
 		CE4BDDA4243713ED00FDB6E7 /* XMLEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA2243713ED00FDB6E7 /* XMLEntity+CoreDataProperties.swift */; };
+		CE4BDDA624375FFF00FDB6E7 /* SettingsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA524375FFF00FDB6E7 /* SettingsViewModelFactory.swift */; };
+		CE4BDDA824376A6900FDB6E7 /* TimerWorkerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA724376A6900FDB6E7 /* TimerWorkerImpl.swift */; };
+		CE4BDDAA24376E5700FDB6E7 /* TimerWorkerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA924376E5700FDB6E7 /* TimerWorkerProtocol.swift */; };
+		CE4BDDAC24376E7E00FDB6E7 /* SettingsViewModelFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDAB24376E7E00FDB6E7 /* SettingsViewModelFactoryProtocol.swift */; };
+		CE4BDDAE2437704800FDB6E7 /* FeedViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDAD2437704800FDB6E7 /* FeedViewModelFactory.swift */; };
 		CE5082152433DFFD002F29D4 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082142433DFFD002F29D4 /* CustomImageView.swift */; };
 		CE50821A2434B808002F29D4 /* UserDefaultsStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082192434B808002F29D4 /* UserDefaultsStorageProtocol.swift */; };
 		CE50821C2434B812002F29D4 /* UserDefaultsStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50821B2434B812002F29D4 /* UserDefaultsStorageImpl.swift */; };
@@ -122,6 +127,11 @@
 		CE0FF9DA2436879000072C2A /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		CE4BDDA1243713ED00FDB6E7 /* XMLEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XMLEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CE4BDDA2243713ED00FDB6E7 /* XMLEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XMLEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CE4BDDA524375FFF00FDB6E7 /* SettingsViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelFactory.swift; sourceTree = "<group>"; };
+		CE4BDDA724376A6900FDB6E7 /* TimerWorkerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWorkerImpl.swift; sourceTree = "<group>"; };
+		CE4BDDA924376E5700FDB6E7 /* TimerWorkerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWorkerProtocol.swift; sourceTree = "<group>"; };
+		CE4BDDAB24376E7E00FDB6E7 /* SettingsViewModelFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelFactoryProtocol.swift; sourceTree = "<group>"; };
+		CE4BDDAD2437704800FDB6E7 /* FeedViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelFactory.swift; sourceTree = "<group>"; };
 		CE5082142433DFFD002F29D4 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		CE5082192434B808002F29D4 /* UserDefaultsStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageProtocol.swift; sourceTree = "<group>"; };
 		CE50821B2434B812002F29D4 /* UserDefaultsStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageImpl.swift; sourceTree = "<group>"; };
@@ -371,6 +381,7 @@
 				CE743676242B683A003FB468 /* FeedRouterProtocol.swift */,
 				CE743678242B6857003FB468 /* FeedViewProtocol.swift */,
 				CE74367A242B6863003FB468 /* FeedInteractorProtocol.swift */,
+				CE4BDDA924376E5700FDB6E7 /* TimerWorkerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -383,6 +394,8 @@
 				CE743680242B6940003FB468 /* FeedRouterImpl.swift */,
 				CE743682242B6951003FB468 /* FeedInteractorImpl.swift */,
 				CE743701242E1C28003FB468 /* FeedUI.swift */,
+				CE4BDDA724376A6900FDB6E7 /* TimerWorkerImpl.swift */,
+				CE4BDDAD2437704800FDB6E7 /* FeedViewModelFactory.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -417,6 +430,7 @@
 				CE74368F242B7267003FB468 /* SettingsRouterProtocol.swift */,
 				CE743691242B728B003FB468 /* SettingsInteractorProtocol.swift */,
 				CE743693242B72A1003FB468 /* SettingsPresenterProtocol.swift */,
+				CE4BDDAB24376E7E00FDB6E7 /* SettingsViewModelFactoryProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -429,6 +443,7 @@
 				CE743699242B72D1003FB468 /* SettingsPresenterImpl.swift */,
 				CE74369B242B72DD003FB468 /* SettingsRouterImpl.swift */,
 				CE7436E1242BA7C9003FB468 /* SettingsUI.swift */,
+				CE4BDDA524375FFF00FDB6E7 /* SettingsViewModelFactory.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -934,6 +949,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7436D9242B97AC003FB468 /* LocalizableImpl.swift in Sources */,
+				CE4BDDAA24376E5700FDB6E7 /* TimerWorkerProtocol.swift in Sources */,
 				CE743707242E1CDE003FB468 /* FeedCellProtocol.swift in Sources */,
 				CE74370F242E1D3F003FB468 /* FeedViewModelImpl.swift in Sources */,
 				CE74367D242B68F6003FB468 /* FeedPresenterImpl.swift in Sources */,
@@ -941,7 +957,9 @@
 				CE743735242E41B2003FB468 /* RSSParserServiceImpl.swift in Sources */,
 				CE743702242E1C28003FB468 /* FeedUI.swift in Sources */,
 				CE743690242B7267003FB468 /* SettingsRouterProtocol.swift in Sources */,
+				CE4BDDAE2437704800FDB6E7 /* FeedViewModelFactory.swift in Sources */,
 				CE7436F6242BB08E003FB468 /* SettingsTimerViewModelProtocol.swift in Sources */,
+				CE4BDDA824376A6900FDB6E7 /* TimerWorkerImpl.swift in Sources */,
 				CE7436E5242BA852003FB468 /* Then.swift in Sources */,
 				CE743698242B72C2003FB468 /* SettingsInteractorImpl.swift in Sources */,
 				CE74376524311286003FB468 /* DetailsPresenterImpl.swift in Sources */,
@@ -954,6 +972,7 @@
 				CE7436EF242BAF22003FB468 /* ReusableCell.swift in Sources */,
 				CE743696242B72B7003FB468 /* SettingsViewImpl.swift in Sources */,
 				CE7436BD242B7F9C003FB468 /* StartViewImpl.swift in Sources */,
+				CE4BDDA624375FFF00FDB6E7 /* SettingsViewModelFactory.swift in Sources */,
 				CE74367F242B6934003FB468 /* FeedViewImpl.swift in Sources */,
 				CE743731242E2E44003FB468 /* UIViewControllerExtension.swift in Sources */,
 				CE4BDDA3243713ED00FDB6E7 /* XMLEntity+CoreDataClass.swift in Sources */,
@@ -996,6 +1015,7 @@
 				CE7436B9242B7F7F003FB468 /* StartPresenterProtocol.swift in Sources */,
 				CE74376724311292003FB468 /* DetailsInteractorImpl.swift in Sources */,
 				CE7437542430C176003FB468 /* Constants.swift in Sources */,
+				CE4BDDAC24376E7E00FDB6E7 /* SettingsViewModelFactoryProtocol.swift in Sources */,
 				CE7436A2242B7A07003FB468 /* MainRouterProtocol.swift in Sources */,
 				CE7436ED242BAD68003FB468 /* SettingsTimerCellImpl.swift in Sources */,
 				CE7436B7242B7F71003FB468 /* StartRouterProtocol.swift in Sources */,

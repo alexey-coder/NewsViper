@@ -73,12 +73,6 @@ class FeedViewImpl: BaseController<FeedUI> {
 }
 
 extension FeedViewImpl: FeedViewProtocol {
-    func showIndicator() {
-        ui.tableView.showIndicator()
-    }
-    
-    func hideIndicator() {
-    }
     
     func showAlert(with message: String) {
         alertService.showAlert(vc: self, message: message)
@@ -102,10 +96,8 @@ extension FeedViewImpl: UITableViewDataSource {
         }
         if rows == 0 {
             ui.tableView.setEmptyMessage(LocalizedImpl<FeedModuleLocalizedKeys>(.emptyTableMessage).text)
-            return rows
-        } else {
-            return rows
         }
+        return rows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
