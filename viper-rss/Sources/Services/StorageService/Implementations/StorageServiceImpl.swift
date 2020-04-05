@@ -53,7 +53,9 @@ final class StorageServiceImpl: NSObject, StorageServiceProtocol {
             xmlEntity.text = entity.description
             xmlEntity.link = entity.link
             xmlEntity.imgUrl = entity.imgUrl
-            xmlEntity.date = entity.pubdate
+            let df = DateFormatter()
+            df.dateFormat = Constants.Patterns.sourceDatePattern
+            xmlEntity.date = df.date(from: entity.pubdate) as NSDate? ?? NSDate()
             xmlEntity.source = entity.source
             xmlEntity.isReaded = entity.isReaded
             saveContext()
@@ -77,7 +79,7 @@ final class StorageServiceImpl: NSObject, StorageServiceProtocol {
     
     private lazy var fetchedResultsController: NSFetchedResultsController<XMLEntity> = {
         let fetchRequest = NSFetchRequest<XMLEntity>(entityName: "XMLEntity")
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
         fetchRequest.returnsObjectsAsFaults = false
         fetchRequest.sortDescriptors = [sortDescriptor]
         let fetchedResultsController = NSFetchedResultsController<XMLEntity>(

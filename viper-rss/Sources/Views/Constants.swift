@@ -44,6 +44,7 @@ struct Constants {
     
     struct Patterns {
         static let sourceDatePattern = "E, d MMM yyyy HH:mm:ss Z"
+        static let storeFormat = "yyyy-MM-dd HH:mm:ss Z"
         static let customPattern = "dd.MM.yy"
     }
 }

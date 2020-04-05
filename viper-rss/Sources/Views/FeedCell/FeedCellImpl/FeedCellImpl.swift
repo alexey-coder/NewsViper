@@ -54,7 +54,7 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
         $0.sizeToFit()
     }
     
-    private let newsImage = CustomImageView().then {
+    private let newsImage = UIImageView().then {
         $0.contentMode = .scaleAspectFill
         $0.image = AssetsHelper.placeholders.placeholder.image
     }
@@ -85,16 +85,12 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        viewModel = nil
-        newsImage.image = AssetsHelper.placeholders.placeholder.image
-    }
-    
     func configure(with viewModel: FeedViewModelProtocol) {
         self.viewModel = viewModel
         newsTitle.text = viewModel.newsTitleText
-        newsImage.downloadImageFrom(urlString: viewModel.imgLink, imageMode: .scaleAspectFill)
+        self.viewModel?.onImageUpdate = { [weak self] img in
+            self?.newsImage.image = img
+        }
         newsDescription.text = viewModel.newsShortDescription
         sourceLabel.text = viewModel.source
         dateLabel.text = viewModel.date

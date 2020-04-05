@@ -16,7 +16,7 @@ public class XMLEntity: NSManagedObject {
         return RSSEntity(
             title: self.title ?? "",
             description: self.text ?? "",
-            pubdate: self.date ?? "",
+            pubdate: String(describing: self.date),
             link: self.link ?? "",
             imgUrl: self.imgUrl ?? "",
             postId: self.id ?? "",

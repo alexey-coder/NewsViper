@@ -1,30 +1,25 @@
 //
-//  CustomImageView.swift
+//  ImageDownloadServiceImpl.swift
 //  viper-rss
 //
-//  Created by user on 31.03.2020.
+//  Created by user on 04.04.2020.
 //  Copyright © 2020 smirnov. All rights reserved.
 //
 
 import UIKit
 
-class CustomImageView: UIImageView {
+class ImageDownloadServiceImpl: ImageDownloadServiceProtocol {
+    
+    init() {}
     
     let imageCache = NSCache<NSString, AnyObject>()
     var imageURLString: String?
     
-    func downloadImageFrom(urlString: String, imageMode: UIView.ContentMode) {
-        guard let url = URL(string: urlString) else {
-            return
-        }
-        downloadImageFrom(url: url, imageMode: imageMode)
-    }
-    
-    func downloadImageFrom(url: URL, imageMode: UIView.ContentMode) {
-        contentMode = imageMode
+    func image(for url: URL, completionHandler: @escaping(_ image: UIImage?) -> ()) {
         if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) as? UIImage {
-            self.image = cachedImage
+            completionHandler(cachedImage)
         } else {
+            
             URLSession.shared.dataTask(with: url) { data, response, error in
                 guard let data = data, error == nil else {
                     return
@@ -32,7 +27,7 @@ class CustomImageView: UIImageView {
                 DispatchQueue.main.async {
                     let imageToCache = UIImage(data: data)
                     self.imageCache.setObject(imageToCache!, forKey: url.absoluteString as NSString)
-                    self.image = imageToCache
+                    completionHandler(imageToCache)
                 }
             }.resume()
         }

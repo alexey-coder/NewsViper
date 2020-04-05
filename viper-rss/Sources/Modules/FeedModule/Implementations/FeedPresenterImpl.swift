@@ -64,7 +64,7 @@ class FeedPresenterImpl {
     private var isFullMode: Bool = false
     private var viewModels: [FeedViewModelProtocol]?
     private var models: [RSSEntity]?
-    private let viewModelFactory: FeedViewModelFactoryProtocol
+    private let viewModelHelper: FeedViewModelHelperProtocol
     
     private var filter: Sources? {
         guard let value = userDefaultsStorage.savedSourceValue() else {
@@ -74,10 +74,10 @@ class FeedPresenterImpl {
     }
     
     init(
-        viewModelFactory: FeedViewModelFactoryProtocol,
+        viewModelHelper: FeedViewModelHelperProtocol,
         userDefaultsStorage: UserDefaultsStorageProtocol,
         timerWorker: TimerWorkerProtocol) {
-        self.viewModelFactory = viewModelFactory
+        self.viewModelHelper = viewModelHelper
         self.userDefaultsStorage = userDefaultsStorage
         self.timerWorker = timerWorker
         self.timerWorker.onOverTimer = { [weak self] in
@@ -132,7 +132,7 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     }
     
     private func prepareViewModel(for entity: RSSEntity) {
-        let viewModel = viewModelFactory.produceViewModel(with: entity, fullMode: isFullMode)
+        let viewModel = viewModelHelper.produceViewModel(with: entity, fullMode: isFullMode)
         save(model: entity)
         save(viewModel: viewModel)
     }

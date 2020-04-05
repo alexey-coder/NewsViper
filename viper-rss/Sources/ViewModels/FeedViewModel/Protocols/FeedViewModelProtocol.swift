@@ -20,5 +20,8 @@ protocol FeedViewModelProtocol {
     var isFullMode: Bool { get set }
     var link: String { get set }
     var imgLink: String { get set }
+//    var image: UIImage? { get set }
     var isReaded: Bool { get set }
+    var onImageUpdate: ((UIImage) -> Void)? { get set }
+    func updateImgae(_ img: UIImage)
 }

@@ -9,6 +9,7 @@
 import UIKit
 
 class FeedViewModelImpl: FeedViewModelProtocol {
+    
     var newsTitleText: String
     var newsShortDescription: String
     var date: String
@@ -21,6 +22,8 @@ class FeedViewModelImpl: FeedViewModelProtocol {
     var link: String
     var imgLink: String
     var isReaded: Bool
+    
+    var onImageUpdate: ((UIImage) -> Void)?
     
     init(
         newsTitleText: String,
@@ -48,5 +51,9 @@ class FeedViewModelImpl: FeedViewModelProtocol {
         self.link = link
         self.imgLink = imgLink
         self.isReaded = isReaded
+    }
+    
+    func updateImgae(_ img: UIImage) {
+        onImageUpdate?(img)
     }
 }

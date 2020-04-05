@@ -17,7 +17,7 @@ extension XMLEntity {
         return NSFetchRequest<XMLEntity>(entityName: "XMLEntity")
     }
 
-    @NSManaged public var date: String?
+    @NSManaged public var date: NSDate
     @NSManaged public var id: String?
     @NSManaged public var imgUrl: String?
     @NSManaged public var link: String?

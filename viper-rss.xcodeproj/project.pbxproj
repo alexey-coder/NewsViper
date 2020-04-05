@@ -15,7 +15,9 @@
 		CE4BDDAA24376E5700FDB6E7 /* TimerWorkerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA924376E5700FDB6E7 /* TimerWorkerProtocol.swift */; };
 		CE4BDDAC24376E7E00FDB6E7 /* SettingsViewModelFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDAB24376E7E00FDB6E7 /* SettingsViewModelFactoryProtocol.swift */; };
 		CE4BDDAE2437704800FDB6E7 /* FeedViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDAD2437704800FDB6E7 /* FeedViewModelFactory.swift */; };
-		CE5082152433DFFD002F29D4 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082142433DFFD002F29D4 /* CustomImageView.swift */; };
+		CE4BDDB32438E15300FDB6E7 /* ImageDownloaderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDB22438E15300FDB6E7 /* ImageDownloaderImpl.swift */; };
+		CE4BDDB52438E16200FDB6E7 /* ImageDownloaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDB42438E16200FDB6E7 /* ImageDownloaderProtocol.swift */; };
+		CE4BDDB72439C9E600FDB6E7 /* FeedViewModelHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDB62439C9E600FDB6E7 /* FeedViewModelHelperProtocol.swift */; };
 		CE50821A2434B808002F29D4 /* UserDefaultsStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082192434B808002F29D4 /* UserDefaultsStorageProtocol.swift */; };
 		CE50821C2434B812002F29D4 /* UserDefaultsStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50821B2434B812002F29D4 /* UserDefaultsStorageImpl.swift */; };
 		CE50821F2434EE7A002F29D4 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50821E2434EE7A002F29D4 /* CustomPickerView.swift */; };
@@ -132,7 +134,9 @@
 		CE4BDDA924376E5700FDB6E7 /* TimerWorkerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWorkerProtocol.swift; sourceTree = "<group>"; };
 		CE4BDDAB24376E7E00FDB6E7 /* SettingsViewModelFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelFactoryProtocol.swift; sourceTree = "<group>"; };
 		CE4BDDAD2437704800FDB6E7 /* FeedViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelFactory.swift; sourceTree = "<group>"; };
-		CE5082142433DFFD002F29D4 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		CE4BDDB22438E15300FDB6E7 /* ImageDownloaderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderImpl.swift; sourceTree = "<group>"; };
+		CE4BDDB42438E16200FDB6E7 /* ImageDownloaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderProtocol.swift; sourceTree = "<group>"; };
+		CE4BDDB62439C9E600FDB6E7 /* FeedViewModelHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelHelperProtocol.swift; sourceTree = "<group>"; };
 		CE5082192434B808002F29D4 /* UserDefaultsStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageProtocol.swift; sourceTree = "<group>"; };
 		CE50821B2434B812002F29D4 /* UserDefaultsStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageImpl.swift; sourceTree = "<group>"; };
 		CE50821E2434EE7A002F29D4 /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
@@ -254,6 +258,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE4BDDAF2438E11F00FDB6E7 /* ImageDownloader */ = {
+			isa = PBXGroup;
+			children = (
+				CE4BDDB12438E13B00FDB6E7 /* Implementations */,
+				CE4BDDB02438E12D00FDB6E7 /* Protocols */,
+			);
+			path = ImageDownloader;
+			sourceTree = "<group>";
+		};
+		CE4BDDB02438E12D00FDB6E7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE4BDDB42438E16200FDB6E7 /* ImageDownloaderProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		CE4BDDB12438E13B00FDB6E7 /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				CE4BDDB22438E15300FDB6E7 /* ImageDownloaderImpl.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
 		CE5082162434B7E5002F29D4 /* UserDefaultsStorage */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +360,7 @@
 		CE74366C242B65D1003FB468 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CE4BDDAF2438E11F00FDB6E7 /* ImageDownloader */,
 				CE5082162434B7E5002F29D4 /* UserDefaultsStorage */,
 				CE7437552430D958003FB468 /* LayoutCalculator */,
 				CE74373D242E6CAC003FB468 /* AlertService */,
@@ -382,6 +412,7 @@
 				CE743678242B6857003FB468 /* FeedViewProtocol.swift */,
 				CE74367A242B6863003FB468 /* FeedInteractorProtocol.swift */,
 				CE4BDDA924376E5700FDB6E7 /* TimerWorkerProtocol.swift */,
+				CE4BDDB62439C9E600FDB6E7 /* FeedViewModelHelperProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -619,7 +650,6 @@
 				CE743730242E2E44003FB468 /* UIViewControllerExtension.swift */,
 				CE743746242F866E003FB468 /* UILabelExtension.swift */,
 				CE7437482430A454003FB468 /* StringExtension.swift */,
-				CE5082142433DFFD002F29D4 /* CustomImageView.swift */,
 				CE0FF9DA2436879000072C2A /* TableViewExtension.swift */,
 			);
 			path = Common;
@@ -964,6 +994,7 @@
 				CE743698242B72C2003FB468 /* SettingsInteractorImpl.swift in Sources */,
 				CE74376524311286003FB468 /* DetailsPresenterImpl.swift in Sources */,
 				CE74373A242E4217003FB468 /* RSSEntity.swift in Sources */,
+				CE4BDDB72439C9E600FDB6E7 /* FeedViewModelHelperProtocol.swift in Sources */,
 				CE7436EA242BABFB003FB468 /* SettingsCellProtocol.swift in Sources */,
 				CE74370D242E1D2B003FB468 /* FeedViewModelProtocol.swift in Sources */,
 				CE74376F24324ACD003FB468 /* StorageServiceImpl.swift in Sources */,
@@ -1028,11 +1059,12 @@
 				CE7436AC242B7BB0003FB468 /* MainPresenterImpl.swift in Sources */,
 				CE743733242E3A21003FB468 /* FeedModuleLocalizedKeys.swift in Sources */,
 				CE74376B2431D003003FB468 /* DetailsUI.swift in Sources */,
+				CE4BDDB32438E15300FDB6E7 /* ImageDownloaderImpl.swift in Sources */,
 				CE743737242E41CC003FB468 /* RSSParserServiceProtocol.swift in Sources */,
 				CE743675242B682E003FB468 /* FeedPresenterProtocol.swift in Sources */,
 				CE743745242E78E7003FB468 /* AlertServiceKeys.swift in Sources */,
 				CEC97169242A9ACF0055AA80 /* viper_rss.xcdatamodeld in Sources */,
-				CE5082152433DFFD002F29D4 /* CustomImageView.swift in Sources */,
+				CE4BDDB52438E16200FDB6E7 /* ImageDownloaderProtocol.swift in Sources */,
 				CE50821C2434B812002F29D4 /* UserDefaultsStorageImpl.swift in Sources */,
 				CE743683242B6951003FB468 /* FeedInteractorImpl.swift in Sources */,
 				CE7436A4242B7A21003FB468 /* MainPresenterProtocol.swift in Sources */,
