@@ -37,7 +37,7 @@ struct Constants {
     
     struct DefaultValues {
         static let timerDefault: Int = Constants.DefaultValues.timers.first!
-        static let sourceDefault: String = "all"
+        static let sourceDefault: String = Sources.all.description
         static let timers: [Int] = [15, 30, 60]
         static let sources: [String] = Sources.allValues
     }

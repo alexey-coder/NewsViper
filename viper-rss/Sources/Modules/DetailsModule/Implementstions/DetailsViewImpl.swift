@@ -47,17 +47,14 @@ class DetailsViewImpl: BaseController<DetailsUI> {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        ui.progressView.frame = CGRect(
-            x: .zero,
-            y: view.layoutMargins.top,
-            width: view.bounds.width,
-            height: Metrics.Sizes.progressHeight)
-        
-        ui.webView.frame = CGRect(
-            x: .zero,
-            y: ui.progressView.frame.maxY,
-            width: view.bounds.width,
-            height: view.bounds.height)
+         if let progMaxY = navigationController?.navigationBar.frame.maxY {
+               ui.progressView.frame = CGRect(
+                   x: .zero,
+                   y: progMaxY,
+                   width: view.bounds.width,
+                   height: 2)
+           }
+           ui.webView.frame = view.bounds
     }
     
     private func setupNavBar() {
@@ -102,7 +99,6 @@ extension DetailsViewImpl: WKNavigationDelegate {
             options: [.transitionCrossDissolve],
             animations: {
                 self.ui.progressView.isHidden = true
-                self.ui.webView.frame.origin.y = -Metrics.Sizes.progressHeight
         }, completion: nil)
     }
 }

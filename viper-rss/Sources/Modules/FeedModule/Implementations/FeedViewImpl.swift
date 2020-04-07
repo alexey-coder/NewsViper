@@ -39,6 +39,13 @@ class FeedViewImpl: BaseController<FeedUI> {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         navigationItem.titleView = ui.segmentControl
+        if let progMaxY = navigationController?.navigationBar.frame.maxY {
+            ui.progressView.frame = CGRect(
+                x: .zero,
+                y: progMaxY,
+                width: view.bounds.width,
+                height: 2)
+        }
         ui.tableView.frame = view.bounds
     }
     
@@ -49,10 +56,6 @@ class FeedViewImpl: BaseController<FeedUI> {
     
     @objc private func segmentControleToggled(_ segmentedControl: UISegmentedControl) {
         presenter?.switchMode()
-    }
-    
-    @objc private func refreshData(_ sender: Any) {
-        presenter?.retrieveNetworkData()
     }
 
     private func setupSegmentControl() {
@@ -70,9 +73,24 @@ class FeedViewImpl: BaseController<FeedUI> {
         navigationController?.navigationBar.prefersLargeTitles = true
         setupNavBar(LocalizedImpl<FeedModuleLocalizedKeys>(.feedNavBarTitle).text)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let progMaxY = navigationController?.navigationBar.frame.maxY {
+            ui.progressView.frame.origin.y = progMaxY
+        }
+    }
 }
 
 extension FeedViewImpl: FeedViewProtocol {
+    func showIndicator() {
+    }
+    
+    func hideIndicator() {
+    }
+    
+    func show(progress: Double) {
+        ui.progressView.progress = Float(progress)
+    }
     
     func showAlert(with message: String) {
         alertService.showAlert(vc: self, message: message)
@@ -82,7 +100,6 @@ extension FeedViewImpl: FeedViewProtocol {
         ui.tableView.reloadData()
     }
 }
-
 
 extension FeedViewImpl: UITableViewDataSource {
     

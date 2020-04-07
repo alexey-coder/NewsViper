@@ -13,3 +13,19 @@ extension UIColor {
         self.init(red: r/255, green: g/255, blue: b/255, alpha: 1)
     }
 }
+
+extension UIColor {
+    convenience init(light: UIColor, dark: UIColor) {
+        if #available(iOS 13.0, *) {
+            self.init { traitCollection in
+                if traitCollection.userInterfaceStyle == .dark {
+                    return dark
+                }
+                return light
+            }
+        }
+        else {
+            self.init(cgColor: light.cgColor)
+        }
+    }
+}

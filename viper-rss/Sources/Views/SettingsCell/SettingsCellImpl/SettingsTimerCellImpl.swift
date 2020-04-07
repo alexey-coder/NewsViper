@@ -43,7 +43,7 @@ class SettingsTimerCellImpl: UITableViewCell, SettingsCellProtocol {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = Metrics.Colors.backgroundColor
         selectionStyle = .none
-        [currentValueLabel, settingCellLabel].forEach { addSubview($0) }
+        [currentValueLabel, settingCellLabel].forEach { contentView.addSubview($0) }
     }
     
     required init?(coder: NSCoder) {
@@ -59,13 +59,13 @@ class SettingsTimerCellImpl: UITableViewCell, SettingsCellProtocol {
         super.layoutSubviews()
         settingCellLabel.frame = CGRect(
             x: Metrics.Sizes.leadingToLabel,
-            y: (self.frame.height / 2) - (settingCellLabel.intrinsicContentSize.height / 2),
+            y: (contentView.frame.height / 2) - (settingCellLabel.intrinsicContentSize.height / 2),
             width: settingCellLabel.intrinsicContentSize.width,
             height: settingCellLabel.intrinsicContentSize.height)
         
         currentValueLabel.frame = CGRect(
-              x: frame.width - Metrics.Sizes.leadingToLabel - currentValueLabel.intrinsicContentSize.width,
-              y: (self.frame.height / 2) - (currentValueLabel.intrinsicContentSize.height / 2),
+            x: contentView.frame.width - Metrics.Sizes.leadingToLabel - currentValueLabel.intrinsicContentSize.width,
+              y: (contentView.frame.height / 2) - (currentValueLabel.intrinsicContentSize.height / 2),
               width: currentValueLabel.intrinsicContentSize.width,
               height: currentValueLabel.intrinsicContentSize.height)
     }

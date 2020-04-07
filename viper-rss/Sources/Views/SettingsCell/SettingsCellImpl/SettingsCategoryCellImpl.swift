@@ -19,6 +19,10 @@ private struct Metrics {
         static let backgroundColor = ColorHelper.baseBackgroundColor
         static let currentValueColor = Constants.Colors.settingsSecondaryColor
     }
+    
+    struct Sizes {
+        static let leadingToLabel: CGFloat = 24
+    }
 }
 
 class SettingsCategoryCellImpl: UITableViewCell, SettingsCellProtocol {
@@ -39,7 +43,7 @@ class SettingsCategoryCellImpl: UITableViewCell, SettingsCellProtocol {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = Metrics.Colors.backgroundColor
         selectionStyle = .none
-        [currentValueLabel, settingCellLabel].forEach { addSubview($0) }
+        [currentValueLabel, settingCellLabel].forEach { contentView.addSubview($0) }
     }
     
     required init?(coder: NSCoder) {
@@ -54,14 +58,14 @@ class SettingsCategoryCellImpl: UITableViewCell, SettingsCellProtocol {
     override func layoutSubviews() {
         super.layoutSubviews()
         settingCellLabel.frame = CGRect(
-            x: 24,
-            y: (self.frame.height / 2) - (settingCellLabel.intrinsicContentSize.height / 2),
+            x: Metrics.Sizes.leadingToLabel,
+            y: (contentView.frame.height / 2) - (settingCellLabel.intrinsicContentSize.height / 2),
             width: settingCellLabel.intrinsicContentSize.width,
             height: settingCellLabel.intrinsicContentSize.height)
         
         currentValueLabel.frame = CGRect(
-            x: frame.width - 24 - currentValueLabel.intrinsicContentSize.width,
-            y: (self.frame.height / 2) - (currentValueLabel.intrinsicContentSize.height / 2),
+            x: contentView.frame.width - Metrics.Sizes.leadingToLabel - currentValueLabel.intrinsicContentSize.width,
+            y: (contentView.frame.height / 2) - (currentValueLabel.intrinsicContentSize.height / 2),
             width: currentValueLabel.intrinsicContentSize.width,
             height: currentValueLabel.intrinsicContentSize.height)
     }

@@ -17,6 +17,11 @@ private struct Metrics {
 
 class FeedUI: UIView {
     
+    let progressView = UIProgressView(progressViewStyle: .bar).then {
+        $0.tintColor = .lightGray
+        $0.progressTintColor = .systemBlue
+    }
+        
     let segmentControl = UISegmentedControl().then {
         $0.tintColor = Metrics.Colors.segmentControlTintColor
     }
@@ -24,11 +29,11 @@ class FeedUI: UIView {
     lazy var tableView = UITableView().then {
         $0.register(FeedCellImpl.self, forCellReuseIdentifier: FeedCellImpl.reuseIdentifier)
     }
-        
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = Metrics.Colors.backgroundColor
-        [tableView, segmentControl].forEach { addSubview($0) }
+        [tableView, segmentControl, progressView].forEach { addSubview($0) }
     }
     
     required init?(coder: NSCoder) {

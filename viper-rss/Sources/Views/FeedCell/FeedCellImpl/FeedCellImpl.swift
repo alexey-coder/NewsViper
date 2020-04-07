@@ -78,7 +78,7 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
          newsDescription,
          newsImage,
          sourceLabel,
-         dateLabel].forEach { addSubview($0) }
+         dateLabel].forEach { contentView.addSubview($0) }
     }
     
     required init?(coder: NSCoder) {
@@ -113,7 +113,7 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
         newsTitle.frame = CGRect(
             x: newsImage.frame.maxX + Metrics.Sizes.fromImageToText,
             y: newsImage.frame.minY,
-            width: self.frame.width - Metrics.Sizes.leadingToImage - Metrics.Sizes.imageSize - Metrics.Sizes.fromImageToText - Metrics.Sizes.spaceForCheckIndicator,
+            width: contentView.frame.width - Metrics.Sizes.leadingToImage - Metrics.Sizes.imageSize - Metrics.Sizes.fromImageToText - Metrics.Sizes.spaceForCheckIndicator,
             height: viewModel?.titleHeight ?? 0)
         
         newsDescription.frame = CGRect(
@@ -124,13 +124,13 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
         
         sourceLabel.frame = CGRect(
             x: newsImage.frame.minX,
-            y: frame.height - Metrics.Sizes.topAndBottomMargin,
+            y: contentView.frame.height - Metrics.Sizes.topAndBottomMargin,
             width: sourceLabel.intrinsicContentSize.width,
             height: sourceLabel.intrinsicContentSize.height)
         
         dateLabel.frame = CGRect(
-            x: frame.width - Metrics.Sizes.leadingToImage - dateLabel.intrinsicContentSize.width,
-            y: frame.height - Metrics.Sizes.topAndBottomMargin,
+            x: contentView.frame.width - Metrics.Sizes.leadingToImage - dateLabel.intrinsicContentSize.width - Metrics.Sizes.spaceForCheckIndicator,
+            y: contentView.frame.height - Metrics.Sizes.topAndBottomMargin,
             width: dateLabel.intrinsicContentSize.width,
             height: dateLabel.intrinsicContentSize.height)
     }
