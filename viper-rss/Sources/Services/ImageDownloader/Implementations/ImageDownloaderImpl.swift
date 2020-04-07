@@ -8,18 +8,16 @@
 
 import UIKit
 
-class ImageDownloadServiceImpl: ImageDownloadServiceProtocol {
+final class ImageDownloadServiceImpl: ImageDownloadServiceProtocol {
     
     init() {}
     
     let imageCache = NSCache<NSString, AnyObject>()
-    var imageURLString: String?
     
     func image(for url: URL, completionHandler: @escaping(_ image: UIImage?) -> ()) {
         if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) as? UIImage {
             completionHandler(cachedImage)
         } else {
-            
             URLSession.shared.dataTask(with: url) { data, response, error in
                 guard let data = data, error == nil else {
                     return

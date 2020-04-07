@@ -22,6 +22,7 @@ class FeedViewModelImpl: FeedViewModelProtocol {
     var link: String
     var imgLink: String
     var isReaded: Bool
+    var img: UIImage?
     
     var onImageUpdate: ((UIImage) -> Void)?
     
@@ -54,6 +55,7 @@ class FeedViewModelImpl: FeedViewModelProtocol {
     }
     
     func updateImgae(_ img: UIImage) {
+        self.img = img
         onImageUpdate?(img)
     }
 }

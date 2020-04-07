@@ -31,6 +31,7 @@ private struct Metrics {
         static let fromImageToText = Constants.Sizes.fromImageToText
         static let imageSize = Constants.Sizes.imageSize
         static let spaceBetweenText = Constants.Sizes.spaceBetweenText
+        static let eyeSize: CGFloat = 20
     }
 }
 
@@ -71,6 +72,10 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
         $0.textColor = Metrics.Colors.dateColor
     }
     
+    private let eyeImage = UIImageView().then {
+        $0.image = AssetsHelper.icons.eye.image
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = Metrics.Colors.backgroundColor
@@ -78,7 +83,8 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
          newsDescription,
          newsImage,
          sourceLabel,
-         dateLabel].forEach { contentView.addSubview($0) }
+         dateLabel,
+         eyeImage].forEach { contentView.addSubview($0) }
     }
     
     required init?(coder: NSCoder) {
@@ -91,11 +97,12 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
         self.viewModel?.onImageUpdate = { [weak self] img in
             self?.newsImage.image = img
         }
+        self.newsImage.image = viewModel.img
         newsDescription.text = viewModel.newsShortDescription
         sourceLabel.text = viewModel.source
         dateLabel.text = viewModel.date
         newsDescription.isHidden = viewModel.isFullMode ? false : true
-        accessoryType = viewModel.isReaded ? .checkmark : .none
+        self.eyeImage.isHidden = viewModel.isReaded ? false : true
     }
     
     override func layoutSubviews() {
@@ -129,9 +136,15 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
             height: sourceLabel.intrinsicContentSize.height)
         
         dateLabel.frame = CGRect(
-            x: contentView.frame.width - Metrics.Sizes.leadingToImage - dateLabel.intrinsicContentSize.width - Metrics.Sizes.spaceForCheckIndicator,
+            x: contentView.frame.width - Metrics.Sizes.leadingToImage - dateLabel.intrinsicContentSize.width,
             y: contentView.frame.height - Metrics.Sizes.topAndBottomMargin,
             width: dateLabel.intrinsicContentSize.width,
             height: dateLabel.intrinsicContentSize.height)
+        
+        eyeImage.frame = CGRect(
+            x: contentView.frame.width - 10 - Metrics.Sizes.eyeSize,
+            y: 10,
+            width: Metrics.Sizes.eyeSize,
+            height: Metrics.Sizes.eyeSize)
     }
 }

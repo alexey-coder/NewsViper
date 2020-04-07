@@ -124,7 +124,6 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     
     func createNewViewModel(with entity: RSSEntity) {
         prepareViewModel(for: entity)
-        view?.reloadData()
     }
     
     func store(entity: RSSEntity) {
@@ -135,6 +134,7 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
         let viewModel = viewModelHelper.produceViewModel(with: entity, fullMode: isFullMode)
         save(model: entity)
         save(viewModel: viewModel)
+        view?.reloadData()
     }
     
     private func save(model: RSSEntity) {

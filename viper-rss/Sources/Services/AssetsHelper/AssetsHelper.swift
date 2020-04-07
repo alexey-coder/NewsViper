@@ -37,4 +37,8 @@ public enum AssetsHelper {
     public enum placeholders: String, AssetsConvertible {
         case placeholder     = "imagePlaceholder"
     }
+    
+    public enum icons: String, AssetsConvertible {
+        case eye = "eye"
+    }
 }
