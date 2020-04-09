@@ -32,7 +32,7 @@ public typealias CellSizes = (
     descriptionHeight: CGFloat,
     dateHeight: CGFloat)
 
-final class FeedCellLayoutCalculatorImpl: LayoutCalculatorProtocol {
+final class FeedCellLayoutCalculatorImpl: LayoutCalculator {
     
     private let screenWidth: CGFloat
     

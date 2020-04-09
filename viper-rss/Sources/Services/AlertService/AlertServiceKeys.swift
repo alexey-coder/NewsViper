@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum AlertServiceKeys: String, LocalizableProtocol {
+enum AlertServiceKeys: String, Localizable {
     case yes
     case no
     case done

@@ -9,10 +9,10 @@
 import UIKit
 
 class DetailsRouterImpl {
-    weak var presenter: DetailsPresenterProtocol?
+    weak var presenter: DetailsPresenter?
     weak var viewController: UIViewController?
 }
 
-extension DetailsRouterImpl: DetailsRouterProtocol {
+extension DetailsRouterImpl: DetailsRouter {
 
 }

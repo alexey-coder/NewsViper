@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         applicationDocumentsDirectory()
         #endif
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = ModuleDependencyContainer().buildStartModule()
+        window?.rootViewController = MainModuleAssembly.assemblyMainModule()
         window?.makeKeyAndVisible()
         return true
     }

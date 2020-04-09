@@ -20,12 +20,15 @@ private struct Metrics {
 }
 
 class DetailsViewImpl: BaseController<DetailsUI> {
-    var presenter: DetailsPresenterProtocol?
-    let alertService: AlertServiceProtocol
+    var presenter: DetailsPresenter
+    let alertService: AlertService
     
     private var estimatedProgressObserver: NSKeyValueObservation?
     
-    init(alertService: AlertServiceProtocol) {
+    init(
+        presenter: DetailsPresenter,
+        alertService: AlertService) {
+        self.presenter = presenter
         self.alertService = alertService
         super.init()
     }
@@ -36,7 +39,7 @@ class DetailsViewImpl: BaseController<DetailsUI> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.viewDidLoad()
+        presenter.viewDidLoad()
         ui.webView.navigationDelegate = self
     }
     
@@ -68,7 +71,7 @@ class DetailsViewImpl: BaseController<DetailsUI> {
     }
 }
 
-extension DetailsViewImpl: DetailsViewProtocol {
+extension DetailsViewImpl: DetailsView {
     func showAlert(with message: String) {
         alertService.showAlert(vc: self, message: message)
     }

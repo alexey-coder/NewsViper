@@ -54,17 +54,17 @@ enum Sources: String, CaseIterable, CustomStringConvertible {
     }
 }
 
-class FeedPresenterImpl {
-    var router: FeedRouterProtocol?
-    var interactor: FeedInteractorProtocol?
-    weak var view: FeedViewProtocol?
+final class FeedPresenterImpl {
+    var router: FeedRouter
+    var interactor: FeedInteractor
+    weak var view: FeedView?
     
-    private let userDefaultsStorage: UserDefaultsStorageProtocol
-    private var timerWorker: TimerWorkerProtocol
+    private let userDefaultsStorage: UserDefaultsStorage
+    private var timerWorker: TimerWorker
     private var isFullMode: Bool = false
-    private var viewModels: [FeedViewModelProtocol]?
+    private var viewModels: [FeedViewModel]?
     private var models: [RSSEntity]?
-    private let viewModelHelper: FeedViewModelHelperProtocol
+    private let viewModelHelper: FeedViewModelHelper
     
     private var filter: Sources? {
         guard let value = userDefaultsStorage.savedSourceValue() else {
@@ -74,9 +74,13 @@ class FeedPresenterImpl {
     }
     
     init(
-        viewModelHelper: FeedViewModelHelperProtocol,
-        userDefaultsStorage: UserDefaultsStorageProtocol,
-        timerWorker: TimerWorkerProtocol) {
+        router: FeedRouter,
+        interactor: FeedInteractor,
+        viewModelHelper: FeedViewModelHelper,
+        userDefaultsStorage: UserDefaultsStorage,
+        timerWorker: TimerWorker) {
+        self.router = router
+        self.interactor = interactor
         self.viewModelHelper = viewModelHelper
         self.userDefaultsStorage = userDefaultsStorage
         self.timerWorker = timerWorker
@@ -98,11 +102,11 @@ class FeedPresenterImpl {
         default:
             source = [.gazeta, .lenta]
         }
-        interactor?.requestEntities(from: source)
+        interactor.requestEntities(from: source)
     }
 }
 
-extension FeedPresenterImpl: FeedPresenterProtocol {
+extension FeedPresenterImpl: FeedPresenter {
     func createViewModelsFromScratch(with entities: [RSSEntity]) {
         models?.removeAll()
         viewModels?.removeAll()
@@ -125,10 +129,7 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     func createNewViewModel(with entity: RSSEntity) {
         prepareViewModel(for: entity)
     }
-    
-    func store(entity: RSSEntity) {
-        interactor?.saveInStorage(entity: entity)
-    }
+
     
     private func prepareViewModel(for entity: RSSEntity) {
         let viewModel = viewModelHelper.produceViewModel(with: entity, fullMode: isFullMode)
@@ -145,7 +146,7 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
         }
     }
     
-    private func save(viewModel: FeedViewModelProtocol) {
+    private func save(viewModel: FeedViewModel) {
         if viewModels == nil {
             viewModels = [viewModel]
         } else {
@@ -160,14 +161,14 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
     }
     
     func viewDidLoad() {
-        interactor?.subscribeForUpdates()
+        interactor.subscribeForUpdates()
     }
     
     func viewWillAppear() {
         timerWorker.startTimer()
         retrieveNetworkData()
         filter.flatMap {
-            interactor?.getAllModelsFromStore(with: $0)
+            interactor.getAllModelsFromStore(with: $0)
         }
         view?.reloadData()
     }
@@ -212,7 +213,7 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
         return viewModels?.count ?? 0
     }
     
-    func getViewModel(by indexPath: IndexPath) -> FeedViewModelProtocol? {
+    func getViewModel(by indexPath: IndexPath) -> FeedViewModel? {
         return viewModels?[indexPath.row]
     }
     
@@ -220,7 +221,7 @@ extension FeedPresenterImpl: FeedPresenterProtocol {
         guard let model = models?[row] else {
             return
         }
-        interactor?.update(entity: model)
-        router?.presentDetails(with: model.link)
+        interactor.update(entity: model)
+        router.presentDetails(with: model.link)
     }
 }

@@ -9,19 +9,23 @@
 import Foundation
 
 class DetailsPresenterImpl {
-    var router: DetailsRouterProtocol?
-    var interactor: DetailsInteractorProtocol?
-    weak var view: DetailsViewProtocol?
+    var router: DetailsRouter
+    var interactor: DetailsInteractor
+    weak var view: DetailsView?
     
     let url: String
     
-    init(url: String) {
+    init(
+        router: DetailsRouter,
+        interactor: DetailsInteractor,
+        url: String) {
+        self.router = router
+        self.interactor = interactor
         self.url = url
     }
-    
 }
 
-extension DetailsPresenterImpl: DetailsPresenterProtocol {
+extension DetailsPresenterImpl: DetailsPresenter {
     func viewDidLoad() {
         guard let url = URL(string: url) else {
             view?.showAlert(with: "Ooops!💩")

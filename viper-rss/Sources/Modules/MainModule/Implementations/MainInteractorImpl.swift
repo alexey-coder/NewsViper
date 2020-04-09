@@ -9,9 +9,9 @@
 import Foundation
 
 class MainInteractorImpl {
-    var presenter: MainPresenterProtocol?
+    var presenter: MainPresenter?
 }
 
-extension MainInteractorImpl: MainInteractorProtocol {
+extension MainInteractorImpl: MainInteractor {
     
 }

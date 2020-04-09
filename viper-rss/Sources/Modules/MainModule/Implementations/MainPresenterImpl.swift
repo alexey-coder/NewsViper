@@ -8,18 +8,21 @@
 
 import Foundation
 
-class MainPresenterImpl {
-    var router: MainRouterProtocol?
-    var interactor: MainInteractorProtocol?
-    var view: MainViewProtocol?
+final class MainPresenterImpl {
+    var router: MainRouter
+    var interactor: MainInteractor
+    weak var view: MainView?
+    
+    init(router: MainRouter, interactor: MainInteractor) {
+        self.router = router
+        self.interactor = interactor
+    }
 }
 
-extension MainPresenterImpl: MainPresenterProtocol {
+extension MainPresenterImpl: MainPresenter {
     
     func setupViewControllers() {
-        guard let controllers = self.router?.getViewControllers() else {
-            return
-        }
-        self.view?.display(controllers)
+        let controllers = router.getViewControllers()
+        view?.display(controllers)
     }
 }

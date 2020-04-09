@@ -9,9 +9,9 @@
 import Foundation
 
 class DetailsInteractorImpl {
-    weak var presenter: DetailsPresenterProtocol?
+    weak var presenter: DetailsPresenter?
 }
 
-extension DetailsInteractorImpl: DetailsInteractorProtocol {
+extension DetailsInteractorImpl: DetailsInteractor {
     
 }

@@ -35,9 +35,9 @@ private struct Metrics {
     }
 }
 
-class FeedCellImpl: UITableViewCell, FeedCellProtocol {
+class FeedCellImpl: UITableViewCell, FeedCell {
     
-    private var viewModel: FeedViewModelProtocol?
+    private var viewModel: FeedViewModel?
 
     private let newsTitle = UILabel().then {
         $0.font = Metrics.Fonts.newTitleFont
@@ -91,7 +91,7 @@ class FeedCellImpl: UITableViewCell, FeedCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with viewModel: FeedViewModelProtocol) {
+    func configure(with viewModel: FeedViewModel) {
         self.viewModel = viewModel
         newsTitle.text = viewModel.newsTitleText
         self.viewModel?.onImageUpdate = { [weak self] img in

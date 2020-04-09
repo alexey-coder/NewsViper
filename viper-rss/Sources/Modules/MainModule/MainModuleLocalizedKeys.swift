@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum MainModuleLocalizedKeys: String, LocalizableProtocol {
+enum MainModuleLocalizedKeys: String, Localizable {
     case feed
     case settings
 }

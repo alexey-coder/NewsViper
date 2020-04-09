@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LanguageTableImpl: LanguageTableProtocol {
+class LanguageTableImpl: LanguageTable {
     
     static let shared = LanguageTableImpl()
     

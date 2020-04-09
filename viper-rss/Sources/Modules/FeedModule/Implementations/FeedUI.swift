@@ -15,7 +15,7 @@ private struct Metrics {
     }
 }
 
-class FeedUI: UIView {
+final class FeedUI: UIView {
     
     let progressView = UIProgressView(progressViewStyle: .bar).then {
         $0.tintColor = .lightGray

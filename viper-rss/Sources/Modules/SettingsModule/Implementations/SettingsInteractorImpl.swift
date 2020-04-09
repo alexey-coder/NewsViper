@@ -9,9 +9,9 @@
 import Foundation
 
 class SettingsInteractorImpl {
-    weak var presenter: SettingsPresenterProtocol?
+    weak var presenter: SettingsPresenter?
 }
 
-extension SettingsInteractorImpl: SettingsInteractorProtocol {
+extension SettingsInteractorImpl: SettingsInteractor {
     
 }

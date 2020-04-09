@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ImageDownloadServiceImpl: ImageDownloadServiceProtocol {
+final class ImageDownloadServiceImpl: ImageDownloadService {
     
     init() {}
     

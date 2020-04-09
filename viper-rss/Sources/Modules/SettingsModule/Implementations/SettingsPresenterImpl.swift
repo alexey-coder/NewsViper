@@ -16,21 +16,26 @@ private struct Metrics {
 }
 
 class SettingsPresenterImpl {
-    var router: SettingsRouterProtocol?
-    var interactor: SettingsInteractorProtocol?
-    weak var view: SettingsViewProtocol?
+    var router: SettingsRouter
+    var interactor: SettingsInteractor
+    weak var view: SettingsView?
     
     var heightForRow: CGFloat = 48
-    private let userDefaultsStorage: UserDefaultsStorageProtocol
-    private let viewModelFactory: SettingsViewModelFactoryProtocol
+    private let userDefaultsStorage: UserDefaultsStorage
+    private let viewModelFactory: SettingsViewModelFactory
     
-    init(userDefaultsStorage: UserDefaultsStorageProtocol) {
+    init(
+        router: SettingsRouter,
+        interactor: SettingsInteractor,
+        userDefaultsStorage: UserDefaultsStorage) {
         self.userDefaultsStorage = userDefaultsStorage
-        self.viewModelFactory = SettingsViewModelFactory(userDefaultsStorage: userDefaultsStorage)
+        self.router = router
+        self.interactor = interactor
+        self.viewModelFactory = SettingsViewModelFactoryImpl(userDefaultsStorage: userDefaultsStorage)
     }
 }
 
-extension SettingsPresenterImpl: SettingsPresenterProtocol {
+extension SettingsPresenterImpl: SettingsPresenter {
     func setNewTimer(interval: Int) {
         userDefaultsStorage.saveTimerValue(with: interval)
         view?.reloadData()
@@ -45,7 +50,7 @@ extension SettingsPresenterImpl: SettingsPresenterProtocol {
         return SettingsHelper.getNumRows()
     }
     
-    func getViewModel(by indexPath: IndexPath) -> SettingsTimerViewModelProtocol? {
+    func getViewModel(by indexPath: IndexPath) -> SettingsTimerViewModel? {
         return viewModelFactory.produceViewModel(by: indexPath)
     }
     

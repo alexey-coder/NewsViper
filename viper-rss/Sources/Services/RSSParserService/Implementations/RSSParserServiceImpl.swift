@@ -8,13 +8,13 @@
 
 import Foundation
 
-class RSSParserServiceImpl: NSObject, RSSParserServiceProtocol {
+final class RSSParserServiceImpl: NSObject, RSSParserService {
     
     private var rssItems: [RSSEntity] = []
     private var currentElement = ""
     private var onSuccess: ((RSSEntity) -> Void)?
     private var onError: ((RSSParserError) -> Void)?
-    var parser: XMLParser?
+    private let semaphore = DispatchSemaphore(value: 0)
 
     private var currentTitle: String = "" {
         didSet {
@@ -72,11 +72,13 @@ class RSSParserServiceImpl: NSObject, RSSParserServiceProtocol {
                 }
                 return
             }
-            self.parser = XMLParser(data: data)
-            self.parser?.delegate = self
-            self.parser?.parse()
+            let parser = XMLParser(data: data)
+            parser.delegate = self
+            parser.parse()
+            self.semaphore.signal()
         }
         task.resume()
+        _ = semaphore.wait(timeout: .distantFuture)
     }
 }
 

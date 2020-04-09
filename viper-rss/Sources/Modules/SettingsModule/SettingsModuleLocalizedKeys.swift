@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SettingsModuleLocalizedKeys: String, LocalizableProtocol {
+enum SettingsModuleLocalizedKeys: String, Localizable {
     case timer
     case source
     case settingsNavBarTitle

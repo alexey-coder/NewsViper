@@ -15,19 +15,19 @@ private struct Metrics {
     }
 }
 
-final class FeedViewModelHelperImpl: FeedViewModelHelperProtocol {
+final class FeedViewModelHelperImpl: FeedViewModelHelper {
     
-    private let feedCellLayoutCalculator: LayoutCalculatorProtocol
-    private let imageLoaderService: ImageDownloadServiceProtocol
+    private let feedCellLayoutCalculator: LayoutCalculator
+    private let imageLoaderService: ImageDownloadService
     
     init(
-        feedCellLayoutCalculator: LayoutCalculatorProtocol,
-         imageLoaderService: ImageDownloadServiceProtocol) {
+        feedCellLayoutCalculator: LayoutCalculator,
+         imageLoaderService: ImageDownloadService) {
         self.feedCellLayoutCalculator = feedCellLayoutCalculator
         self.imageLoaderService = imageLoaderService
     }
     
-    func produceViewModel(with entity: RSSEntity, fullMode: Bool) -> FeedViewModelProtocol {
+    func produceViewModel(with entity: RSSEntity, fullMode: Bool) -> FeedViewModel {
         let sizes = self.feedCellLayoutCalculator.mesureCellHeight(
             title: entity.title, description: entity.description, date: entity.pubdate)
         

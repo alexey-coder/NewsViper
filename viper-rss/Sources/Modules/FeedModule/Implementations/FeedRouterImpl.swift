@@ -8,14 +8,14 @@
 
 import UIKit
 
-class FeedRouterImpl {
-    weak var presenter: FeedPresenterProtocol?
+final class FeedRouterImpl {
+    weak var presenter: FeedPresenter?
     weak var viewController: UIViewController?
 }
 
-extension FeedRouterImpl: FeedRouterProtocol {
+extension FeedRouterImpl: FeedRouter {
     func presentDetails(with url: String) {
-        let detailsController = ModuleDependencyContainer().assemblyDetailModule(with: url)
+        let detailsController = DetailsModuleAssembly.assemblyDetailsModule(url: url)
         viewController?.navigationController?.pushViewController(detailsController, animated: true)
     }
 }

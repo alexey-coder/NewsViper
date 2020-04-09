@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum FeedModuleLocalizedKeys: String, LocalizableProtocol {
+enum FeedModuleLocalizedKeys: String, Localizable {
     case feedNavBarTitle
     case simpleMode
     case fullMode

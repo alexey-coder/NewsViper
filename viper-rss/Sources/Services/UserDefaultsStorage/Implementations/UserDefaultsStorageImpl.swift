@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserDefaultsStorageImpl: UserDefaultsStorageProtocol {
+class UserDefaultsStorageImpl: UserDefaultsStorage {
     
     private let kSavedSourceValue = "kSavedSourceValue"
     private let kSavedTimerValue = "kSavedTimerValue"

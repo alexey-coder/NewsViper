@@ -14,14 +14,14 @@ private struct Metrics {
     }
 }
 
-final class TimerWorkerImpl: TimerWorkerProtocol {
+final class TimerWorkerImpl: TimerWorker {
     var onOverTimer: (() -> Void)?
-    private let userDefaultsStorage: UserDefaultsStorageProtocol
+    private let userDefaultsStorage: UserDefaultsStorage
     private let defaultSeconds = Metrics.Values.defaultSeconds
     private var timer: Timer?
     private var seconds: Int?
     
-    init(userDefaultsStorage: UserDefaultsStorageProtocol) {
+    init(userDefaultsStorage: UserDefaultsStorage) {
         self.userDefaultsStorage = userDefaultsStorage
     }
     

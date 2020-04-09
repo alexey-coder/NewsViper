@@ -25,7 +25,7 @@ private struct Metrics {
     }
 }
 
-class SettingsCategoryCellImpl: UITableViewCell, SettingsCellProtocol {
+class SettingsCategoryCellImpl: UITableViewCell, SettingsCell {
     
     let settingCellLabel = UILabel().then {
         $0.numberOfLines = 0
@@ -50,7 +50,7 @@ class SettingsCategoryCellImpl: UITableViewCell, SettingsCellProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with viewModel: SettingsTimerViewModelProtocol) {
+    func configure(with viewModel: SettingsTimerViewModel) {
         settingCellLabel.text = viewModel.labelText
         currentValueLabel.text = viewModel.currentValue
     }

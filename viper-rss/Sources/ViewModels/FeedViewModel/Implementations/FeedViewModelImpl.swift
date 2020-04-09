@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedViewModelImpl: FeedViewModelProtocol {
+class FeedViewModelImpl: FeedViewModel {
     
     var newsTitleText: String
     var newsShortDescription: String

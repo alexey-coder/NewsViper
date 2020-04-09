@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlertServiceImpl: AlertServiceProtocol {
+class AlertServiceImpl: AlertService {
     func showDialogAlert(
         vc: UIViewController,
         title: String, message: String?,

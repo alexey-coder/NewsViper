@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct LocalizedImpl<T: LocalizableProtocol> {
+struct LocalizedImpl<T: Localizable> {
     private let localeKey: T
-    private let languageTable: LanguageTableProtocol
+    private let languageTable: LanguageTable
     
-    init(_ localeKey: T, languageTable: LanguageTableProtocol = LanguageTableImpl.shared) {
+    init(_ localeKey: T, languageTable: LanguageTable = LanguageTableImpl.shared) {
         self.localeKey = localeKey
         self.languageTable = languageTable
     }

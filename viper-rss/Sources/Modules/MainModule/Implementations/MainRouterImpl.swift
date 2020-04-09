@@ -9,14 +9,14 @@
 import UIKit
 
 class MainRouterImpl {
-    weak var presenter: MainPresenterProtocol?
+    weak var presenter: MainPresenter?
     weak var viewController: UIViewController?
 }
 
-extension MainRouterImpl: MainRouterProtocol {
+extension MainRouterImpl: MainRouter {
     func getViewControllers() -> [UIViewController] {
-        let feed: UIViewController = ModuleDependencyContainer().assemblyFeedModule()
-        let settings: UIViewController = ModuleDependencyContainer().assemblySettingsModule()
+        let feed: UIViewController = FeedModuleAseembly.assemblyFeedModule()
+        let settings: UIViewController = SettingsModuleAssembly.assemblySettingsModule()
         feed.tabBarItem = UITabBarItem(
             title: LocalizedImpl<MainModuleLocalizedKeys>(.feed).text,
             image: AssetsHelper.tabBarIcons.catalogTabbar.image,

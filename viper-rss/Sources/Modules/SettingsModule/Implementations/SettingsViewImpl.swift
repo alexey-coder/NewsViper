@@ -9,10 +9,13 @@
 import UIKit
 
 class SettingsViewImpl: BaseController<SettingsUI> {
-    var presenter: SettingsPresenterProtocol?
-    let alertService: AlertServiceProtocol
+    var presenter: SettingsPresenter
+    let alertService: AlertService
     
-    init(alertService: AlertServiceProtocol) {
+    init(
+        presenter: SettingsPresenter,
+        alertService: AlertService) {
+        self.presenter = presenter
         self.alertService = alertService
         super.init()
     }
@@ -39,7 +42,7 @@ class SettingsViewImpl: BaseController<SettingsUI> {
     }
 }
 
-extension SettingsViewImpl: SettingsViewProtocol {
+extension SettingsViewImpl: SettingsView {
     func reloadData() {
         ui.tableView.reloadData()
     }
@@ -48,9 +51,9 @@ extension SettingsViewImpl: SettingsViewProtocol {
         alertService.showTimerPicker(vc: self, values: values) { [weak self] selected in
             switch cellType {
             case .timer:
-                self?.presenter?.setNewTimer(interval: selected as! Int)
+                self?.presenter.setNewTimer(interval: selected as! Int)
             case .source:
-                self?.presenter?.setNewCategory(filter: selected as! String)
+                self?.presenter.setNewCategory(filter: selected as! String)
             }
         }
     }
@@ -58,19 +61,19 @@ extension SettingsViewImpl: SettingsViewProtocol {
 
 extension SettingsViewImpl: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return presenter?.heightForRow ?? 0
+        return presenter.heightForRow
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.getNumberOfRows() ?? 0
+        return presenter.getNumberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let viewModel = presenter?.getViewModel(by: indexPath),
+        guard let viewModel = presenter.getViewModel(by: indexPath),
             let row = SettingsHelper(rawValue: indexPath.row) else {
             return UITableViewCell()
         }
-        let cell: SettingsCellProtocol
+        let cell: SettingsCell
         switch row {
         case .timer:
             cell = tableView.dequeueReusableCell(withIdentifier: SettingsTimerCellImpl.reuseIdentifier, for: indexPath) as! SettingsTimerCellImpl
@@ -84,6 +87,6 @@ extension SettingsViewImpl: UITableViewDataSource {
 
 extension SettingsViewImpl: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.didRowSelected(indexPath.row)
+        presenter.didRowSelected(indexPath.row)
     }
 }

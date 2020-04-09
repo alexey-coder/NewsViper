@@ -9,12 +9,10 @@
 import Foundation
 import CoreData
 
-final class StorageServiceImpl: NSObject, StorageServiceProtocol {
+final class StorageServiceImpl: NSObject, StorageService {
     
-    static let shared = StorageServiceImpl()
+    override init() {}
     private var onDidInsert: ((RSSEntity) -> Void)?
-    
-    private override init() {}
     private let moduleName = "viper_rss"
     private lazy var managedObjectContext = persistentContainer.viewContext
     

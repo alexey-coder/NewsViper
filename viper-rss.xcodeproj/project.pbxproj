@@ -10,53 +10,49 @@
 		CE0FF9DB2436879000072C2A /* TableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0FF9DA2436879000072C2A /* TableViewExtension.swift */; };
 		CE4BDDA3243713ED00FDB6E7 /* XMLEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA1243713ED00FDB6E7 /* XMLEntity+CoreDataClass.swift */; };
 		CE4BDDA4243713ED00FDB6E7 /* XMLEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA2243713ED00FDB6E7 /* XMLEntity+CoreDataProperties.swift */; };
-		CE4BDDA624375FFF00FDB6E7 /* SettingsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA524375FFF00FDB6E7 /* SettingsViewModelFactory.swift */; };
+		CE4BDDA624375FFF00FDB6E7 /* SettingsViewModelFactoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA524375FFF00FDB6E7 /* SettingsViewModelFactoryImpl.swift */; };
 		CE4BDDA824376A6900FDB6E7 /* TimerWorkerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA724376A6900FDB6E7 /* TimerWorkerImpl.swift */; };
-		CE4BDDAA24376E5700FDB6E7 /* TimerWorkerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA924376E5700FDB6E7 /* TimerWorkerProtocol.swift */; };
-		CE4BDDAC24376E7E00FDB6E7 /* SettingsViewModelFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDAB24376E7E00FDB6E7 /* SettingsViewModelFactoryProtocol.swift */; };
+		CE4BDDAA24376E5700FDB6E7 /* TimerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDA924376E5700FDB6E7 /* TimerWorker.swift */; };
+		CE4BDDAC24376E7E00FDB6E7 /* SettingsViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDAB24376E7E00FDB6E7 /* SettingsViewModelFactory.swift */; };
 		CE4BDDAE2437704800FDB6E7 /* FeedViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDAD2437704800FDB6E7 /* FeedViewModelFactory.swift */; };
 		CE4BDDB32438E15300FDB6E7 /* ImageDownloaderImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDB22438E15300FDB6E7 /* ImageDownloaderImpl.swift */; };
-		CE4BDDB52438E16200FDB6E7 /* ImageDownloaderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDB42438E16200FDB6E7 /* ImageDownloaderProtocol.swift */; };
-		CE4BDDB72439C9E600FDB6E7 /* FeedViewModelHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDB62439C9E600FDB6E7 /* FeedViewModelHelperProtocol.swift */; };
-		CE50821A2434B808002F29D4 /* UserDefaultsStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082192434B808002F29D4 /* UserDefaultsStorageProtocol.swift */; };
+		CE4BDDB52438E16200FDB6E7 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDB42438E16200FDB6E7 /* ImageDownloader.swift */; };
+		CE4BDDB72439C9E600FDB6E7 /* FeedViewModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDB62439C9E600FDB6E7 /* FeedViewModelHelper.swift */; };
+		CE4BDDD3243DD1C400FDB6E7 /* MainModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDD2243DD1C400FDB6E7 /* MainModuleAssembly.swift */; };
+		CE4BDDD5243DD23C00FDB6E7 /* SettingsModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDD4243DD23C00FDB6E7 /* SettingsModuleAssembly.swift */; };
+		CE4BDDD7243DE18D00FDB6E7 /* DetailsModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDD6243DE18D00FDB6E7 /* DetailsModuleAssembly.swift */; };
+		CE4BDDD9243DE2FE00FDB6E7 /* FeedModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BDDD8243DE2FE00FDB6E7 /* FeedModuleAssembly.swift */; };
+		CE50821A2434B808002F29D4 /* UserDefaultsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5082192434B808002F29D4 /* UserDefaultsStorage.swift */; };
 		CE50821C2434B812002F29D4 /* UserDefaultsStorageImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50821B2434B812002F29D4 /* UserDefaultsStorageImpl.swift */; };
 		CE50821F2434EE7A002F29D4 /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50821E2434EE7A002F29D4 /* CustomPickerView.swift */; };
 		CE50822524363A33002F29D4 /* StorageServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50822424363A33002F29D4 /* StorageServiceError.swift */; };
-		CE743675242B682E003FB468 /* FeedPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743674242B682E003FB468 /* FeedPresenterProtocol.swift */; };
-		CE743677242B683A003FB468 /* FeedRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743676242B683A003FB468 /* FeedRouterProtocol.swift */; };
-		CE743679242B6857003FB468 /* FeedViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743678242B6857003FB468 /* FeedViewProtocol.swift */; };
-		CE74367B242B6863003FB468 /* FeedInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74367A242B6863003FB468 /* FeedInteractorProtocol.swift */; };
+		CE743675242B682E003FB468 /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743674242B682E003FB468 /* FeedPresenter.swift */; };
+		CE743677242B683A003FB468 /* FeedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743676242B683A003FB468 /* FeedRouter.swift */; };
+		CE743679242B6857003FB468 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743678242B6857003FB468 /* FeedView.swift */; };
+		CE74367B242B6863003FB468 /* FeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74367A242B6863003FB468 /* FeedInteractor.swift */; };
 		CE74367D242B68F6003FB468 /* FeedPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74367C242B68F6003FB468 /* FeedPresenterImpl.swift */; };
 		CE74367F242B6934003FB468 /* FeedViewImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74367E242B6934003FB468 /* FeedViewImpl.swift */; };
 		CE743681242B6940003FB468 /* FeedRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743680242B6940003FB468 /* FeedRouterImpl.swift */; };
 		CE743683242B6951003FB468 /* FeedInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743682242B6951003FB468 /* FeedInteractorImpl.swift */; };
-		CE74368E242B7226003FB468 /* SettingsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74368D242B7226003FB468 /* SettingsViewProtocol.swift */; };
-		CE743690242B7267003FB468 /* SettingsRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74368F242B7267003FB468 /* SettingsRouterProtocol.swift */; };
-		CE743692242B728B003FB468 /* SettingsInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743691242B728B003FB468 /* SettingsInteractorProtocol.swift */; };
-		CE743694242B72A1003FB468 /* SettingsPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743693242B72A1003FB468 /* SettingsPresenterProtocol.swift */; };
+		CE74368E242B7226003FB468 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74368D242B7226003FB468 /* SettingsView.swift */; };
+		CE743690242B7267003FB468 /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74368F242B7267003FB468 /* SettingsRouter.swift */; };
+		CE743692242B728B003FB468 /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743691242B728B003FB468 /* SettingsInteractor.swift */; };
+		CE743694242B72A1003FB468 /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743693242B72A1003FB468 /* SettingsPresenter.swift */; };
 		CE743696242B72B7003FB468 /* SettingsViewImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743695242B72B7003FB468 /* SettingsViewImpl.swift */; };
 		CE743698242B72C2003FB468 /* SettingsInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743697242B72C2003FB468 /* SettingsInteractorImpl.swift */; };
 		CE74369A242B72D1003FB468 /* SettingsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743699242B72D1003FB468 /* SettingsPresenterImpl.swift */; };
 		CE74369C242B72DD003FB468 /* SettingsRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74369B242B72DD003FB468 /* SettingsRouterImpl.swift */; };
-		CE7436A0242B79E7003FB468 /* MainInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74369F242B79E7003FB468 /* MainInteractorProtocol.swift */; };
-		CE7436A2242B7A07003FB468 /* MainRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436A1242B7A07003FB468 /* MainRouterProtocol.swift */; };
-		CE7436A4242B7A21003FB468 /* MainPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436A3242B7A21003FB468 /* MainPresenterProtocol.swift */; };
-		CE7436A6242B7A36003FB468 /* MainViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436A5242B7A36003FB468 /* MainViewProtocol.swift */; };
+		CE7436A0242B79E7003FB468 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74369F242B79E7003FB468 /* MainInteractor.swift */; };
+		CE7436A2242B7A07003FB468 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436A1242B7A07003FB468 /* MainRouter.swift */; };
+		CE7436A4242B7A21003FB468 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436A3242B7A21003FB468 /* MainPresenter.swift */; };
+		CE7436A6242B7A36003FB468 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436A5242B7A36003FB468 /* MainView.swift */; };
 		CE7436A8242B7B93003FB468 /* MainInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436A7242B7B93003FB468 /* MainInteractorImpl.swift */; };
 		CE7436AA242B7B9D003FB468 /* MainRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436A9242B7B9D003FB468 /* MainRouterImpl.swift */; };
 		CE7436AC242B7BB0003FB468 /* MainPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436AB242B7BB0003FB468 /* MainPresenterImpl.swift */; };
 		CE7436AE242B7BBD003FB468 /* MainViewImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436AD242B7BBD003FB468 /* MainViewImpl.swift */; };
-		CE7436B5242B7F66003FB468 /* StartInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436B4242B7F66003FB468 /* StartInteractorProtocol.swift */; };
-		CE7436B7242B7F71003FB468 /* StartRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436B6242B7F71003FB468 /* StartRouterProtocol.swift */; };
-		CE7436B9242B7F7F003FB468 /* StartPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436B8242B7F7F003FB468 /* StartPresenterProtocol.swift */; };
-		CE7436BB242B7F90003FB468 /* StartViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436BA242B7F90003FB468 /* StartViewProtocol.swift */; };
-		CE7436BD242B7F9C003FB468 /* StartViewImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436BC242B7F9C003FB468 /* StartViewImpl.swift */; };
-		CE7436BF242B7FA6003FB468 /* StartRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436BE242B7FA6003FB468 /* StartRouterImpl.swift */; };
-		CE7436C1242B7FB0003FB468 /* StartInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436C0242B7FB0003FB468 /* StartInteractorImpl.swift */; };
-		CE7436C3242B7FBC003FB468 /* StartPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436C2242B7FBC003FB468 /* StartPresenterImpl.swift */; };
 		CE7436CE242B9454003FB468 /* AssetsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436CD242B9454003FB468 /* AssetsHelper.swift */; };
-		CE7436D3242B9702003FB468 /* LanguageTableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436D2242B9702003FB468 /* LanguageTableProtocol.swift */; };
-		CE7436D5242B971D003FB468 /* LocalizableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436D4242B971D003FB468 /* LocalizableProtocol.swift */; };
+		CE7436D3242B9702003FB468 /* LanguageTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436D2242B9702003FB468 /* LanguageTable.swift */; };
+		CE7436D5242B971D003FB468 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436D4242B971D003FB468 /* Localizable.swift */; };
 		CE7436D7242B977F003FB468 /* LanguageTableImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436D6242B977F003FB468 /* LanguageTableImpl.swift */; };
 		CE7436D9242B97AC003FB468 /* LocalizableImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436D8242B97AC003FB468 /* LocalizableImpl.swift */; };
 		CE7436DB242B98AA003FB468 /* Localizable-EN.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE7436DA242B98AA003FB468 /* Localizable-EN.strings */; };
@@ -64,19 +60,19 @@
 		CE7436DF242B9918003FB468 /* MainModuleLocalizedKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436DE242B9918003FB468 /* MainModuleLocalizedKeys.swift */; };
 		CE7436E2242BA7C9003FB468 /* SettingsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436E1242BA7C9003FB468 /* SettingsUI.swift */; };
 		CE7436E5242BA852003FB468 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436E4242BA852003FB468 /* Then.swift */; };
-		CE7436EA242BABFB003FB468 /* SettingsCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436E9242BABFB003FB468 /* SettingsCellProtocol.swift */; };
+		CE7436EA242BABFB003FB468 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436E9242BABFB003FB468 /* SettingsCell.swift */; };
 		CE7436ED242BAD68003FB468 /* SettingsTimerCellImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436EC242BAD68003FB468 /* SettingsTimerCellImpl.swift */; };
 		CE7436EF242BAF22003FB468 /* ReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436EE242BAF22003FB468 /* ReusableCell.swift */; };
-		CE7436F6242BB08E003FB468 /* SettingsTimerViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436F5242BB08E003FB468 /* SettingsTimerViewModelProtocol.swift */; };
+		CE7436F6242BB08E003FB468 /* SettingsTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436F5242BB08E003FB468 /* SettingsTimerViewModel.swift */; };
 		CE7436F8242BB0A8003FB468 /* SettingsViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436F7242BB0A8003FB468 /* SettingsViewModelImpl.swift */; };
 		CE7436FA242BB2D1003FB468 /* SettingsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436F9242BB2D1003FB468 /* SettingsHelper.swift */; };
 		CE7436FC242BD813003FB468 /* SettingsModuleLocalizedKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436FB242BD813003FB468 /* SettingsModuleLocalizedKeys.swift */; };
 		CE7436FE242BDD3D003FB468 /* SettingsCategoryCellImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436FD242BDD3D003FB468 /* SettingsCategoryCellImpl.swift */; };
 		CE743700242E03C1003FB468 /* BaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7436FF242E03C1003FB468 /* BaseController.swift */; };
 		CE743702242E1C28003FB468 /* FeedUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743701242E1C28003FB468 /* FeedUI.swift */; };
-		CE743707242E1CDE003FB468 /* FeedCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743706242E1CDE003FB468 /* FeedCellProtocol.swift */; };
+		CE743707242E1CDE003FB468 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743706242E1CDE003FB468 /* FeedCell.swift */; };
 		CE743709242E1CE5003FB468 /* FeedCellImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743708242E1CE5003FB468 /* FeedCellImpl.swift */; };
-		CE74370D242E1D2B003FB468 /* FeedViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74370C242E1D2B003FB468 /* FeedViewModelProtocol.swift */; };
+		CE74370D242E1D2B003FB468 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74370C242E1D2B003FB468 /* FeedViewModel.swift */; };
 		CE74370F242E1D3F003FB468 /* FeedViewModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74370E242E1D3F003FB468 /* FeedViewModelImpl.swift */; };
 		CE743713242E2417003FB468 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743712242E2417003FB468 /* UIColorExtension.swift */; };
 		CE743715242E2454003FB468 /* FontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743714242E2454003FB468 /* FontHelper.swift */; };
@@ -95,29 +91,27 @@
 		CE743731242E2E44003FB468 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743730242E2E44003FB468 /* UIViewControllerExtension.swift */; };
 		CE743733242E3A21003FB468 /* FeedModuleLocalizedKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743732242E3A21003FB468 /* FeedModuleLocalizedKeys.swift */; };
 		CE743735242E41B2003FB468 /* RSSParserServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743734242E41B2003FB468 /* RSSParserServiceImpl.swift */; };
-		CE743737242E41CC003FB468 /* RSSParserServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743736242E41CC003FB468 /* RSSParserServiceProtocol.swift */; };
+		CE743737242E41CC003FB468 /* RSSParserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743736242E41CC003FB468 /* RSSParserService.swift */; };
 		CE74373A242E4217003FB468 /* RSSEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743739242E4217003FB468 /* RSSEntity.swift */; };
 		CE74373C242E6A48003FB468 /* RSSParserError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74373B242E6A48003FB468 /* RSSParserError.swift */; };
 		CE743741242E76E1003FB468 /* AlertServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743740242E76E1003FB468 /* AlertServiceImpl.swift */; };
-		CE743743242E76FF003FB468 /* AlertServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743742242E76FF003FB468 /* AlertServiceProtocol.swift */; };
+		CE743743242E76FF003FB468 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743742242E76FF003FB468 /* AlertService.swift */; };
 		CE743745242E78E7003FB468 /* AlertServiceKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743744242E78E7003FB468 /* AlertServiceKeys.swift */; };
 		CE743747242F866E003FB468 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE743746242F866E003FB468 /* UILabelExtension.swift */; };
 		CE7437492430A454003FB468 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7437482430A454003FB468 /* StringExtension.swift */; };
 		CE74374B2430AD75003FB468 /* FeedCellLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74374A2430AD75003FB468 /* FeedCellLayoutCalculator.swift */; };
-		CE7437502430B763003FB468 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74374F2430B763003FB468 /* DependencyContainer.swift */; };
-		CE7437522430B774003FB468 /* ModuleFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7437512430B774003FB468 /* ModuleFactoryProtocol.swift */; };
 		CE7437542430C176003FB468 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7437532430C176003FB468 /* Constants.swift */; };
-		CE7437592430D98E003FB468 /* LayoutCalculatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7437582430D98E003FB468 /* LayoutCalculatorProtocol.swift */; };
-		CE74375B24311242003FB468 /* DetailsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74375A24311242003FB468 /* DetailsViewProtocol.swift */; };
-		CE74375D2431124E003FB468 /* DetailsPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74375C2431124D003FB468 /* DetailsPresenterProtocol.swift */; };
-		CE74375F2431125B003FB468 /* DetailsInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74375E2431125B003FB468 /* DetailsInteractorProtocol.swift */; };
-		CE74376124311267003FB468 /* DetailsRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74376024311267003FB468 /* DetailsRouterProtocol.swift */; };
+		CE7437592430D98E003FB468 /* LayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7437582430D98E003FB468 /* LayoutCalculator.swift */; };
+		CE74375B24311242003FB468 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74375A24311242003FB468 /* DetailsView.swift */; };
+		CE74375D2431124E003FB468 /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74375C2431124D003FB468 /* DetailsPresenter.swift */; };
+		CE74375F2431125B003FB468 /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74375E2431125B003FB468 /* DetailsInteractor.swift */; };
+		CE74376124311267003FB468 /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74376024311267003FB468 /* DetailsRouter.swift */; };
 		CE74376324311278003FB468 /* DetailsViewImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74376224311278003FB468 /* DetailsViewImpl.swift */; };
 		CE74376524311286003FB468 /* DetailsPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74376424311286003FB468 /* DetailsPresenterImpl.swift */; };
 		CE74376724311292003FB468 /* DetailsInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74376624311291003FB468 /* DetailsInteractorImpl.swift */; };
 		CE7437692431129B003FB468 /* DetailsRouterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7437682431129B003FB468 /* DetailsRouterImpl.swift */; };
 		CE74376B2431D003003FB468 /* DetailsUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74376A2431D003003FB468 /* DetailsUI.swift */; };
-		CE74376D24324AC2003FB468 /* StorageServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74376C24324AC2003FB468 /* StorageServiceProtocol.swift */; };
+		CE74376D24324AC2003FB468 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74376C24324AC2003FB468 /* StorageService.swift */; };
 		CE74376F24324ACD003FB468 /* StorageServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE74376E24324ACD003FB468 /* StorageServiceImpl.swift */; };
 		CEC9715F242A9ACF0055AA80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC9715E242A9ACF0055AA80 /* AppDelegate.swift */; };
 		CEC97169242A9ACF0055AA80 /* viper_rss.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEC97167242A9ACF0055AA80 /* viper_rss.xcdatamodeld */; };
@@ -129,53 +123,49 @@
 		CE0FF9DA2436879000072C2A /* TableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtension.swift; sourceTree = "<group>"; };
 		CE4BDDA1243713ED00FDB6E7 /* XMLEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XMLEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CE4BDDA2243713ED00FDB6E7 /* XMLEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XMLEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		CE4BDDA524375FFF00FDB6E7 /* SettingsViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelFactory.swift; sourceTree = "<group>"; };
+		CE4BDDA524375FFF00FDB6E7 /* SettingsViewModelFactoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelFactoryImpl.swift; sourceTree = "<group>"; };
 		CE4BDDA724376A6900FDB6E7 /* TimerWorkerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWorkerImpl.swift; sourceTree = "<group>"; };
-		CE4BDDA924376E5700FDB6E7 /* TimerWorkerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWorkerProtocol.swift; sourceTree = "<group>"; };
-		CE4BDDAB24376E7E00FDB6E7 /* SettingsViewModelFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelFactoryProtocol.swift; sourceTree = "<group>"; };
+		CE4BDDA924376E5700FDB6E7 /* TimerWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWorker.swift; sourceTree = "<group>"; };
+		CE4BDDAB24376E7E00FDB6E7 /* SettingsViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelFactory.swift; sourceTree = "<group>"; };
 		CE4BDDAD2437704800FDB6E7 /* FeedViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelFactory.swift; sourceTree = "<group>"; };
 		CE4BDDB22438E15300FDB6E7 /* ImageDownloaderImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderImpl.swift; sourceTree = "<group>"; };
-		CE4BDDB42438E16200FDB6E7 /* ImageDownloaderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloaderProtocol.swift; sourceTree = "<group>"; };
-		CE4BDDB62439C9E600FDB6E7 /* FeedViewModelHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelHelperProtocol.swift; sourceTree = "<group>"; };
-		CE5082192434B808002F29D4 /* UserDefaultsStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageProtocol.swift; sourceTree = "<group>"; };
+		CE4BDDB42438E16200FDB6E7 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		CE4BDDB62439C9E600FDB6E7 /* FeedViewModelHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelHelper.swift; sourceTree = "<group>"; };
+		CE4BDDD2243DD1C400FDB6E7 /* MainModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleAssembly.swift; sourceTree = "<group>"; };
+		CE4BDDD4243DD23C00FDB6E7 /* SettingsModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModuleAssembly.swift; sourceTree = "<group>"; };
+		CE4BDDD6243DE18D00FDB6E7 /* DetailsModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModuleAssembly.swift; sourceTree = "<group>"; };
+		CE4BDDD8243DE2FE00FDB6E7 /* FeedModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModuleAssembly.swift; sourceTree = "<group>"; };
+		CE5082192434B808002F29D4 /* UserDefaultsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorage.swift; sourceTree = "<group>"; };
 		CE50821B2434B812002F29D4 /* UserDefaultsStorageImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsStorageImpl.swift; sourceTree = "<group>"; };
 		CE50821E2434EE7A002F29D4 /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		CE50822424363A33002F29D4 /* StorageServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceError.swift; sourceTree = "<group>"; };
-		CE743674242B682E003FB468 /* FeedPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenterProtocol.swift; sourceTree = "<group>"; };
-		CE743676242B683A003FB468 /* FeedRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRouterProtocol.swift; sourceTree = "<group>"; };
-		CE743678242B6857003FB468 /* FeedViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewProtocol.swift; sourceTree = "<group>"; };
-		CE74367A242B6863003FB468 /* FeedInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInteractorProtocol.swift; sourceTree = "<group>"; };
+		CE743674242B682E003FB468 /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
+		CE743676242B683A003FB468 /* FeedRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRouter.swift; sourceTree = "<group>"; };
+		CE743678242B6857003FB468 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		CE74367A242B6863003FB468 /* FeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInteractor.swift; sourceTree = "<group>"; };
 		CE74367C242B68F6003FB468 /* FeedPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenterImpl.swift; sourceTree = "<group>"; };
 		CE74367E242B6934003FB468 /* FeedViewImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewImpl.swift; sourceTree = "<group>"; };
 		CE743680242B6940003FB468 /* FeedRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRouterImpl.swift; sourceTree = "<group>"; };
 		CE743682242B6951003FB468 /* FeedInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedInteractorImpl.swift; sourceTree = "<group>"; };
-		CE74368D242B7226003FB468 /* SettingsViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewProtocol.swift; sourceTree = "<group>"; };
-		CE74368F242B7267003FB468 /* SettingsRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouterProtocol.swift; sourceTree = "<group>"; };
-		CE743691242B728B003FB468 /* SettingsInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractorProtocol.swift; sourceTree = "<group>"; };
-		CE743693242B72A1003FB468 /* SettingsPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenterProtocol.swift; sourceTree = "<group>"; };
+		CE74368D242B7226003FB468 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CE74368F242B7267003FB468 /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		CE743691242B728B003FB468 /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
+		CE743693242B72A1003FB468 /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
 		CE743695242B72B7003FB468 /* SettingsViewImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewImpl.swift; sourceTree = "<group>"; };
 		CE743697242B72C2003FB468 /* SettingsInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractorImpl.swift; sourceTree = "<group>"; };
 		CE743699242B72D1003FB468 /* SettingsPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenterImpl.swift; sourceTree = "<group>"; };
 		CE74369B242B72DD003FB468 /* SettingsRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouterImpl.swift; sourceTree = "<group>"; };
-		CE74369F242B79E7003FB468 /* MainInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractorProtocol.swift; sourceTree = "<group>"; };
-		CE7436A1242B7A07003FB468 /* MainRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterProtocol.swift; sourceTree = "<group>"; };
-		CE7436A3242B7A21003FB468 /* MainPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterProtocol.swift; sourceTree = "<group>"; };
-		CE7436A5242B7A36003FB468 /* MainViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewProtocol.swift; sourceTree = "<group>"; };
+		CE74369F242B79E7003FB468 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		CE7436A1242B7A07003FB468 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		CE7436A3242B7A21003FB468 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		CE7436A5242B7A36003FB468 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CE7436A7242B7B93003FB468 /* MainInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractorImpl.swift; sourceTree = "<group>"; };
 		CE7436A9242B7B9D003FB468 /* MainRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterImpl.swift; sourceTree = "<group>"; };
 		CE7436AB242B7BB0003FB468 /* MainPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenterImpl.swift; sourceTree = "<group>"; };
 		CE7436AD242B7BBD003FB468 /* MainViewImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewImpl.swift; sourceTree = "<group>"; };
-		CE7436B4242B7F66003FB468 /* StartInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartInteractorProtocol.swift; sourceTree = "<group>"; };
-		CE7436B6242B7F71003FB468 /* StartRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRouterProtocol.swift; sourceTree = "<group>"; };
-		CE7436B8242B7F7F003FB468 /* StartPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPresenterProtocol.swift; sourceTree = "<group>"; };
-		CE7436BA242B7F90003FB468 /* StartViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewProtocol.swift; sourceTree = "<group>"; };
-		CE7436BC242B7F9C003FB468 /* StartViewImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewImpl.swift; sourceTree = "<group>"; };
-		CE7436BE242B7FA6003FB468 /* StartRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRouterImpl.swift; sourceTree = "<group>"; };
-		CE7436C0242B7FB0003FB468 /* StartInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartInteractorImpl.swift; sourceTree = "<group>"; };
-		CE7436C2242B7FBC003FB468 /* StartPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPresenterImpl.swift; sourceTree = "<group>"; };
 		CE7436CD242B9454003FB468 /* AssetsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsHelper.swift; sourceTree = "<group>"; };
-		CE7436D2242B9702003FB468 /* LanguageTableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTableProtocol.swift; sourceTree = "<group>"; };
-		CE7436D4242B971D003FB468 /* LocalizableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableProtocol.swift; sourceTree = "<group>"; };
+		CE7436D2242B9702003FB468 /* LanguageTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTable.swift; sourceTree = "<group>"; };
+		CE7436D4242B971D003FB468 /* Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		CE7436D6242B977F003FB468 /* LanguageTableImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageTableImpl.swift; sourceTree = "<group>"; };
 		CE7436D8242B97AC003FB468 /* LocalizableImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableImpl.swift; sourceTree = "<group>"; };
 		CE7436DA242B98AA003FB468 /* Localizable-EN.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = "Localizable-EN.strings"; sourceTree = "<group>"; };
@@ -183,19 +173,19 @@
 		CE7436DE242B9918003FB468 /* MainModuleLocalizedKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleLocalizedKeys.swift; sourceTree = "<group>"; };
 		CE7436E1242BA7C9003FB468 /* SettingsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUI.swift; sourceTree = "<group>"; };
 		CE7436E4242BA852003FB468 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
-		CE7436E9242BABFB003FB468 /* SettingsCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellProtocol.swift; sourceTree = "<group>"; };
+		CE7436E9242BABFB003FB468 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		CE7436EC242BAD68003FB468 /* SettingsTimerCellImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimerCellImpl.swift; sourceTree = "<group>"; };
 		CE7436EE242BAF22003FB468 /* ReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCell.swift; sourceTree = "<group>"; };
-		CE7436F5242BB08E003FB468 /* SettingsTimerViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimerViewModelProtocol.swift; sourceTree = "<group>"; };
+		CE7436F5242BB08E003FB468 /* SettingsTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTimerViewModel.swift; sourceTree = "<group>"; };
 		CE7436F7242BB0A8003FB468 /* SettingsViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelImpl.swift; sourceTree = "<group>"; };
 		CE7436F9242BB2D1003FB468 /* SettingsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHelper.swift; sourceTree = "<group>"; };
 		CE7436FB242BD813003FB468 /* SettingsModuleLocalizedKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModuleLocalizedKeys.swift; sourceTree = "<group>"; };
 		CE7436FD242BDD3D003FB468 /* SettingsCategoryCellImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCategoryCellImpl.swift; sourceTree = "<group>"; };
 		CE7436FF242E03C1003FB468 /* BaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseController.swift; sourceTree = "<group>"; };
 		CE743701242E1C28003FB468 /* FeedUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUI.swift; sourceTree = "<group>"; };
-		CE743706242E1CDE003FB468 /* FeedCellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellProtocol.swift; sourceTree = "<group>"; };
+		CE743706242E1CDE003FB468 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		CE743708242E1CE5003FB468 /* FeedCellImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellImpl.swift; sourceTree = "<group>"; };
-		CE74370C242E1D2B003FB468 /* FeedViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelProtocol.swift; sourceTree = "<group>"; };
+		CE74370C242E1D2B003FB468 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		CE74370E242E1D3F003FB468 /* FeedViewModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelImpl.swift; sourceTree = "<group>"; };
 		CE743712242E2417003FB468 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		CE743714242E2454003FB468 /* FontHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontHelper.swift; sourceTree = "<group>"; };
@@ -215,29 +205,27 @@
 		CE743730242E2E44003FB468 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		CE743732242E3A21003FB468 /* FeedModuleLocalizedKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModuleLocalizedKeys.swift; sourceTree = "<group>"; };
 		CE743734242E41B2003FB468 /* RSSParserServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSParserServiceImpl.swift; sourceTree = "<group>"; };
-		CE743736242E41CC003FB468 /* RSSParserServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSParserServiceProtocol.swift; sourceTree = "<group>"; };
+		CE743736242E41CC003FB468 /* RSSParserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSParserService.swift; sourceTree = "<group>"; };
 		CE743739242E4217003FB468 /* RSSEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSEntity.swift; sourceTree = "<group>"; };
 		CE74373B242E6A48003FB468 /* RSSParserError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSParserError.swift; sourceTree = "<group>"; };
 		CE743740242E76E1003FB468 /* AlertServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertServiceImpl.swift; sourceTree = "<group>"; };
-		CE743742242E76FF003FB468 /* AlertServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertServiceProtocol.swift; sourceTree = "<group>"; };
+		CE743742242E76FF003FB468 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		CE743744242E78E7003FB468 /* AlertServiceKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertServiceKeys.swift; sourceTree = "<group>"; };
 		CE743746242F866E003FB468 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		CE7437482430A454003FB468 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		CE74374A2430AD75003FB468 /* FeedCellLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellLayoutCalculator.swift; sourceTree = "<group>"; };
-		CE74374F2430B763003FB468 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
-		CE7437512430B774003FB468 /* ModuleFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleFactoryProtocol.swift; sourceTree = "<group>"; };
 		CE7437532430C176003FB468 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		CE7437582430D98E003FB468 /* LayoutCalculatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCalculatorProtocol.swift; sourceTree = "<group>"; };
-		CE74375A24311242003FB468 /* DetailsViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewProtocol.swift; sourceTree = "<group>"; };
-		CE74375C2431124D003FB468 /* DetailsPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenterProtocol.swift; sourceTree = "<group>"; };
-		CE74375E2431125B003FB468 /* DetailsInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractorProtocol.swift; sourceTree = "<group>"; };
-		CE74376024311267003FB468 /* DetailsRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouterProtocol.swift; sourceTree = "<group>"; };
+		CE7437582430D98E003FB468 /* LayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutCalculator.swift; sourceTree = "<group>"; };
+		CE74375A24311242003FB468 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		CE74375C2431124D003FB468 /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		CE74375E2431125B003FB468 /* DetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractor.swift; sourceTree = "<group>"; };
+		CE74376024311267003FB468 /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
 		CE74376224311278003FB468 /* DetailsViewImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewImpl.swift; sourceTree = "<group>"; };
 		CE74376424311286003FB468 /* DetailsPresenterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenterImpl.swift; sourceTree = "<group>"; };
 		CE74376624311291003FB468 /* DetailsInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractorImpl.swift; sourceTree = "<group>"; };
 		CE7437682431129B003FB468 /* DetailsRouterImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouterImpl.swift; sourceTree = "<group>"; };
 		CE74376A2431D003003FB468 /* DetailsUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsUI.swift; sourceTree = "<group>"; };
-		CE74376C24324AC2003FB468 /* StorageServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceProtocol.swift; sourceTree = "<group>"; };
+		CE74376C24324AC2003FB468 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		CE74376E24324ACD003FB468 /* StorageServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageServiceImpl.swift; sourceTree = "<group>"; };
 		CEC9715B242A9ACF0055AA80 /* viper-rss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "viper-rss.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC9715E242A9ACF0055AA80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -270,7 +258,7 @@
 		CE4BDDB02438E12D00FDB6E7 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE4BDDB42438E16200FDB6E7 /* ImageDownloaderProtocol.swift */,
+				CE4BDDB42438E16200FDB6E7 /* ImageDownloader.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -295,7 +283,7 @@
 		CE5082172434B7F1002F29D4 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE5082192434B808002F29D4 /* UserDefaultsStorageProtocol.swift */,
+				CE5082192434B808002F29D4 /* UserDefaultsStorage.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -319,7 +307,6 @@
 		CE743669242B6595003FB468 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				CE74374C2430B70F003FB468 /* Di */,
 				CE743738242E420A003FB468 /* Entities */,
 				CE7436F0242BB046003FB468 /* ViewModels */,
 				CE7436E3242BA849003FB468 /* Common */,
@@ -348,7 +335,6 @@
 		CE74366B242B65CB003FB468 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				CE7436AF242B7E74003FB468 /* StartModule */,
 				CE743688242B7084003FB468 /* MainModule */,
 				CE74366F242B65EE003FB468 /* SettingsModule */,
 				CE74366E242B65E6003FB468 /* DetailsModule */,
@@ -380,6 +366,7 @@
 				CE743671242B6750003FB468 /* Implementations */,
 				CE743670242B674A003FB468 /* Protocols */,
 				CE743732242E3A21003FB468 /* FeedModuleLocalizedKeys.swift */,
+				CE4BDDD8243DE2FE00FDB6E7 /* FeedModuleAssembly.swift */,
 			);
 			path = FeedModule;
 			sourceTree = "<group>";
@@ -389,6 +376,7 @@
 			children = (
 				CE743685242B703F003FB468 /* Implementstions */,
 				CE743684242B7039003FB468 /* Protocols */,
+				CE4BDDD6243DE18D00FDB6E7 /* DetailsModuleAssembly.swift */,
 			);
 			path = DetailsModule;
 			sourceTree = "<group>";
@@ -400,6 +388,7 @@
 				CE743686242B704D003FB468 /* Protocols */,
 				CE7436F9242BB2D1003FB468 /* SettingsHelper.swift */,
 				CE7436FB242BD813003FB468 /* SettingsModuleLocalizedKeys.swift */,
+				CE4BDDD4243DD23C00FDB6E7 /* SettingsModuleAssembly.swift */,
 			);
 			path = SettingsModule;
 			sourceTree = "<group>";
@@ -407,12 +396,12 @@
 		CE743670242B674A003FB468 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE743674242B682E003FB468 /* FeedPresenterProtocol.swift */,
-				CE743676242B683A003FB468 /* FeedRouterProtocol.swift */,
-				CE743678242B6857003FB468 /* FeedViewProtocol.swift */,
-				CE74367A242B6863003FB468 /* FeedInteractorProtocol.swift */,
-				CE4BDDA924376E5700FDB6E7 /* TimerWorkerProtocol.swift */,
-				CE4BDDB62439C9E600FDB6E7 /* FeedViewModelHelperProtocol.swift */,
+				CE743674242B682E003FB468 /* FeedPresenter.swift */,
+				CE743676242B683A003FB468 /* FeedRouter.swift */,
+				CE743678242B6857003FB468 /* FeedView.swift */,
+				CE74367A242B6863003FB468 /* FeedInteractor.swift */,
+				CE4BDDA924376E5700FDB6E7 /* TimerWorker.swift */,
+				CE4BDDB62439C9E600FDB6E7 /* FeedViewModelHelper.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -434,10 +423,10 @@
 		CE743684242B7039003FB468 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE74375A24311242003FB468 /* DetailsViewProtocol.swift */,
-				CE74375C2431124D003FB468 /* DetailsPresenterProtocol.swift */,
-				CE74375E2431125B003FB468 /* DetailsInteractorProtocol.swift */,
-				CE74376024311267003FB468 /* DetailsRouterProtocol.swift */,
+				CE74375A24311242003FB468 /* DetailsView.swift */,
+				CE74375C2431124D003FB468 /* DetailsPresenter.swift */,
+				CE74375E2431125B003FB468 /* DetailsInteractor.swift */,
+				CE74376024311267003FB468 /* DetailsRouter.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -457,11 +446,11 @@
 		CE743686242B704D003FB468 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE74368D242B7226003FB468 /* SettingsViewProtocol.swift */,
-				CE74368F242B7267003FB468 /* SettingsRouterProtocol.swift */,
-				CE743691242B728B003FB468 /* SettingsInteractorProtocol.swift */,
-				CE743693242B72A1003FB468 /* SettingsPresenterProtocol.swift */,
-				CE4BDDAB24376E7E00FDB6E7 /* SettingsViewModelFactoryProtocol.swift */,
+				CE74368D242B7226003FB468 /* SettingsView.swift */,
+				CE74368F242B7267003FB468 /* SettingsRouter.swift */,
+				CE743691242B728B003FB468 /* SettingsInteractor.swift */,
+				CE743693242B72A1003FB468 /* SettingsPresenter.swift */,
+				CE4BDDAB24376E7E00FDB6E7 /* SettingsViewModelFactory.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -474,7 +463,7 @@
 				CE743699242B72D1003FB468 /* SettingsPresenterImpl.swift */,
 				CE74369B242B72DD003FB468 /* SettingsRouterImpl.swift */,
 				CE7436E1242BA7C9003FB468 /* SettingsUI.swift */,
-				CE4BDDA524375FFF00FDB6E7 /* SettingsViewModelFactory.swift */,
+				CE4BDDA524375FFF00FDB6E7 /* SettingsViewModelFactoryImpl.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -485,6 +474,7 @@
 				CE74368A242B70AE003FB468 /* Implementations */,
 				CE743689242B70A3003FB468 /* Protocols */,
 				CE7436DE242B9918003FB468 /* MainModuleLocalizedKeys.swift */,
+				CE4BDDD2243DD1C400FDB6E7 /* MainModuleAssembly.swift */,
 			);
 			path = MainModule;
 			sourceTree = "<group>";
@@ -492,10 +482,10 @@
 		CE743689242B70A3003FB468 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE74369F242B79E7003FB468 /* MainInteractorProtocol.swift */,
-				CE7436A1242B7A07003FB468 /* MainRouterProtocol.swift */,
-				CE7436A3242B7A21003FB468 /* MainPresenterProtocol.swift */,
-				CE7436A5242B7A36003FB468 /* MainViewProtocol.swift */,
+				CE74369F242B79E7003FB468 /* MainInteractor.swift */,
+				CE7436A1242B7A07003FB468 /* MainRouter.swift */,
+				CE7436A3242B7A21003FB468 /* MainPresenter.swift */,
+				CE7436A5242B7A36003FB468 /* MainView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -507,37 +497,6 @@
 				CE7436A9242B7B9D003FB468 /* MainRouterImpl.swift */,
 				CE7436AB242B7BB0003FB468 /* MainPresenterImpl.swift */,
 				CE7436AD242B7BBD003FB468 /* MainViewImpl.swift */,
-			);
-			path = Implementations;
-			sourceTree = "<group>";
-		};
-		CE7436AF242B7E74003FB468 /* StartModule */ = {
-			isa = PBXGroup;
-			children = (
-				CE7436B3242B7ED1003FB468 /* Implementations */,
-				CE7436B2242B7EC9003FB468 /* Protocols */,
-			);
-			path = StartModule;
-			sourceTree = "<group>";
-		};
-		CE7436B2242B7EC9003FB468 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				CE7436B4242B7F66003FB468 /* StartInteractorProtocol.swift */,
-				CE7436B6242B7F71003FB468 /* StartRouterProtocol.swift */,
-				CE7436B8242B7F7F003FB468 /* StartPresenterProtocol.swift */,
-				CE7436BA242B7F90003FB468 /* StartViewProtocol.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		CE7436B3242B7ED1003FB468 /* Implementations */ = {
-			isa = PBXGroup;
-			children = (
-				CE7436BC242B7F9C003FB468 /* StartViewImpl.swift */,
-				CE7436BE242B7FA6003FB468 /* StartRouterImpl.swift */,
-				CE7436C0242B7FB0003FB468 /* StartInteractorImpl.swift */,
-				CE7436C2242B7FBC003FB468 /* StartPresenterImpl.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -563,7 +522,7 @@
 		CE7436C8242B8E5C003FB468 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE743736242E41CC003FB468 /* RSSParserServiceProtocol.swift */,
+				CE743736242E41CC003FB468 /* RSSParserService.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -580,7 +539,7 @@
 		CE7436CA242B8E69003FB468 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE74376C24324AC2003FB468 /* StorageServiceProtocol.swift */,
+				CE74376C24324AC2003FB468 /* StorageService.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -623,8 +582,8 @@
 		CE7436D1242B969E003FB468 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE7436D2242B9702003FB468 /* LanguageTableProtocol.swift */,
-				CE7436D4242B971D003FB468 /* LocalizableProtocol.swift */,
+				CE7436D2242B9702003FB468 /* LanguageTable.swift */,
+				CE7436D4242B971D003FB468 /* Localizable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -667,7 +626,7 @@
 		CE7436E7242BABD9003FB468 /* SettingsCellProtocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE7436E9242BABFB003FB468 /* SettingsCellProtocol.swift */,
+				CE7436E9242BABFB003FB468 /* SettingsCell.swift */,
 			);
 			path = SettingsCellProtocols;
 			sourceTree = "<group>";
@@ -711,7 +670,7 @@
 		CE7436F3242BB077003FB468 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE7436F5242BB08E003FB468 /* SettingsTimerViewModelProtocol.swift */,
+				CE7436F5242BB08E003FB468 /* SettingsTimerViewModel.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -736,7 +695,7 @@
 		CE743704242E1CB2003FB468 /* FeedCellProtocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE743706242E1CDE003FB468 /* FeedCellProtocol.swift */,
+				CE743706242E1CDE003FB468 /* FeedCell.swift */,
 			);
 			path = FeedCellProtocols;
 			sourceTree = "<group>";
@@ -760,7 +719,7 @@
 		CE74370B242E1D18003FB468 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE74370C242E1D2B003FB468 /* FeedViewModelProtocol.swift */,
+				CE74370C242E1D2B003FB468 /* FeedViewModel.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -807,7 +766,7 @@
 		CE74373E242E6CB3003FB468 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE743742242E76FF003FB468 /* AlertServiceProtocol.swift */,
+				CE743742242E76FF003FB468 /* AlertService.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -816,31 +775,6 @@
 			isa = PBXGroup;
 			children = (
 				CE743740242E76E1003FB468 /* AlertServiceImpl.swift */,
-			);
-			path = Implementations;
-			sourceTree = "<group>";
-		};
-		CE74374C2430B70F003FB468 /* Di */ = {
-			isa = PBXGroup;
-			children = (
-				CE74374E2430B747003FB468 /* Implementations */,
-				CE74374D2430B741003FB468 /* Protocols */,
-			);
-			path = Di;
-			sourceTree = "<group>";
-		};
-		CE74374D2430B741003FB468 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				CE7437512430B774003FB468 /* ModuleFactoryProtocol.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		CE74374E2430B747003FB468 /* Implementations */ = {
-			isa = PBXGroup;
-			children = (
-				CE74374F2430B763003FB468 /* DependencyContainer.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -857,7 +791,7 @@
 		CE7437562430D961003FB468 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				CE7437582430D98E003FB468 /* LayoutCalculatorProtocol.swift */,
+				CE7437582430D98E003FB468 /* LayoutCalculator.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -979,105 +913,99 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE7436D9242B97AC003FB468 /* LocalizableImpl.swift in Sources */,
-				CE4BDDAA24376E5700FDB6E7 /* TimerWorkerProtocol.swift in Sources */,
-				CE743707242E1CDE003FB468 /* FeedCellProtocol.swift in Sources */,
+				CE4BDDAA24376E5700FDB6E7 /* TimerWorker.swift in Sources */,
+				CE743707242E1CDE003FB468 /* FeedCell.swift in Sources */,
 				CE74370F242E1D3F003FB468 /* FeedViewModelImpl.swift in Sources */,
 				CE74367D242B68F6003FB468 /* FeedPresenterImpl.swift in Sources */,
-				CE74375B24311242003FB468 /* DetailsViewProtocol.swift in Sources */,
+				CE74375B24311242003FB468 /* DetailsView.swift in Sources */,
 				CE743735242E41B2003FB468 /* RSSParserServiceImpl.swift in Sources */,
 				CE743702242E1C28003FB468 /* FeedUI.swift in Sources */,
-				CE743690242B7267003FB468 /* SettingsRouterProtocol.swift in Sources */,
+				CE743690242B7267003FB468 /* SettingsRouter.swift in Sources */,
 				CE4BDDAE2437704800FDB6E7 /* FeedViewModelFactory.swift in Sources */,
-				CE7436F6242BB08E003FB468 /* SettingsTimerViewModelProtocol.swift in Sources */,
+				CE7436F6242BB08E003FB468 /* SettingsTimerViewModel.swift in Sources */,
 				CE4BDDA824376A6900FDB6E7 /* TimerWorkerImpl.swift in Sources */,
 				CE7436E5242BA852003FB468 /* Then.swift in Sources */,
 				CE743698242B72C2003FB468 /* SettingsInteractorImpl.swift in Sources */,
 				CE74376524311286003FB468 /* DetailsPresenterImpl.swift in Sources */,
 				CE74373A242E4217003FB468 /* RSSEntity.swift in Sources */,
-				CE4BDDB72439C9E600FDB6E7 /* FeedViewModelHelperProtocol.swift in Sources */,
-				CE7436EA242BABFB003FB468 /* SettingsCellProtocol.swift in Sources */,
-				CE74370D242E1D2B003FB468 /* FeedViewModelProtocol.swift in Sources */,
+				CE4BDDB72439C9E600FDB6E7 /* FeedViewModelHelper.swift in Sources */,
+				CE7436EA242BABFB003FB468 /* SettingsCell.swift in Sources */,
+				CE74370D242E1D2B003FB468 /* FeedViewModel.swift in Sources */,
 				CE74376F24324ACD003FB468 /* StorageServiceImpl.swift in Sources */,
-				CE7437522430B774003FB468 /* ModuleFactoryProtocol.swift in Sources */,
-				CE7436BB242B7F90003FB468 /* StartViewProtocol.swift in Sources */,
 				CE7436EF242BAF22003FB468 /* ReusableCell.swift in Sources */,
 				CE743696242B72B7003FB468 /* SettingsViewImpl.swift in Sources */,
-				CE7436BD242B7F9C003FB468 /* StartViewImpl.swift in Sources */,
-				CE4BDDA624375FFF00FDB6E7 /* SettingsViewModelFactory.swift in Sources */,
+				CE4BDDA624375FFF00FDB6E7 /* SettingsViewModelFactoryImpl.swift in Sources */,
 				CE74367F242B6934003FB468 /* FeedViewImpl.swift in Sources */,
 				CE743731242E2E44003FB468 /* UIViewControllerExtension.swift in Sources */,
 				CE4BDDA3243713ED00FDB6E7 /* XMLEntity+CoreDataClass.swift in Sources */,
-				CE743679242B6857003FB468 /* FeedViewProtocol.swift in Sources */,
-				CE743694242B72A1003FB468 /* SettingsPresenterProtocol.swift in Sources */,
-				CE7436A6242B7A36003FB468 /* MainViewProtocol.swift in Sources */,
+				CE743679242B6857003FB468 /* FeedView.swift in Sources */,
+				CE743694242B72A1003FB468 /* SettingsPresenter.swift in Sources */,
+				CE7436A6242B7A36003FB468 /* MainView.swift in Sources */,
 				CE7436FE242BDD3D003FB468 /* SettingsCategoryCellImpl.swift in Sources */,
-				CE7436A0242B79E7003FB468 /* MainInteractorProtocol.swift in Sources */,
+				CE7436A0242B79E7003FB468 /* MainInteractor.swift in Sources */,
 				CEC9715F242A9ACF0055AA80 /* AppDelegate.swift in Sources */,
 				CE743747242F866E003FB468 /* UILabelExtension.swift in Sources */,
 				CE7436E2242BA7C9003FB468 /* SettingsUI.swift in Sources */,
 				CE7436F8242BB0A8003FB468 /* SettingsViewModelImpl.swift in Sources */,
 				CE50822524363A33002F29D4 /* StorageServiceError.swift in Sources */,
-				CE74367B242B6863003FB468 /* FeedInteractorProtocol.swift in Sources */,
-				CE50821A2434B808002F29D4 /* UserDefaultsStorageProtocol.swift in Sources */,
+				CE74367B242B6863003FB468 /* FeedInteractor.swift in Sources */,
+				CE50821A2434B808002F29D4 /* UserDefaultsStorage.swift in Sources */,
 				CE0FF9DB2436879000072C2A /* TableViewExtension.swift in Sources */,
-				CE74375D2431124E003FB468 /* DetailsPresenterProtocol.swift in Sources */,
+				CE74375D2431124E003FB468 /* DetailsPresenter.swift in Sources */,
 				CE7437492430A454003FB468 /* StringExtension.swift in Sources */,
 				CE7436CE242B9454003FB468 /* AssetsHelper.swift in Sources */,
-				CE743692242B728B003FB468 /* SettingsInteractorProtocol.swift in Sources */,
+				CE743692242B728B003FB468 /* SettingsInteractor.swift in Sources */,
 				CE7436DF242B9918003FB468 /* MainModuleLocalizedKeys.swift in Sources */,
 				CE7436AA242B7B9D003FB468 /* MainRouterImpl.swift in Sources */,
 				CE7436AE242B7BBD003FB468 /* MainViewImpl.swift in Sources */,
-				CE743743242E76FF003FB468 /* AlertServiceProtocol.swift in Sources */,
+				CE743743242E76FF003FB468 /* AlertService.swift in Sources */,
 				CE743715242E2454003FB468 /* FontHelper.swift in Sources */,
 				CE743700242E03C1003FB468 /* BaseController.swift in Sources */,
 				CE50821F2434EE7A002F29D4 /* CustomPickerView.swift in Sources */,
 				CE74369A242B72D1003FB468 /* SettingsPresenterImpl.swift in Sources */,
+				CE4BDDD3243DD1C400FDB6E7 /* MainModuleAssembly.swift in Sources */,
 				CE7436D7242B977F003FB468 /* LanguageTableImpl.swift in Sources */,
 				CE4BDDA4243713ED00FDB6E7 /* XMLEntity+CoreDataProperties.swift in Sources */,
 				CE7436FA242BB2D1003FB468 /* SettingsHelper.swift in Sources */,
 				CE74374B2430AD75003FB468 /* FeedCellLayoutCalculator.swift in Sources */,
-				CE7436D5242B971D003FB468 /* LocalizableProtocol.swift in Sources */,
+				CE7436D5242B971D003FB468 /* Localizable.swift in Sources */,
 				CE743741242E76E1003FB468 /* AlertServiceImpl.swift in Sources */,
 				CE74376324311278003FB468 /* DetailsViewImpl.swift in Sources */,
-				CE74376D24324AC2003FB468 /* StorageServiceProtocol.swift in Sources */,
+				CE74376D24324AC2003FB468 /* StorageService.swift in Sources */,
 				CE743709242E1CE5003FB468 /* FeedCellImpl.swift in Sources */,
-				CE7437502430B763003FB468 /* DependencyContainer.swift in Sources */,
+				CE4BDDD5243DD23C00FDB6E7 /* SettingsModuleAssembly.swift in Sources */,
 				CE743681242B6940003FB468 /* FeedRouterImpl.swift in Sources */,
-				CE7436B9242B7F7F003FB468 /* StartPresenterProtocol.swift in Sources */,
 				CE74376724311292003FB468 /* DetailsInteractorImpl.swift in Sources */,
 				CE7437542430C176003FB468 /* Constants.swift in Sources */,
-				CE4BDDAC24376E7E00FDB6E7 /* SettingsViewModelFactoryProtocol.swift in Sources */,
-				CE7436A2242B7A07003FB468 /* MainRouterProtocol.swift in Sources */,
+				CE4BDDAC24376E7E00FDB6E7 /* SettingsViewModelFactory.swift in Sources */,
+				CE7436A2242B7A07003FB468 /* MainRouter.swift in Sources */,
+				CE4BDDD9243DE2FE00FDB6E7 /* FeedModuleAssembly.swift in Sources */,
 				CE7436ED242BAD68003FB468 /* SettingsTimerCellImpl.swift in Sources */,
-				CE7436B7242B7F71003FB468 /* StartRouterProtocol.swift in Sources */,
-				CE7436C3242B7FBC003FB468 /* StartPresenterImpl.swift in Sources */,
-				CE743677242B683A003FB468 /* FeedRouterProtocol.swift in Sources */,
+				CE4BDDD7243DE18D00FDB6E7 /* DetailsModuleAssembly.swift in Sources */,
+				CE743677242B683A003FB468 /* FeedRouter.swift in Sources */,
 				CE7436A8242B7B93003FB468 /* MainInteractorImpl.swift in Sources */,
-				CE74375F2431125B003FB468 /* DetailsInteractorProtocol.swift in Sources */,
+				CE74375F2431125B003FB468 /* DetailsInteractor.swift in Sources */,
 				CE743713242E2417003FB468 /* UIColorExtension.swift in Sources */,
-				CE7436B5242B7F66003FB468 /* StartInteractorProtocol.swift in Sources */,
 				CE7436AC242B7BB0003FB468 /* MainPresenterImpl.swift in Sources */,
 				CE743733242E3A21003FB468 /* FeedModuleLocalizedKeys.swift in Sources */,
 				CE74376B2431D003003FB468 /* DetailsUI.swift in Sources */,
 				CE4BDDB32438E15300FDB6E7 /* ImageDownloaderImpl.swift in Sources */,
-				CE743737242E41CC003FB468 /* RSSParserServiceProtocol.swift in Sources */,
-				CE743675242B682E003FB468 /* FeedPresenterProtocol.swift in Sources */,
+				CE743737242E41CC003FB468 /* RSSParserService.swift in Sources */,
+				CE743675242B682E003FB468 /* FeedPresenter.swift in Sources */,
 				CE743745242E78E7003FB468 /* AlertServiceKeys.swift in Sources */,
 				CEC97169242A9ACF0055AA80 /* viper_rss.xcdatamodeld in Sources */,
-				CE4BDDB52438E16200FDB6E7 /* ImageDownloaderProtocol.swift in Sources */,
+				CE4BDDB52438E16200FDB6E7 /* ImageDownloader.swift in Sources */,
 				CE50821C2434B812002F29D4 /* UserDefaultsStorageImpl.swift in Sources */,
 				CE743683242B6951003FB468 /* FeedInteractorImpl.swift in Sources */,
-				CE7436A4242B7A21003FB468 /* MainPresenterProtocol.swift in Sources */,
+				CE7436A4242B7A21003FB468 /* MainPresenter.swift in Sources */,
 				CE7436FC242BD813003FB468 /* SettingsModuleLocalizedKeys.swift in Sources */,
-				CE7436C1242B7FB0003FB468 /* StartInteractorImpl.swift in Sources */,
-				CE7436BF242B7FA6003FB468 /* StartRouterImpl.swift in Sources */,
 				CE743717242E2475003FB468 /* ColorHelper.swift in Sources */,
-				CE7437592430D98E003FB468 /* LayoutCalculatorProtocol.swift in Sources */,
-				CE74368E242B7226003FB468 /* SettingsViewProtocol.swift in Sources */,
+				CE7437592430D98E003FB468 /* LayoutCalculator.swift in Sources */,
+				CE74368E242B7226003FB468 /* SettingsView.swift in Sources */,
 				CE74369C242B72DD003FB468 /* SettingsRouterImpl.swift in Sources */,
-				CE7436D3242B9702003FB468 /* LanguageTableProtocol.swift in Sources */,
+				CE7436D3242B9702003FB468 /* LanguageTable.swift in Sources */,
 				CE74373C242E6A48003FB468 /* RSSParserError.swift in Sources */,
-				CE74376124311267003FB468 /* DetailsRouterProtocol.swift in Sources */,
+				CE74376124311267003FB468 /* DetailsRouter.swift in Sources */,
 				CE7437692431129B003FB468 /* DetailsRouterImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

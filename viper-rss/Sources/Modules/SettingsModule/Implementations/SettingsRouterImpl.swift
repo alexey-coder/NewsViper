@@ -9,10 +9,10 @@
 import UIKit
 
 class SettingsRouterImpl {
-    weak var presenter: SettingsPresenterProtocol?
+    weak var presenter: SettingsPresenter?
     weak var viewController: UIViewController?
 }
 
-extension SettingsRouterImpl: SettingsRouterProtocol {
+extension SettingsRouterImpl: SettingsRouter {
     
 }

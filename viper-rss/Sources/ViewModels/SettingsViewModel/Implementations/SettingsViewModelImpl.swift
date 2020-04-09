@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SettingsViewModelImpl: SettingsTimerViewModelProtocol {
+class SettingsViewModelImpl: SettingsTimerViewModel {
     var currentValue: String
     var labelText: String
 

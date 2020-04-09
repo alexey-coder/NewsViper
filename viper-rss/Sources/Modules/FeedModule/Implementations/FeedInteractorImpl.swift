@@ -8,21 +8,22 @@
 
 import Foundation
 
-class FeedInteractorImpl {
-    weak var presenter: FeedPresenterProtocol?
+final class FeedInteractorImpl {
+    weak var presenter: FeedPresenter?
     
-    private let rssParser: RSSParserServiceProtocol
-    private let storageService: StorageServiceProtocol
+    private let rssParser: RSSParserService
+    private let storageService: StorageService
+    let dispatchGroup = DispatchGroup()
     
     init(
-        rssParser: RSSParserServiceProtocol,
-        storageService: StorageServiceProtocol) {
+        rssParser: RSSParserService,
+        storageService: StorageService) {
         self.rssParser = rssParser
         self.storageService = storageService
     }
 }
 
-extension FeedInteractorImpl: FeedInteractorProtocol {
+extension FeedInteractorImpl: FeedInteractor {
     
     func update(entity: RSSEntity) {
         storageService.update(entity: entity)
@@ -45,22 +46,21 @@ extension FeedInteractorImpl: FeedInteractorProtocol {
         }
     }
     
-    func saveInStorage(entity: RSSEntity) {
-        storageService.save(entity: entity)
-    }
-    
     func requestEntities(from sourses: [Sources]) {
+        var entities = [RSSEntity]()
         sourses.forEach { source in
-            let parser = RSSParserServiceImpl()
-            parser.parseFeed(
+            rssParser.parseFeed(
                 url: source.getLink(),
-                successCompletion: { [weak self] entity in
+                successCompletion: { entity in
                     var updatedEntity = entity
                     updatedEntity.source = source.description
-                    self?.presenter?.store(entity: updatedEntity)
-                }, errorCompletion: { error in
-                    self.presenter?.showAlert(message: error.localizedDescription)
+                    entities.append(updatedEntity)
+            }, errorCompletion: { error in
+                self.presenter?.showAlert(message: error.localizedDescription)
             })
+        }
+        entities.forEach {
+            storageService.save(entity: $0)
         }
     }
 }

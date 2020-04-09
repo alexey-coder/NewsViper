@@ -8,12 +8,15 @@
 
 import UIKit
 
-class FeedViewImpl: BaseController<FeedUI> {
-    var presenter: FeedPresenterProtocol?
+final class FeedViewImpl: BaseController<FeedUI> {
+    var presenter: FeedPresenter
     
-    private let alertService: AlertServiceProtocol
+    private let alertService: AlertService
     
-    init(alertService: AlertServiceProtocol) {
+    init(
+        presenter: FeedPresenter,
+        alertService: AlertService) {
+        self.presenter = presenter
         self.alertService = alertService
         super.init()
     }
@@ -27,13 +30,13 @@ class FeedViewImpl: BaseController<FeedUI> {
         ui.tableView.delegate = self
         ui.tableView.dataSource = self
         setupSegmentControl()
-        presenter?.viewDidLoad()
+        presenter.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavBar()
-        presenter?.viewWillAppear()
+        presenter.viewWillAppear()
     }
     
     override func viewDidLayoutSubviews() {
@@ -51,17 +54,14 @@ class FeedViewImpl: BaseController<FeedUI> {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        presenter?.viewWillDissaper()
+        presenter.viewWillDissaper()
     }
     
     @objc private func segmentControleToggled(_ segmentedControl: UISegmentedControl) {
-        presenter?.switchMode()
+        presenter.switchMode()
     }
 
     private func setupSegmentControl() {
-        guard let presenter = presenter else {
-            return
-        }
         for mode in presenter.getModes().enumerated() {
             ui.segmentControl.insertSegment(withTitle: mode.element, at: mode.offset, animated: false)
         }
@@ -81,7 +81,7 @@ class FeedViewImpl: BaseController<FeedUI> {
     }
 }
 
-extension FeedViewImpl: FeedViewProtocol {
+extension FeedViewImpl: FeedView {
     func showIndicator() {
     }
     
@@ -104,13 +104,11 @@ extension FeedViewImpl: FeedViewProtocol {
 extension FeedViewImpl: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return presenter?.getHeightFor(row: indexPath.row) ?? 0
+        return presenter.getHeightFor(row: indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let rows = presenter?.getNumberOfRows() else {
-            return 0
-        }
+        let rows = presenter.getNumberOfRows()
         if rows == 0 {
             ui.tableView.setEmptyMessage(LocalizedImpl<FeedModuleLocalizedKeys>(.emptyTableMessage).text)
         }
@@ -118,7 +116,7 @@ extension FeedViewImpl: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let viewModel = presenter?.getViewModel(by: indexPath) else {
+        guard let viewModel = presenter.getViewModel(by: indexPath) else {
             return UITableViewCell()
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedCellImpl.reuseIdentifier, for: indexPath) as! FeedCellImpl
@@ -129,6 +127,6 @@ extension FeedViewImpl: UITableViewDataSource {
 
 extension FeedViewImpl: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.didRowSelected(row: indexPath.row)
+        presenter.didRowSelected(row: indexPath.row)
     }
 }
